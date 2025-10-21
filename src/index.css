@@ -73,6 +73,13 @@
       -2px -2px 0px theme('colors.neon-cyan');
   }
 
+
+  /* Accessibility: Remove glitch effect for users who prefer reduced motion or increased contrast */
+  @media (prefers-reduced-motion: reduce), (prefers-contrast: more) {
+    .text-glitch {
+      text-shadow: none !important;
+    }
+  }
   .text-glitch:hover {
     @apply animate-glitch;
   }
