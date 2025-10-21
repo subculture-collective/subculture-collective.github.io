@@ -15,4 +15,6 @@ function Creators() {
   )
 }
 
+Creators.displayName = 'Creators'
+
 export default Creators

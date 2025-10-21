@@ -15,4 +15,6 @@ function About() {
   )
 }
 
+About.displayName = 'About'
+
 export default About
