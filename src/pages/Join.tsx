@@ -15,4 +15,6 @@ function Join() {
   )
 }
 
+Join.displayName = 'Join'
+
 export default Join

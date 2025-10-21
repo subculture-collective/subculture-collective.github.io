@@ -15,4 +15,6 @@ function Journal() {
   )
 }
 
+Journal.displayName = 'Journal'
+
 export default Journal

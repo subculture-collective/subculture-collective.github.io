@@ -24,4 +24,6 @@ function NotFound() {
   )
 }
 
+NotFound.displayName = 'NotFound'
+
 export default NotFound

@@ -28,4 +28,6 @@ function JournalPost() {
   )
 }
 
+JournalPost.displayName = 'JournalPost'
+
 export default JournalPost

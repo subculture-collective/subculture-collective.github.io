@@ -15,4 +15,6 @@ function Projects() {
   )
 }
 
+Projects.displayName = 'Projects'
+
 export default Projects
