@@ -12,8 +12,10 @@ export default [
   ...tseslint.configs.recommended,
   {
     files: ['**/*.{ts,tsx}'],
-    ...reactHooks.configs['recommended-latest'],
-    ...reactRefresh.configs.vite,
+    extends: [
+      reactHooks.configs['recommended-latest'],
+      reactRefresh.configs.vite,
+    ],
     languageOptions: {
       ecmaVersion: 2020,
       globals: globals.browser,
