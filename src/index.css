@@ -109,6 +109,12 @@
     @apply absolute left-0 right-0 h-px bg-neon-cyan opacity-50 animate-scan;
   }
 
+  /* Respect reduced motion preferences for scanner animation */
+  @media (prefers-reduced-motion: reduce) {
+    .scanner::before {
+      animation: none !important;
+    }
+  }
   /* Glitch Container */
   .glitch-container {
     @apply relative;
