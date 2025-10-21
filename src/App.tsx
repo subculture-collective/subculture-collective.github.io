@@ -1,6 +1,7 @@
 import { Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import './App.css'
+import PageTransition from './components/motion/PageTransition'
 
 // Import pages
 import Home from './pages/Home'
@@ -28,16 +29,18 @@ function App() {
   return (
     <>
       <ScrollToTop />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/creators" element={<Creators />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/journal" element={<Journal />} />
-        <Route path="/journal/:slug" element={<JournalPost />} />
-        <Route path="/join" element={<Join />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <PageTransition type="glitch">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/creators" element={<Creators />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/journal" element={<Journal />} />
+          <Route path="/journal/:slug" element={<JournalPost />} />
+          <Route path="/join" element={<Join />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </PageTransition>
     </>
   )
 }
