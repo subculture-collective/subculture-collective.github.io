@@ -22,6 +22,8 @@ function ScrollToTop() {
   return null
 }
 
+ScrollToTop.displayName = 'ScrollToTop'
+
 function App() {
   return (
     <>
@@ -39,5 +41,7 @@ function App() {
     </>
   )
 }
+
+App.displayName = 'App'
 
 export default App
