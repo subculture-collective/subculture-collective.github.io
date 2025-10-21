@@ -1,4 +1,8 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import GlitchText from '../components/motion/GlitchText'
+import { motion } from 'framer-motion'
+import { microInteractions, entranceAnimations } from '../utils/animations'
 
 function Home() {
   const [count, setCount] = useState(0)
@@ -87,6 +91,87 @@ function Home() {
             <code className="block mt-2">
               console.log('Styled code block with custom theme');
             </code>
+          </div>
+        </div>
+
+        {/* Framer Motion Demo Section */}
+        <div className="cyber-card mb-8">
+          <h3 className="font-display text-electric-blue mb-6 text-2xl">
+            ✨ Framer Motion Animations
+          </h3>
+          
+          <div className="space-y-6">
+            {/* Glitch Text Demo */}
+            <div>
+              <h4 className="font-mono text-neon-cyan text-sm mb-3">GlitchText Component:</h4>
+              <GlitchText type="rgbSplit" className="font-display text-3xl text-white mb-2">
+                RGB SPLIT EFFECT
+              </GlitchText>
+              <GlitchText type="textGlitch" className="font-display text-2xl text-glitch-magenta mb-2">
+                POSITION GLITCH
+              </GlitchText>
+              <GlitchText type="both" className="font-display text-2xl text-neon-cyan">
+                COMBINED EFFECTS
+              </GlitchText>
+            </div>
+
+            {/* Interactive Buttons with Motion */}
+            <div>
+              <h4 className="font-mono text-neon-cyan text-sm mb-3">Hover Interactions:</h4>
+              <div className="flex gap-3 flex-wrap">
+                <motion.button
+                  className="btn-neon"
+                  variants={microInteractions.button}
+                  initial="initial"
+                  whileHover="hover"
+                  whileTap="tap"
+                >
+                  Hover Me
+                </motion.button>
+                <GlitchText 
+                  type="both" 
+                  triggerOnHover 
+                  className="btn-neon cursor-pointer inline-block"
+                  as="button"
+                >
+                  Glitch on Hover
+                </GlitchText>
+              </div>
+            </div>
+
+            {/* Entrance Animations */}
+            <div>
+              <h4 className="font-mono text-neon-cyan text-sm mb-3">Entrance Animations:</h4>
+              <div className="space-y-2">
+                <motion.div
+                  className="cyber-card"
+                  variants={entranceAnimations.fadeInUp}
+                  initial="initial"
+                  animate="animate"
+                >
+                  <p className="font-mono text-sm">Fade In Up ↑</p>
+                </motion.div>
+                <motion.div
+                  className="cyber-card"
+                  variants={entranceAnimations.scaleIn}
+                  initial="initial"
+                  animate="animate"
+                >
+                  <p className="font-mono text-sm">Scale In ⚡</p>
+                </motion.div>
+              </div>
+            </div>
+
+            <p className="font-mono text-gray-500 text-xs mt-4">
+              💫 Page transitions enabled • Respects reduced motion preferences
+            </p>
+            
+            {/* Test Page Transitions */}
+            <div className="mt-4 flex gap-3">
+              <Link to="/about" className="btn-neon text-sm">
+                Test Page Transition →
+              </Link>
+            </div>
           </div>
         </div>
 
