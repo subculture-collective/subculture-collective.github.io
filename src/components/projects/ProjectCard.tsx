@@ -6,6 +6,7 @@
  */
 
 import { motion } from 'framer-motion'
+import OptimizedImage from '@/components/ui/OptimizedImage'
 import type { Project } from '../../types'
 import { microInteractions } from '../../utils/animations'
 import StatusBadge from './StatusBadge'
@@ -43,17 +44,22 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       )}
 
       {/* Project Image */}
-      <div className="relative mb-4 overflow-hidden rounded-lg aspect-[4/3]">
-        <motion.img
+      <motion.div
+        className="relative mb-4 overflow-hidden rounded-lg aspect-[4/3]"
+        whileHover={{ scale: 1.05 }}
+        transition={{ duration: 0.3 }}
+      >
+        <OptimizedImage
           src={thumbnailImage || '/assets/projects/placeholder-1.svg'}
           alt={title}
-          className="w-full h-full object-cover"
-          whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.3 }}
+          className="w-full h-full"
+          objectFit="cover"
+          loading="lazy"
+          showPlaceholder
         />
         {/* Glitch overlay on hover */}
         <div className="absolute inset-0 bg-gradient-to-r from-neon-cyan/20 to-glitch-magenta/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-      </div>
+      </motion.div>
 
       {/* Status Badge */}
       <div className="mb-3">

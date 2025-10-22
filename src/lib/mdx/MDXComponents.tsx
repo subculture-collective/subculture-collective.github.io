@@ -157,14 +157,17 @@ function Ol({ children, ...props }: React.ComponentPropsWithoutRef<'ol'>) {
 }
 
 /**
- * Custom image component with lazy loading
+ * Custom image component with optimization
  */
 function Img({ src, alt, ...props }: React.ComponentPropsWithoutRef<'img'>) {
+  // For content images in MDX, we use basic img with lazy loading
+  // Full OptimizedImage component can be used explicitly when needed
   return (
     <img
       src={src}
       alt={alt || ''}
       loading="lazy"
+      decoding="async"
       className="rounded-lg my-6 w-full border border-neon-cyan/20"
       {...props}
     />

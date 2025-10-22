@@ -6,6 +6,7 @@
  */
 
 import { motion } from 'framer-motion'
+import OptimizedImage from '@/components/ui/OptimizedImage'
 import type { CreatorProfile } from '../../types'
 import { microInteractions } from '../../utils/animations'
 
@@ -24,17 +25,22 @@ export default function CreatorCard({ creator }: CreatorCardProps) {
       whileHover="hover"
     >
       {/* Avatar */}
-      <div className="relative mb-4 overflow-hidden rounded-lg">
-        <motion.img
+      <motion.div
+        className="relative mb-4 overflow-hidden rounded-lg"
+        whileHover={{ scale: 1.05 }}
+        transition={{ duration: 0.3 }}
+      >
+        <OptimizedImage
           src={avatar || '/assets/creators/placeholder-1.svg'}
           alt={name}
-          className="w-full h-48 object-cover"
-          whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.3 }}
+          className="w-full h-48"
+          objectFit="cover"
+          loading="lazy"
+          showPlaceholder
         />
         {/* Glitch overlay on hover */}
         <div className="absolute inset-0 bg-gradient-to-r from-neon-cyan/20 to-glitch-magenta/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-      </div>
+      </motion.div>
 
       {/* Name & Display Name */}
       <div className="mb-2">

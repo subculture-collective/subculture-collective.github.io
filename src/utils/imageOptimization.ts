@@ -187,8 +187,9 @@ export function getOptimalDimensions(
   // Round up to nearest breakpoint for better caching
   const breakpointValues = Object.values(IMAGE_BREAKPOINTS)
   const optimalWidth =
-    breakpointValues.find(bp => bp >= width) ||
-    breakpointValues[breakpointValues.length - 1]!
+    breakpointValues.find(bp => bp >= width) ??
+    breakpointValues[breakpointValues.length - 1] ??
+    width
 
   // Maintain aspect ratio
   const optimalHeight = Math.ceil((optimalWidth / width) * height)

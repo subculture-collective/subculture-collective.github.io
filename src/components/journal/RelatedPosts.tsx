@@ -6,6 +6,7 @@
 
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import OptimizedImage from '@/components/ui/OptimizedImage'
 import type { MDXPost } from '@/types/content'
 
 interface RelatedPostsProps {
@@ -93,12 +94,14 @@ export default function RelatedPosts({
             <Link to={`/journal/${post.slug}`}>
               {/* Cover Image */}
               {post.frontmatter.coverImage && (
-                <div className="relative mb-4 overflow-hidden rounded-lg aspect-[16/9]">
-                  <img
+                <div className="relative mb-4 overflow-hidden rounded-lg aspect-[16/9] group-hover:scale-105 transition-transform duration-300">
+                  <OptimizedImage
                     src={post.frontmatter.coverImage}
                     alt={post.frontmatter.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="w-full h-full"
+                    objectFit="cover"
                     loading="lazy"
+                    showPlaceholder
                   />
                 </div>
               )}
