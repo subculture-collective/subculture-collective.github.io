@@ -6,16 +6,10 @@
  */
 
 import type { MDXPost } from '@/types/content'
-
-/**
- * Simple reading time calculation based on word count
- */
-function calculateReadingTime(text: string): string {
-  const wordsPerMinute = 200
-  const wordCount = text.trim().split(/\s+/).length
-  const minutes = Math.ceil(wordCount / wordsPerMinute)
-  return `${minutes} min read`
-}
+import {
+  calculateReadingTime,
+  extractMdxContent,
+} from '@/lib/utils/readingTime'
 
 /**
  * Extract frontmatter and content from MDX modules
@@ -34,7 +28,8 @@ async function parseMdxModule(
       description?: string
       keywords?: string[]
     }
-  }
+  },
+  rawContent: string
 ): Promise<MDXPost> {
   const frontmatter = module.frontmatter || {
     title: 'Untitled',
@@ -44,8 +39,9 @@ async function parseMdxModule(
     excerpt: '',
   }
 
-  // Use excerpt for reading time estimation
-  const readingTime = calculateReadingTime(frontmatter.excerpt)
+  // Calculate reading time from full article content
+  const content = extractMdxContent(rawContent)
+  const readingTime = calculateReadingTime(content)
 
   return {
     slug,
@@ -74,6 +70,13 @@ export async function getMdxPosts(): Promise<MDXPost[]> {
     }
   }>('/src/content/journal/*.mdx', { eager: false })
 
+  // Load raw content for reading time calculation
+  const rawModules = import.meta.glob<string>('/src/content/journal/*.mdx', {
+    query: '?raw',
+    import: 'default',
+    eager: false,
+  })
+
   const posts: MDXPost[] = []
 
   for (const [path, moduleLoader] of Object.entries(modules)) {
@@ -82,7 +85,9 @@ export async function getMdxPosts(): Promise<MDXPost[]> {
 
     try {
       const module = await moduleLoader()
-      const post = await parseMdxModule(slug, module)
+      const rawLoader = rawModules[path]
+      const rawContent = rawLoader ? await rawLoader() : ''
+      const post = await parseMdxModule(slug, module, rawContent)
       posts.push(post)
     } catch (error) {
       console.error(`Error loading post ${slug}:`, error)
