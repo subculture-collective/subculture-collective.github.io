@@ -53,9 +53,9 @@ export default function CreatorCard({ creator }: CreatorCardProps) {
       {skills && skills.length > 0 && (
         <div className="mb-4">
           <div className="flex flex-wrap gap-2">
-            {skills.slice(0, 3).map((skill, index) => (
+            {skills.slice(0, 3).map((skill) => (
               <span
-                key={index}
+                key={skill}
                 className="px-2 py-1 bg-deep-gray text-neon-cyan font-mono text-xs rounded border border-neon-cyan/30 hover:border-neon-cyan transition-colors"
               >
                 {skill}
