@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import './App.css'
 import PageTransition from './components/motion/PageTransition'
+import Navbar from './components/layout/Navbar'
 
 // Import pages
 import About from './pages/About'
@@ -29,6 +30,7 @@ function App() {
   return (
     <>
       <ScrollToTop />
+      <Navbar sticky />
       <PageTransition type="glitch">
         <Routes>
           <Route path="/" element={<Home />} />
