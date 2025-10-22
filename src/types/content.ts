@@ -136,7 +136,7 @@ export interface Project {
   creators?: readonly CreatorId[]
   tags?: readonly string[]
   category?: string
-  status?: 'planning' | 'in-progress' | 'completed' | 'archived'
+  status?: 'planning' | 'in-progress' | 'completed' | 'on-hold' | 'archived'
   startDate?: Date
   completionDate?: Date
   links?: readonly {
