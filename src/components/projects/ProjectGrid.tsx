@@ -78,21 +78,6 @@ export default function ProjectGrid({ projects }: ProjectGridProps) {
         </div>
       )}
 
-      {/* Show all projects in one grid if no featured projects */}
-      {featuredProjects.length === 0 && regularProjects.length === 0 && (
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-          variants={staggerChildren.container}
-          initial="initial"
-          animate="animate"
-        >
-          {projects.map(project => (
-            <motion.div key={project.id} variants={entranceAnimations.fadeInUp}>
-              <ProjectCard project={project} />
-            </motion.div>
-          ))}
-        </motion.div>
-      )}
     </div>
   )
 }
