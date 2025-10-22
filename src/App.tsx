@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import './App.css'
 import PageTransition from './components/motion/PageTransition'
+import Footer from './components/layout/Footer'
 
 // Import pages
 import About from './pages/About'
@@ -27,7 +28,7 @@ ScrollToTop.displayName = 'ScrollToTop'
 
 function App() {
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
       <ScrollToTop />
       <PageTransition type="glitch">
         <Routes>
@@ -41,7 +42,8 @@ function App() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </PageTransition>
-    </>
+      <Footer />
+    </div>
   )
 }
 
