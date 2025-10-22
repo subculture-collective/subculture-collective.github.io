@@ -182,7 +182,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               {/* Footer */}
               <div className="p-6 border-t border-light-gray">
                 <p className="font-mono text-xs text-gray-500">
-                  © 2024 SUBCULT.TV
+                  © {new Date().getFullYear()} SUBCULT.TV
                 </p>
               </div>
             </div>
