@@ -110,7 +110,7 @@ function NetworkError() {
         {/* Help Text */}
         <div className="text-center">
           <p className="font-mono text-gray-500 text-sm">
-            This page will automatically reload when connection is restored
+            Connection status updates automatically when connection is restored
           </p>
         </div>
       </div>
