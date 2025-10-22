@@ -1,9 +1,9 @@
 /**
  * Type Definitions Barrel Export
- * 
+ *
  * Central export point for all type definitions used throughout the application.
  * Import types from this file to maintain consistency and ease of refactoring.
- * 
+ *
  * @example
  * ```ts
  * import type { BlogPost, CreatorProfile } from '@/types'

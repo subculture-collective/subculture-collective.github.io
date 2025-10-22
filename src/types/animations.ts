@@ -1,6 +1,6 @@
 /**
  * Animation Type Definitions
- * 
+ *
  * Type definitions for Framer Motion animation configurations,
  * variants, and animation-related props.
  */

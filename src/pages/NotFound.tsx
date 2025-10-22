@@ -7,16 +7,11 @@ function NotFound() {
         <h1 className="font-display text-neon-cyan text-shadow-neon mb-4 animate-glitch-slow">
           404
         </h1>
-        <p className="font-sans text-gray-300 text-xl mb-6">
-          Page Not Found
-        </p>
+        <p className="font-sans text-gray-300 text-xl mb-6">Page Not Found</p>
         <p className="font-mono text-glitch-green text-sm mb-8">
           &gt; ERROR: The requested resource does not exist
         </p>
-        <Link 
-          to="/" 
-          className="btn-neon inline-block"
-        >
+        <Link to="/" className="btn-neon inline-block">
           Return Home
         </Link>
       </div>

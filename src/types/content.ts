@@ -1,6 +1,6 @@
 /**
  * Content Type Definitions
- * 
+ *
  * Type definitions for content structures including blog posts,
  * creator profiles, projects, and related metadata.
  */

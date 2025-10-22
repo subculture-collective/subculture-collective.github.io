@@ -1,15 +1,15 @@
 /**
  * PageTransition Component
- * 
+ *
  * A wrapper component that adds page transition animations using Framer Motion.
  * Wraps around page content to provide smooth transitions between routes.
  */
 
-import { motion, AnimatePresence } from 'framer-motion'
 import type { ReactNode } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import { useLocation } from 'react-router-dom'
-import { pageTransitions } from '../../utils/animations'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
+import { pageTransitions } from '../../utils/animations'
 
 export type TransitionType = 'fade' | 'slideRight' | 'slideLeft' | 'slideUp' | 'glitch'
 
@@ -21,7 +21,7 @@ interface PageTransitionProps {
 
 /**
  * PageTransition wrapper component
- * 
+ *
  * Usage:
  * ```tsx
  * <PageTransition type="fade">
@@ -29,21 +29,19 @@ interface PageTransitionProps {
  * </PageTransition>
  * ```
  */
-export default function PageTransition({ 
-  children, 
+export default function PageTransition({
+  children,
   type = 'fade',
   className = '',
 }: PageTransitionProps) {
   const location = useLocation()
   const prefersReducedMotion = useReducedMotion()
-  
+
   // Get the appropriate transition variant
   const variants = pageTransitions[type]
-  
+
   // If user prefers reduced motion, use no animation
-  const finalVariants = prefersReducedMotion
-    ? { initial: {}, animate: {}, exit: {} }
-    : variants
+  const finalVariants = prefersReducedMotion ? { initial: {}, animate: {}, exit: {} } : variants
 
   return (
     <AnimatePresence mode="wait">
@@ -63,7 +61,7 @@ export default function PageTransition({
 
 /**
  * PageTransitionWrapper - A higher-order component version
- * 
+ *
  * Usage:
  * ```tsx
  * const TransitionedHome = PageTransitionWrapper(Home, 'glitch')

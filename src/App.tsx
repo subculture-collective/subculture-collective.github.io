@@ -1,17 +1,17 @@
-import { Routes, Route, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import './App.css'
 import PageTransition from './components/motion/PageTransition'
 
 // Import pages
-import Home from './pages/Home'
 import About from './pages/About'
 import Creators from './pages/Creators'
-import Projects from './pages/Projects'
+import Home from './pages/Home'
+import Join from './pages/Join'
 import Journal from './pages/Journal'
 import JournalPost from './pages/JournalPost'
-import Join from './pages/Join'
 import NotFound from './pages/NotFound'
+import Projects from './pages/Projects'
 
 function ScrollToTop() {
   const { pathname } = useLocation()

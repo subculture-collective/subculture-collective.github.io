@@ -1,6 +1,6 @@
 /**
  * Component Prop Type Definitions
- * 
+ *
  * Shared prop types for React components throughout the application.
  */
 

@@ -1,6 +1,6 @@
 /**
  * Animation Configuration and Variants
- * 
+ *
  * This file contains reusable animation presets for Framer Motion
  * including page transitions, glitch effects, and micro-interactions.
  */
@@ -18,28 +18,28 @@ export const transitions = {
     duration: 0.3,
     ease: 'easeInOut',
   } as Transition,
-  
+
   // Spring physics for bouncy interactions
   spring: {
     type: 'spring',
     stiffness: 300,
     damping: 30,
   } as Transition,
-  
+
   // Fast snap for quick interactions
   snap: {
     type: 'tween',
     duration: 0.15,
     ease: 'easeOut',
   } as Transition,
-  
+
   // Slow and dramatic
   dramatic: {
     type: 'tween',
     duration: 0.7,
     ease: [0.43, 0.13, 0.23, 0.96],
   } as Transition,
-  
+
   // Glitchy, erratic movement
   glitch: {
     type: 'tween',
@@ -59,37 +59,37 @@ export const pageTransitions = {
     animate: { opacity: 1, transition: transitions.smooth },
     exit: { opacity: 0, transition: transitions.smooth },
   } as Variants,
-  
+
   // Slide from right
   slideRight: {
     initial: { opacity: 0, x: 100 },
     animate: { opacity: 1, x: 0, transition: transitions.smooth },
     exit: { opacity: 0, x: -100, transition: transitions.smooth },
   } as Variants,
-  
+
   // Slide from left
   slideLeft: {
     initial: { opacity: 0, x: -100 },
     animate: { opacity: 1, x: 0, transition: transitions.smooth },
     exit: { opacity: 0, x: 100, transition: transitions.smooth },
   } as Variants,
-  
+
   // Slide from bottom
   slideUp: {
     initial: { opacity: 0, y: 100 },
     animate: { opacity: 1, y: 0, transition: transitions.smooth },
     exit: { opacity: 0, y: -100, transition: transitions.smooth },
   } as Variants,
-  
+
   // Glitch transition
   glitch: {
-    initial: { 
-      opacity: 0, 
+    initial: {
+      opacity: 0,
       x: -5,
       filter: 'blur(2px)',
     },
-    animate: { 
-      opacity: 1, 
+    animate: {
+      opacity: 1,
       x: 0,
       filter: 'blur(0px)',
       transition: {
@@ -101,7 +101,7 @@ export const pageTransitions = {
         },
       },
     },
-    exit: { 
+    exit: {
       opacity: 0,
       x: 5,
       filter: 'blur(2px)',
@@ -128,10 +128,10 @@ export const glitchEffects = {
       },
     },
   } as Variants,
-  
+
   // RGB split effect
   rgbSplit: {
-    initial: { 
+    initial: {
       textShadow: '0 0 0 rgba(0, 255, 255, 0), 0 0 0 rgba(255, 0, 255, 0)',
     },
     glitch: {
@@ -148,21 +148,16 @@ export const glitchEffects = {
       },
     },
   } as Variants,
-  
+
   // Image distortion effect
   imageDistortion: {
-    initial: { 
+    initial: {
       scale: 1,
       filter: 'hue-rotate(0deg)',
     },
     glitch: {
       scale: [1, 1.02, 0.98, 1.01, 1],
-      filter: [
-        'hue-rotate(0deg)',
-        'hue-rotate(90deg)',
-        'hue-rotate(-90deg)',
-        'hue-rotate(0deg)',
-      ],
+      filter: ['hue-rotate(0deg)', 'hue-rotate(90deg)', 'hue-rotate(-90deg)', 'hue-rotate(0deg)'],
       transition: {
         duration: 0.4,
         repeat: Infinity,
@@ -180,26 +175,26 @@ export const microInteractions = {
   // Button hover and tap
   button: {
     initial: { scale: 1 },
-    hover: { 
+    hover: {
       scale: 1.05,
       transition: transitions.snap,
     },
-    tap: { 
+    tap: {
       scale: 0.95,
       transition: transitions.snap,
     },
   } as Variants,
-  
+
   // Card hover
   card: {
     initial: { y: 0, boxShadow: '0 0 0 rgba(0, 255, 255, 0)' },
-    hover: { 
+    hover: {
       y: -5,
       boxShadow: '0 10px 30px rgba(0, 255, 255, 0.3)',
       transition: transitions.smooth,
     },
   } as Variants,
-  
+
   // Icon pulse
   iconPulse: {
     initial: { scale: 1 },
@@ -212,7 +207,7 @@ export const microInteractions = {
       },
     },
   } as Variants,
-  
+
   // Loading spinner
   spinner: {
     initial: { rotate: 0 },
@@ -235,48 +230,48 @@ export const entranceAnimations = {
   // Fade in up
   fadeInUp: {
     initial: { opacity: 0, y: 20 },
-    animate: { 
-      opacity: 1, 
+    animate: {
+      opacity: 1,
       y: 0,
       transition: transitions.smooth,
     },
   } as Variants,
-  
+
   // Fade in down
   fadeInDown: {
     initial: { opacity: 0, y: -20 },
-    animate: { 
-      opacity: 1, 
+    animate: {
+      opacity: 1,
       y: 0,
       transition: transitions.smooth,
     },
   } as Variants,
-  
+
   // Scale in
   scaleIn: {
     initial: { opacity: 0, scale: 0.8 },
-    animate: { 
-      opacity: 1, 
+    animate: {
+      opacity: 1,
       scale: 1,
       transition: transitions.spring,
     },
   } as Variants,
-  
+
   // Slide in from left
   slideInLeft: {
     initial: { opacity: 0, x: -50 },
-    animate: { 
-      opacity: 1, 
+    animate: {
+      opacity: 1,
       x: 0,
       transition: transitions.smooth,
     },
   } as Variants,
-  
+
   // Slide in from right
   slideInRight: {
     initial: { opacity: 0, x: 50 },
-    animate: { 
-      opacity: 1, 
+    animate: {
+      opacity: 1,
       x: 0,
       transition: transitions.smooth,
     },
@@ -297,7 +292,7 @@ export const staggerChildren = {
       },
     },
   } as Variants,
-  
+
   containerFast: {
     initial: {},
     animate: {
@@ -307,7 +302,7 @@ export const staggerChildren = {
       },
     },
   } as Variants,
-  
+
   containerSlow: {
     initial: {},
     animate: {
@@ -344,13 +339,10 @@ export function createStaggerContainer(
 /**
  * Creates a custom fade transition
  */
-export function createFadeVariant(
-  duration: number = 0.3,
-  delay: number = 0
-): Variants {
+export function createFadeVariant(duration: number = 0.3, delay: number = 0): Variants {
   return {
     initial: { opacity: 0 },
-    animate: { 
+    animate: {
       opacity: 1,
       transition: {
         duration,
@@ -358,7 +350,7 @@ export function createFadeVariant(
         ease: 'easeInOut',
       },
     },
-    exit: { 
+    exit: {
       opacity: 0,
       transition: {
         duration: duration * 0.5,
@@ -377,19 +369,19 @@ export function createSlideVariant(
 ): Variants {
   const isHorizontal = direction === 'left' || direction === 'right'
   const value = direction === 'left' || direction === 'up' ? -distance : distance
-  
+
   if (isHorizontal) {
     return {
       initial: { opacity: 0, x: value },
-      animate: { 
-        opacity: 1, 
+      animate: {
+        opacity: 1,
         x: 0,
         transition: {
           duration,
           ease: 'easeOut',
         },
       },
-      exit: { 
+      exit: {
         opacity: 0,
         x: -value,
         transition: {
@@ -400,15 +392,15 @@ export function createSlideVariant(
   } else {
     return {
       initial: { opacity: 0, y: value },
-      animate: { 
-        opacity: 1, 
+      animate: {
+        opacity: 1,
         y: 0,
         transition: {
           duration,
           ease: 'easeOut',
         },
       },
-      exit: { 
+      exit: {
         opacity: 0,
         y: -value,
         transition: {

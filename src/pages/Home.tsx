@@ -1,7 +1,7 @@
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import GlitchText from '../components/motion/GlitchText'
-import { motion } from 'framer-motion'
 import { microInteractions, entranceAnimations } from '../utils/animations'
 
 function Home() {
@@ -52,10 +52,7 @@ function Home() {
           <div className="cyber-card">
             <h3 className="font-display text-neon-green mb-4">Interactive Demo</h3>
             <div className="space-y-4">
-              <button 
-                onClick={() => setCount((count) => count + 1)}
-                className="btn-neon w-full"
-              >
+              <button onClick={() => setCount(count => count + 1)} className="btn-neon w-full">
                 Count: {count}
               </button>
               <p className="font-sans text-gray-400 text-sm">
@@ -67,12 +64,8 @@ function Home() {
 
         {/* Glitch Text Demo */}
         <div className="text-center mb-8">
-          <h2 className="text-glitch font-display text-4xl mb-2">
-            Hover for Glitch Effect
-          </h2>
-          <p className="font-mono text-glitch-yellow text-xs">
-            &gt; animation: glitch 1s infinite
-          </p>
+          <h2 className="text-glitch font-display text-4xl mb-2">Hover for Glitch Effect</h2>
+          <p className="font-mono text-glitch-yellow text-xs">&gt; animation: glitch 1s infinite</p>
         </div>
 
         {/* Typography Demo */}
@@ -82,15 +75,11 @@ function Home() {
             <p className="font-display text-white">
               Display Font: Space Grotesk, Rajdhani, Orbitron
             </p>
-            <p className="font-sans text-gray-300">
-              Sans Font: Inter, system-ui, -apple-system
-            </p>
+            <p className="font-sans text-gray-300">Sans Font: Inter, system-ui, -apple-system</p>
             <p className="font-mono text-glitch-green text-sm">
               Mono Font: JetBrains Mono, Fira Code, Roboto Mono
             </p>
-            <code className="block mt-2">
-              console.log('Styled code block with custom theme');
-            </code>
+            <code className="block mt-2">console.log('Styled code block with custom theme');</code>
           </div>
         </div>
 
@@ -99,7 +88,7 @@ function Home() {
           <h3 className="font-display text-electric-blue mb-6 text-2xl">
             ✨ Framer Motion Animations
           </h3>
-          
+
           <div className="space-y-6">
             {/* Glitch Text Demo */}
             <div>
@@ -107,7 +96,10 @@ function Home() {
               <GlitchText type="rgbSplit" className="font-display text-3xl text-white mb-2">
                 RGB SPLIT EFFECT
               </GlitchText>
-              <GlitchText type="textGlitch" className="font-display text-2xl text-glitch-magenta mb-2">
+              <GlitchText
+                type="textGlitch"
+                className="font-display text-2xl text-glitch-magenta mb-2"
+              >
                 POSITION GLITCH
               </GlitchText>
               <GlitchText type="both" className="font-display text-2xl text-neon-cyan">
@@ -128,9 +120,9 @@ function Home() {
                 >
                   Hover Me
                 </motion.button>
-                <GlitchText 
-                  type="both" 
-                  triggerOnHover 
+                <GlitchText
+                  type="both"
+                  triggerOnHover
                   className="btn-neon cursor-pointer inline-block"
                   as="button"
                 >
@@ -165,7 +157,7 @@ function Home() {
             <p className="font-mono text-gray-500 text-xs mt-4">
               💫 Page transitions enabled • Respects reduced motion preferences
             </p>
-            
+
             {/* Test Page Transitions */}
             <div className="mt-4 flex gap-3">
               <Link to="/about" className="btn-neon text-sm">
