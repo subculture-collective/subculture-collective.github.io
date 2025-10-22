@@ -130,7 +130,9 @@ function Footer() {
           {/* Copyright */}
           <div className="font-mono text-gray-500 text-xs text-center md:text-left">
             <p>
-              © {legalInfo.copyrightYear}-{currentYear}{' '}
+              © {legalInfo.copyrightYear === currentYear
+                ? currentYear
+                : `${legalInfo.copyrightYear}-${currentYear}`}{' '}
               {legalInfo.organizationName}
             </p>
             <p className="text-gray-600 mt-1">All rights reserved.</p>
