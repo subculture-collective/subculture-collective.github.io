@@ -1,0 +1,104 @@
+{
+  "mission": {
+    "title": "MISSION STATEMENT",
+    "manifesto": "We are Subcult — a decentralized cooperative of creators, rebels, and visionaries reclaiming the digital frontier. We believe in radical collaboration, artistic freedom, and building outside the boundaries of traditional gatekeepers.",
+    "tagline": "Create. Collaborate. Disrupt."
+  },
+  "cooperative": {
+    "title": "HOW WE OPERATE",
+    "description": "Subcult operates as a worker-owned cooperative where every member has a voice and a stake in our collective success.",
+    "structure": [
+      {
+        "heading": "Democratic Governance",
+        "description": "One member, one vote. Major decisions are made collectively through transparent voting processes."
+      },
+      {
+        "heading": "Revenue Sharing",
+        "description": "All members share in the profits generated through our collective work, distributed fairly based on contribution."
+      },
+      {
+        "heading": "Mutual Support",
+        "description": "We provide resources, mentorship, and infrastructure to help each member thrive and grow their practice."
+      }
+    ],
+    "benefits": {
+      "title": "Member Benefits",
+      "items": [
+        "Shared resources and equipment access",
+        "Collaborative project opportunities",
+        "Revenue share from collective ventures",
+        "Mentorship and skill development",
+        "Community and networking",
+        "Creative autonomy and support"
+      ]
+    }
+  },
+  "origin": {
+    "title": "ORIGIN STORY",
+    "narrative": "Born from frustration with exploitative platforms and gatekeeping institutions, Subcult emerged in 2024 as a radical experiment in collective creation. What started as a conversation between a handful of artists and technologists quickly evolved into a movement.",
+    "timeline": [
+      {
+        "year": "Early 2024",
+        "event": "Initial Conversations",
+        "description": "A small group of creatives began discussing alternatives to traditional creative platforms."
+      },
+      {
+        "year": "Mid 2024",
+        "event": "First Collective Projects",
+        "description": "We launched our first collaborative projects, proving the model could work."
+      },
+      {
+        "year": "Late 2024",
+        "event": "Formal Cooperative Structure",
+        "description": "Established legal cooperative framework and governance processes."
+      },
+      {
+        "year": "2025",
+        "event": "Expansion and Growth",
+        "description": "Growing our membership and launching subcult.tv as our digital home."
+      }
+    ]
+  },
+  "values": {
+    "title": "VALUES & PRINCIPLES",
+    "subtitle": "What makes us different",
+    "cards": [
+      {
+        "icon": "🔓",
+        "title": "Open & Transparent",
+        "description": "No hidden algorithms. No secret deals. Everything we do is open to our members."
+      },
+      {
+        "icon": "🤝",
+        "title": "Radically Collaborative",
+        "description": "We believe in the power of working together, sharing knowledge, and lifting each other up."
+      },
+      {
+        "icon": "⚡",
+        "title": "Anti-Institutional",
+        "description": "We reject traditional gatekeepers and create our own paths to success."
+      },
+      {
+        "icon": "🎨",
+        "title": "Artist-First",
+        "description": "Creators maintain full ownership and control of their work. Always."
+      },
+      {
+        "icon": "🌐",
+        "title": "Decentralized",
+        "description": "Power is distributed among all members, not concentrated at the top."
+      },
+      {
+        "icon": "🔥",
+        "title": "Experimental",
+        "description": "We're not afraid to try new things, fail fast, and iterate constantly."
+      }
+    ]
+  },
+  "cta": {
+    "title": "READY TO JOIN THE COLLECTIVE?",
+    "description": "We're always looking for passionate creators who share our vision of a better creative economy.",
+    "buttonText": "Join Us",
+    "buttonLink": "/join"
+  }
+}
