@@ -23,8 +23,6 @@ pnpm-lock.yaml
 .git
 
 # IDE
-.vscode/*
-!.vscode/settings.json
 .idea
 
 # System files
