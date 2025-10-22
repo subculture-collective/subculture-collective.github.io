@@ -37,8 +37,9 @@
       "@/utils/*": ["./src/utils/*"],
       "@/types/*": ["./src/types/*"],
       "@/hooks/*": ["./src/hooks/*"],
-      "@/pages/*": ["./src/pages/*"]
+      "@/pages/*": ["./src/pages/*"],
+      "@/lib/*": ["./src/lib/*"]
     }
   },
-  "include": ["src"]
+  "include": ["src", "src/**/*.mdx"]
 }
