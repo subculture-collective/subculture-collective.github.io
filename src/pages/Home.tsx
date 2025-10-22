@@ -1,209 +1,260 @@
-import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
+import HeroSection from '../components/hero/HeroSection'
 import GlitchText from '../components/motion/GlitchText'
-import { microInteractions, entranceAnimations } from '../utils/animations'
+import { entranceAnimations, staggerChildren } from '../utils/animations'
+
+// Hero images - using gradient fallbacks for now
+// Replace these with actual image paths when images are available
+const heroImages: string[] = [
+  // Add hero image paths here when available
+  // Example: '/assets/hero/hero-1.jpg'
+]
 
 function Home() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="min-h-screen bg-cyber-black flex items-center justify-center p-8">
-      <div className="max-w-4xl w-full">
-        {/* Hero Section */}
-        <div className="text-center mb-12">
-          <h1 className="font-display text-neon-cyan text-shadow-neon mb-4 animate-glitch-slow">
-            SUBCULT.TV
-          </h1>
-          <p className="font-sans text-gray-300 text-lg mb-2">
-            TailwindCSS v3 Theme Successfully Installed
-          </p>
-          <p className="font-mono text-glitch-green text-sm">
-            ./configure --theme=cyberpunk --status=ready
-          </p>
-        </div>
+    <div className="bg-cyber-black">
+      {/* Hero Section */}
+      <HeroSection
+        images={heroImages}
+        interval={6000}
+        ctaLink="#about"
+        tagline="The underground doesn't die — it mutates."
+        subtext="Subcult is a cooperative for creators and radicals."
+      />
 
-        {/* Demo Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-          {/* Color Palette Card */}
-          <div className="cyber-card">
-            <h3 className="font-display text-electric-blue mb-4">
-              Color Palette
-            </h3>
-            <div className="space-y-2 font-mono text-sm">
-              <div className="flex items-center gap-2">
-                <div className="w-6 h-6 bg-neon-cyan rounded"></div>
-                <span>neon-cyan</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-6 h-6 bg-electric-blue rounded"></div>
-                <span>electric-blue</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-6 h-6 bg-glitch-magenta rounded"></div>
-                <span>glitch-magenta</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="w-6 h-6 bg-glitch-green rounded"></div>
-                <span>glitch-green</span>
-              </div>
-            </div>
-          </div>
+      {/* About Section */}
+      <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-deep-gray">
+        <motion.div
+          className="max-w-6xl mx-auto"
+          variants={staggerChildren.container}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, margin: '-100px' }}
+        >
+          <motion.div
+            variants={entranceAnimations.fadeInUp}
+            className="text-center mb-16"
+          >
+            <GlitchText
+              as="h2"
+              type="rgbSplit"
+              className="font-display text-4xl md:text-5xl font-bold text-neon-cyan mb-4"
+              triggerOnHover
+            >
+              WHAT IS SUBCULT?
+            </GlitchText>
+            <p className="font-sans text-xl text-gray-300 max-w-3xl mx-auto">
+              A collective of creators, radicals, and cultural agitators
+              building the next wave of underground digital culture.
+            </p>
+          </motion.div>
 
-          {/* Interactive Card */}
-          <div className="cyber-card">
-            <h3 className="font-display text-neon-green mb-4">
-              Interactive Demo
-            </h3>
-            <div className="space-y-4">
-              <button
-                onClick={() => setCount(count => count + 1)}
-                className="btn-neon w-full"
-              >
-                Count: {count}
-              </button>
-              <p className="font-sans text-gray-400 text-sm">
-                Click the button to test interactivity
+          <motion.div
+            variants={entranceAnimations.fadeInUp}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+          >
+            <div className="cyber-card">
+              <div className="text-neon-cyan text-3xl mb-4">🎨</div>
+              <h3 className="font-display text-xl text-white mb-2">Create</h3>
+              <p className="font-sans text-gray-400">
+                Push boundaries. Make art that matters. No corporate
+                gatekeepers.
               </p>
             </div>
-          </div>
-        </div>
 
-        {/* Glitch Text Demo */}
-        <div className="text-center mb-8">
-          <h2 className="text-glitch font-display text-4xl mb-2">
-            Hover for Glitch Effect
-          </h2>
-          <p className="font-mono text-glitch-yellow text-xs">
-            &gt; animation: glitch 1s infinite
-          </p>
-        </div>
-
-        {/* Typography Demo */}
-        <div className="cyber-card mb-8">
-          <h4 className="font-display text-glitch-magenta mb-4">
-            Typography System
-          </h4>
-          <div className="space-y-3">
-            <p className="font-display text-white">
-              Display Font: Space Grotesk, Rajdhani, Orbitron
-            </p>
-            <p className="font-sans text-gray-300">
-              Sans Font: Inter, system-ui, -apple-system
-            </p>
-            <p className="font-mono text-glitch-green text-sm">
-              Mono Font: JetBrains Mono, Fira Code, Roboto Mono
-            </p>
-            <code className="block mt-2">
-              console.log('Styled code block with custom theme');
-            </code>
-          </div>
-        </div>
-
-        {/* Framer Motion Demo Section */}
-        <div className="cyber-card mb-8">
-          <h3 className="font-display text-electric-blue mb-6 text-2xl">
-            ✨ Framer Motion Animations
-          </h3>
-
-          <div className="space-y-6">
-            {/* Glitch Text Demo */}
-            <div>
-              <h4 className="font-mono text-neon-cyan text-sm mb-3">
-                GlitchText Component:
-              </h4>
-              <GlitchText
-                type="rgbSplit"
-                className="font-display text-3xl text-white mb-2"
-              >
-                RGB SPLIT EFFECT
-              </GlitchText>
-              <GlitchText
-                type="textGlitch"
-                className="font-display text-2xl text-glitch-magenta mb-2"
-              >
-                POSITION GLITCH
-              </GlitchText>
-              <GlitchText
-                type="both"
-                className="font-display text-2xl text-neon-cyan"
-              >
-                COMBINED EFFECTS
-              </GlitchText>
+            <div className="cyber-card">
+              <div className="text-glitch-magenta text-3xl mb-4">🔥</div>
+              <h3 className="font-display text-xl text-white mb-2">
+                Collaborate
+              </h3>
+              <p className="font-sans text-gray-400">
+                Join forces with other creators. Cooperatives over corporations.
+              </p>
             </div>
 
-            {/* Interactive Buttons with Motion */}
-            <div>
-              <h4 className="font-mono text-neon-cyan text-sm mb-3">
-                Hover Interactions:
-              </h4>
-              <div className="flex gap-3 flex-wrap">
-                <motion.button
-                  className="btn-neon"
-                  variants={microInteractions.button}
-                  initial="initial"
-                  whileHover="hover"
-                  whileTap="tap"
-                >
-                  Hover Me
-                </motion.button>
-                <GlitchText
-                  type="both"
-                  triggerOnHover
-                  className="btn-neon cursor-pointer inline-block"
-                  as="button"
-                >
-                  Glitch on Hover
-                </GlitchText>
+            <div className="cyber-card">
+              <div className="text-neon-green text-3xl mb-4">⚡</div>
+              <h3 className="font-display text-xl text-white mb-2">Disrupt</h3>
+              <p className="font-sans text-gray-400">
+                Challenge the status quo. Build alternative systems and spaces.
+              </p>
+            </div>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Featured Projects Preview */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-cyber-black">
+        <motion.div
+          className="max-w-6xl mx-auto"
+          variants={staggerChildren.container}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, margin: '-100px' }}
+        >
+          <motion.div
+            variants={entranceAnimations.fadeInUp}
+            className="text-center mb-16"
+          >
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-electric-blue mb-4">
+              FEATURED PROJECTS
+            </h2>
+            <p className="font-sans text-xl text-gray-300 max-w-3xl mx-auto">
+              Experimental works from our collective members
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={entranceAnimations.fadeInUp}
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12"
+          >
+            <div className="cyber-card group cursor-pointer hover:shadow-neon transition-shadow">
+              <div className="h-48 bg-gradient-to-br from-neon-cyan/20 to-electric-blue/20 mb-4 rounded"></div>
+              <h3 className="font-display text-xl text-neon-cyan mb-2">
+                Project Alpha
+              </h3>
+              <p className="font-sans text-gray-400 mb-4">
+                Experimental digital art pushing the boundaries of web
+                aesthetics
+              </p>
+              <span className="font-mono text-sm text-glitch-green">
+                → View Project
+              </span>
+            </div>
+
+            <div className="cyber-card group cursor-pointer hover:shadow-neon transition-shadow">
+              <div className="h-48 bg-gradient-to-br from-glitch-magenta/20 to-glitch-red/20 mb-4 rounded"></div>
+              <h3 className="font-display text-xl text-glitch-magenta mb-2">
+                Project Beta
+              </h3>
+              <p className="font-sans text-gray-400 mb-4">
+                Interactive installations merging physical and digital spaces
+              </p>
+              <span className="font-mono text-sm text-glitch-green">
+                → View Project
+              </span>
+            </div>
+          </motion.div>
+
+          <motion.div
+            variants={entranceAnimations.scaleIn}
+            className="text-center"
+          >
+            <Link to="/projects" className="btn-neon">
+              View All Projects
+            </Link>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Journal Preview */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-deep-gray">
+        <motion.div
+          className="max-w-6xl mx-auto"
+          variants={staggerChildren.container}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, margin: '-100px' }}
+        >
+          <motion.div
+            variants={entranceAnimations.fadeInUp}
+            className="text-center mb-16"
+          >
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-glitch-magenta mb-4">
+              LATEST FROM THE JOURNAL
+            </h2>
+            <p className="font-sans text-xl text-gray-300 max-w-3xl mx-auto">
+              Thoughts, manifestos, and dispatches from the underground
+            </p>
+          </motion.div>
+
+          <motion.div
+            variants={entranceAnimations.fadeInUp}
+            className="space-y-6 mb-12"
+          >
+            <div className="cyber-card hover:shadow-cyber transition-shadow cursor-pointer">
+              <div className="flex items-start gap-4">
+                <div className="text-neon-cyan font-mono text-sm">01</div>
+                <div className="flex-1">
+                  <h3 className="font-display text-xl text-white mb-2">
+                    Against the Algorithm: Building Digital Autonomy
+                  </h3>
+                  <p className="font-sans text-gray-400 mb-2">
+                    How independent creators are reclaiming the internet...
+                  </p>
+                  <span className="font-mono text-xs text-gray-500">
+                    Posted 3 days ago
+                  </span>
+                </div>
               </div>
             </div>
 
-            {/* Entrance Animations */}
-            <div>
-              <h4 className="font-mono text-neon-cyan text-sm mb-3">
-                Entrance Animations:
-              </h4>
-              <div className="space-y-2">
-                <motion.div
-                  className="cyber-card"
-                  variants={entranceAnimations.fadeInUp}
-                  initial="initial"
-                  animate="animate"
-                >
-                  <p className="font-mono text-sm">Fade In Up ↑</p>
-                </motion.div>
-                <motion.div
-                  className="cyber-card"
-                  variants={entranceAnimations.scaleIn}
-                  initial="initial"
-                  animate="animate"
-                >
-                  <p className="font-mono text-sm">Scale In ⚡</p>
-                </motion.div>
+            <div className="cyber-card hover:shadow-cyber transition-shadow cursor-pointer">
+              <div className="flex items-start gap-4">
+                <div className="text-electric-blue font-mono text-sm">02</div>
+                <div className="flex-1">
+                  <h3 className="font-display text-xl text-white mb-2">
+                    Cooperative Culture: A New Model for Creative Work
+                  </h3>
+                  <p className="font-sans text-gray-400 mb-2">
+                    Why artist cooperatives are the future of creative
+                    production...
+                  </p>
+                  <span className="font-mono text-xs text-gray-500">
+                    Posted 1 week ago
+                  </span>
+                </div>
               </div>
             </div>
+          </motion.div>
 
-            <p className="font-mono text-gray-500 text-xs mt-4">
-              💫 Page transitions enabled • Respects reduced motion preferences
-            </p>
+          <motion.div
+            variants={entranceAnimations.scaleIn}
+            className="text-center"
+          >
+            <Link to="/journal" className="btn-neon">
+              Read More
+            </Link>
+          </motion.div>
+        </motion.div>
+      </section>
 
-            {/* Test Page Transitions */}
-            <div className="mt-4 flex gap-3">
-              <Link to="/about" className="btn-neon text-sm">
-                Test Page Transition →
-              </Link>
-            </div>
-          </div>
-        </div>
+      {/* Call to Action */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-cyber-black">
+        <motion.div
+          className="max-w-4xl mx-auto text-center"
+          variants={staggerChildren.container}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, margin: '-100px' }}
+        >
+          <motion.div variants={entranceAnimations.fadeInUp}>
+            <GlitchText
+              as="h2"
+              type="both"
+              className="font-display text-4xl md:text-6xl font-bold text-white mb-6"
+              triggerOnHover
+            >
+              READY TO JOIN?
+            </GlitchText>
+          </motion.div>
 
-        {/* Footer */}
-        <div className="text-center">
-          <p className="font-mono text-gray-500 text-sm">
-            See <code className="text-neon-cyan">TAILWIND_THEME.md</code> for
-            complete documentation
-          </p>
-        </div>
-      </div>
+          <motion.p
+            variants={entranceAnimations.fadeInUp}
+            className="font-sans text-xl text-gray-300 mb-8"
+          >
+            Subcult is open to creators, developers, artists, and cultural
+            workers who want to build something different.
+          </motion.p>
+
+          <motion.div variants={entranceAnimations.scaleIn}>
+            <Link to="/join" className="btn-neon text-xl px-12 py-4">
+              Apply to Join
+            </Link>
+          </motion.div>
+        </motion.div>
+      </section>
     </div>
   )
 }
