@@ -1,9 +1,21 @@
 # React + TypeScript + Vite
 
 [![CI](https://github.com/subculture-collective/subculture-collective.github.io/actions/workflows/ci.yml/badge.svg)](https://github.com/subculture-collective/subculture-collective.github.io/actions/workflows/ci.yml)
+[![Deploy](https://github.com/subculture-collective/subculture-collective.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/subculture-collective/subculture-collective.github.io/actions/workflows/deploy.yml)
 
-This template provides a minimal setup to get React working in Vite with HMR and
-some ESLint rules.
+This project is a React application built with TypeScript and Vite, automatically deployed to GitHub Pages.
+
+## 🚀 Live Site
+
+**https://subculture-collective.github.io/**
+
+## 📚 Documentation
+
+- **[Deployment Guide](./DEPLOYMENT.md)** - GitHub Pages deployment setup and configuration
+- **[CI/CD Documentation](./.github/CI_DOCUMENTATION.md)** - Continuous integration and deployment workflows
+- **[ESLint Guide](./ESLINT_GUIDE.md)** - Code quality and linting rules
+- **[Prettier Guide](./PRETTIER_GUIDE.md)** - Code formatting configuration
+- **[TypeScript Guide](./TYPESCRIPT_GUIDE.md)** - TypeScript usage and best practices
 
 ## Code Quality
 
