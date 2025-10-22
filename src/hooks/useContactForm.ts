@@ -6,6 +6,7 @@
 
 import type { ChangeEvent, FormEvent } from 'react'
 import { useState, useCallback } from 'react'
+import { isValidEmail, isValidUrl } from '../utils/validation'
 
 export interface FormData {
   name: string
@@ -42,27 +43,6 @@ const initialFormData: FormData = {
   practice: '',
   portfolio: '',
   message: '',
-}
-
-/**
- * Validate email format
- */
-function isValidEmail(email: string): boolean {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-  return emailRegex.test(email)
-}
-
-/**
- * Validate URL format (optional field)
- */
-function isValidUrl(url: string): boolean {
-  if (!url) return true // Optional field
-  try {
-    new URL(url)
-    return true
-  } catch {
-    return false
-  }
 }
 
 /**
