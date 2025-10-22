@@ -151,12 +151,12 @@ Why I want to join Subcult:
 ${formData.message}
         `)
 
-        // Open mailto link
-        window.location.href = `mailto:join@subcult.tv?subject=${subject}&body=${body}`
-
         // Mark as success
         setIsSuccess(true)
         setFormData(initialFormData)
+
+        // Open mailto link
+        window.location.href = `mailto:join@subcult.tv?subject=${subject}&body=${body}`
       } catch (error) {
         console.error('Form submission error:', error)
         setIsError(true)
