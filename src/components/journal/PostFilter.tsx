@@ -46,7 +46,7 @@ export default function PostFilter({
         <input
           id="post-search"
           type="text"
-          placeholder="Search by title or content..."
+          placeholder="Search by title, excerpt, or author..."
           value={searchQuery}
           onChange={e => onSearchChange(e.target.value)}
           className="w-full px-4 py-3 bg-deep-gray text-gray-200 border border-neon-cyan/30 rounded font-mono text-sm focus:outline-none focus:border-neon-cyan focus:ring-1 focus:ring-neon-cyan transition-all placeholder:text-gray-500"
