@@ -18,7 +18,6 @@ interface UseErrorHandlerReturn {
   errorMessage: string | null
   handleError: (error: Error, context?: Record<string, unknown>) => void
   clearError: () => void
-  resetError: () => void
 }
 
 /**
@@ -70,6 +69,5 @@ export function useErrorHandler(): UseErrorHandlerReturn {
     errorMessage: errorState.message,
     handleError,
     clearError,
-    resetError: clearError, // Alias for consistency
   }
 }
