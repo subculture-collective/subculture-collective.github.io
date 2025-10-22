@@ -1,0 +1,198 @@
+{
+  "hero": {
+    "title": "JOIN SUBCULT",
+    "tagline": "Build the underground with us",
+    "description": "Subcult is a cooperative for creators, developers, and cultural agitators. We're looking for passionate people who want to build something different."
+  },
+  "whyJoin": {
+    "title": "WHY JOIN SUBCULT?",
+    "subtitle": "More than a platform — it's a movement",
+    "benefits": [
+      {
+        "icon": "🎨",
+        "title": "Creative Freedom",
+        "description": "Full ownership and control of your work. No algorithmic suppression, no platform censorship."
+      },
+      {
+        "icon": "💰",
+        "title": "Fair Compensation",
+        "description": "Share in the profits from collective work. Your contributions are valued and rewarded."
+      },
+      {
+        "icon": "🤝",
+        "title": "True Collaboration",
+        "description": "Work with talented creators across disciplines. Build networks that matter."
+      },
+      {
+        "icon": "🗳️",
+        "title": "Democratic Voice",
+        "description": "One member, one vote. Shape the direction of the cooperative together."
+      },
+      {
+        "icon": "📚",
+        "title": "Shared Resources",
+        "description": "Access to equipment, tools, knowledge, and infrastructure to amplify your work."
+      },
+      {
+        "icon": "🌱",
+        "title": "Growth & Support",
+        "description": "Mentorship, skill development, and community support to help you thrive."
+      }
+    ],
+    "lookingFor": {
+      "title": "What We're Looking For",
+      "qualities": [
+        "Creators with a distinct voice and vision",
+        "Commitment to cooperative principles",
+        "Willingness to contribute and collaborate",
+        "Anti-establishment mindset",
+        "Respect for diversity and inclusion",
+        "Active participation in collective decisions"
+      ]
+    }
+  },
+  "cooperative": {
+    "title": "HOW THE COOPERATIVE WORKS",
+    "description": "Subcult operates as a worker-owned cooperative where every member has an equal voice and stake in our success.",
+    "structure": [
+      {
+        "icon": "⚡",
+        "title": "Membership Structure",
+        "points": [
+          "All active contributors become voting members",
+          "Equal voice in major decisions",
+          "Transparent governance and finances",
+          "Quarterly general assemblies"
+        ]
+      },
+      {
+        "icon": "💎",
+        "title": "Contribution Expectations",
+        "points": [
+          "Active participation in projects",
+          "Collaboration with other members",
+          "Attendance at key meetings",
+          "Contribution to collective goals"
+        ]
+      },
+      {
+        "icon": "🎯",
+        "title": "Decision Making",
+        "points": [
+          "Consensus-based for major decisions",
+          "Voting on structural changes",
+          "Working groups for day-to-day operations",
+          "Open discussion and feedback"
+        ]
+      }
+    ]
+  },
+  "applicationProcess": {
+    "title": "APPLICATION PROCESS",
+    "subtitle": "How to join the collective",
+    "steps": [
+      {
+        "number": "01",
+        "title": "Submit Application",
+        "description": "Fill out the contact form below with your information, work samples, and why you want to join."
+      },
+      {
+        "number": "02",
+        "title": "Initial Review",
+        "description": "Our membership committee reviews your application (typically within 2 weeks)."
+      },
+      {
+        "number": "03",
+        "title": "Interview & Discussion",
+        "description": "If selected, you'll have a conversation with current members to discuss fit and expectations."
+      },
+      {
+        "number": "04",
+        "title": "Trial Period",
+        "description": "New members start with a 3-month trial period to ensure mutual fit before full membership."
+      }
+    ],
+    "timeline": "The entire process typically takes 4-6 weeks from application to decision.",
+    "requirements": [
+      "Portfolio or work samples demonstrating your practice",
+      "Clear vision for how you'd contribute to the collective",
+      "Commitment to cooperative principles",
+      "Availability for onboarding and regular participation"
+    ]
+  },
+  "faq": {
+    "title": "FREQUENTLY ASKED QUESTIONS",
+    "questions": [
+      {
+        "question": "Do I need to be a full-time creator?",
+        "answer": "No. Many of our members have day jobs. We value quality contributions over quantity of time spent."
+      },
+      {
+        "question": "Is there a membership fee?",
+        "answer": "We have minimal dues to cover operational costs, decided democratically by members. Financial barriers should never prevent participation."
+      },
+      {
+        "question": "What if I can't attend meetings?",
+        "answer": "We understand life happens. Remote participation is always an option, and we record key meetings for those who can't attend."
+      },
+      {
+        "question": "Can I leave the cooperative?",
+        "answer": "Yes, membership is voluntary. We ask for 30 days notice so we can transition any ongoing projects."
+      },
+      {
+        "question": "What disciplines do you accept?",
+        "answer": "All creative and technical disciplines: artists, designers, developers, writers, musicians, filmmakers, and more."
+      },
+      {
+        "question": "How do you handle conflicts?",
+        "answer": "We have a conflict resolution process based on mediation and collective discussion. Our goal is always to find solutions that work for everyone."
+      }
+    ]
+  },
+  "contactForm": {
+    "title": "APPLY TO JOIN",
+    "subtitle": "Tell us about yourself and why you want to be part of Subcult",
+    "fields": {
+      "name": {
+        "label": "Full Name",
+        "placeholder": "Your name",
+        "required": true,
+        "type": "text"
+      },
+      "email": {
+        "label": "Email Address",
+        "placeholder": "your.email@example.com",
+        "required": true,
+        "type": "email"
+      },
+      "location": {
+        "label": "Location",
+        "placeholder": "City, Country",
+        "required": false,
+        "type": "text"
+      },
+      "practice": {
+        "label": "Area of Practice / Expertise",
+        "placeholder": "e.g., Visual Art, Web Development, Music Production",
+        "required": true,
+        "type": "text"
+      },
+      "portfolio": {
+        "label": "Portfolio / Work Samples",
+        "placeholder": "Link to your website, portfolio, or work samples",
+        "required": false,
+        "type": "url"
+      },
+      "message": {
+        "label": "Why do you want to join Subcult?",
+        "placeholder": "Tell us about your vision, what you hope to contribute, and why you're interested in the cooperative model...",
+        "required": true,
+        "type": "textarea",
+        "rows": 6
+      }
+    },
+    "submitButton": "Submit Application",
+    "successMessage": "Thank you for your application! We'll review it and get back to you within 2 weeks.",
+    "errorMessage": "Something went wrong. Please try again or email us directly at join@subcult.tv"
+  }
+}
