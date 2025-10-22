@@ -21,7 +21,12 @@
     min-height: 100vh;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-display font-bold tracking-tight;
   }
 
@@ -68,11 +73,10 @@
   /* Glitch Text Effect */
   .text-glitch {
     @apply relative inline-block;
-    text-shadow: 
+    text-shadow:
       2px 2px 0px theme('colors.glitch-magenta'),
       -2px -2px 0px theme('colors.neon-cyan');
   }
-
 
   /* Accessibility: Remove glitch effect for users who prefer reduced motion or increased contrast */
   @media (prefers-reduced-motion: reduce), (prefers-contrast: more) {
@@ -143,11 +147,16 @@
 @layer utilities {
   /* Text utilities */
   .text-shadow-neon {
-    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
+    text-shadow:
+      0 0 10px currentColor,
+      0 0 20px currentColor;
   }
 
   .text-shadow-neon-strong {
-    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+    text-shadow:
+      0 0 10px currentColor,
+      0 0 20px currentColor,
+      0 0 30px currentColor;
   }
 
   /* Backdrop effects */

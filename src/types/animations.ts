@@ -10,12 +10,22 @@ import type { Variants, Transition, Target } from 'framer-motion'
 /**
  * Standard transition types
  */
-export type TransitionType = 'smooth' | 'spring' | 'snap' | 'dramatic' | 'glitch'
+export type TransitionType =
+  | 'smooth'
+  | 'spring'
+  | 'snap'
+  | 'dramatic'
+  | 'glitch'
 
 /**
  * Page transition variants
  */
-export type PageTransitionType = 'fade' | 'slideRight' | 'slideLeft' | 'slideUp' | 'glitch'
+export type PageTransitionType =
+  | 'fade'
+  | 'slideRight'
+  | 'slideLeft'
+  | 'slideUp'
+  | 'glitch'
 
 /**
  * Glitch effect types
@@ -25,7 +35,13 @@ export type GlitchType = 'textGlitch' | 'rgbSplit' | 'both' | 'none'
 /**
  * Animation state names
  */
-export type AnimationState = 'initial' | 'animate' | 'exit' | 'hover' | 'tap' | 'glitch'
+export type AnimationState =
+  | 'initial'
+  | 'animate'
+  | 'exit'
+  | 'hover'
+  | 'tap'
+  | 'glitch'
 
 /**
  * Complete animation variant set

@@ -42,7 +42,13 @@ export interface BlogPostAuthor {
  * Social media link
  */
 export interface SocialLink {
-  platform: 'twitter' | 'instagram' | 'youtube' | 'twitch' | 'github' | 'website'
+  platform:
+    | 'twitter'
+    | 'instagram'
+    | 'youtube'
+    | 'twitch'
+    | 'github'
+    | 'website'
   url: string
   handle?: string
 }

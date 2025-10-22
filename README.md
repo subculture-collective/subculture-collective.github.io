@@ -2,7 +2,22 @@
 
 [![CI](https://github.com/subculture-collective/subculture-collective.github.io/actions/workflows/ci.yml/badge.svg)](https://github.com/subculture-collective/subculture-collective.github.io/actions/workflows/ci.yml)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This template provides a minimal setup to get React working in Vite with HMR and
+some ESLint rules.
+
+## Code Quality
+
+This project uses:
+
+- **[ESLint](https://eslint.org/)** for code quality and consistency - see
+  [ESLINT_GUIDE.md](./ESLINT_GUIDE.md)
+- **[Prettier](https://prettier.io/)** for code formatting - see
+  [PRETTIER_GUIDE.md](./PRETTIER_GUIDE.md)
+- **[TypeScript](https://www.typescriptlang.org/)** for type safety - see
+  [TYPESCRIPT_GUIDE.md](./TYPESCRIPT_GUIDE.md)
+
+All code is automatically formatted and linted via pre-commit hooks and
+validated in CI.
 
 Currently, two official plugins are available:
 

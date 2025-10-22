@@ -9,7 +9,14 @@ import prettier from 'eslint-plugin-prettier'
 
 export default [
   {
-    ignores: ['dist', 'node_modules', 'build', 'coverage', '*.config.js', '*.config.ts'],
+    ignores: [
+      'dist',
+      'node_modules',
+      'build',
+      'coverage',
+      '*.config.js',
+      '*.config.ts',
+    ],
   },
   js.configs.recommended,
   ...tseslint.configs.recommended,
@@ -47,7 +54,10 @@ export default [
       'react-hooks/exhaustive-deps': 'warn',
 
       // React Refresh
-      'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
+      'react-refresh/only-export-components': [
+        'warn',
+        { allowConstantExport: true },
+      ],
 
       // TypeScript Rules
       '@typescript-eslint/no-explicit-any': 'warn',
@@ -102,8 +112,9 @@ export default [
           singleQuote: true,
           trailingComma: 'es5',
           tabWidth: 2,
-          printWidth: 100,
+          printWidth: 80,
           arrowParens: 'avoid',
+          endOfLine: 'lf',
         },
       ],
     },

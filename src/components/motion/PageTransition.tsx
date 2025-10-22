@@ -11,7 +11,12 @@ import { useLocation } from 'react-router-dom'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 import { pageTransitions } from '../../utils/animations'
 
-export type TransitionType = 'fade' | 'slideRight' | 'slideLeft' | 'slideUp' | 'glitch'
+export type TransitionType =
+  | 'fade'
+  | 'slideRight'
+  | 'slideLeft'
+  | 'slideUp'
+  | 'glitch'
 
 interface PageTransitionProps {
   children: ReactNode
@@ -41,7 +46,9 @@ export default function PageTransition({
   const variants = pageTransitions[type]
 
   // If user prefers reduced motion, use no animation
-  const finalVariants = prefersReducedMotion ? { initial: {}, animate: {}, exit: {} } : variants
+  const finalVariants = prefersReducedMotion
+    ? { initial: {}, animate: {}, exit: {} }
+    : variants
 
   return (
     <AnimatePresence mode="wait">

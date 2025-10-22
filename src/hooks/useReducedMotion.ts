@@ -11,16 +11,18 @@ import { useEffect, useState } from 'react'
 
 export function useReducedMotion(): boolean {
   // Initialize with the current preference
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState<boolean>(() => {
-    // Check if we're in a browser environment
-    if (typeof window === 'undefined') {
-      return false
-    }
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState<boolean>(
+    () => {
+      // Check if we're in a browser environment
+      if (typeof window === 'undefined') {
+        return false
+      }
 
-    // Check the media query
-    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
-    return mediaQuery.matches
-  })
+      // Check the media query
+      const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+      return mediaQuery.matches
+    }
+  )
 
   useEffect(() => {
     // Check if we're in a browser environment
@@ -54,7 +56,10 @@ export function useReducedMotion(): boolean {
  * @param reducedVariants - Optional reduced animation variants (defaults to no animation)
  * @returns The appropriate variants based on user preferences
  */
-export function useAccessibleAnimation<T>(variants: T, reducedVariants?: Partial<T>): T {
+export function useAccessibleAnimation<T>(
+  variants: T,
+  reducedVariants?: Partial<T>
+): T {
   const prefersReducedMotion = useReducedMotion()
 
   if (!prefersReducedMotion) {

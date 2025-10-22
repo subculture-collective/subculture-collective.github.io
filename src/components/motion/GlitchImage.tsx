@@ -84,7 +84,13 @@ export default function GlitchImage({
         filter: 'hue-rotate(0deg) saturate(1)',
       },
       glitch: {
-        scale: [1, 1 + baseScale * 0.02, 1 - baseScale * 0.02, 1 + baseScale * 0.01, 1],
+        scale: [
+          1,
+          1 + baseScale * 0.02,
+          1 - baseScale * 0.02,
+          1 + baseScale * 0.01,
+          1,
+        ],
         filter: [
           'hue-rotate(0deg) saturate(1)',
           `hue-rotate(${90 * multiplier}deg) saturate(${1.5 * multiplier})`,
@@ -215,8 +221,14 @@ export function GlitchImageSimple(props: Omit<GlitchImageProps, 'intensity'>) {
   const prefersReducedMotion = useReducedMotion()
   const shouldAnimate = props.animate !== false && !prefersReducedMotion
 
-  const variants = shouldAnimate ? glitchEffects.imageDistortion : { initial: {}, glitch: {} }
-  const animationState = props.triggerOnHover ? undefined : shouldAnimate ? 'glitch' : 'initial'
+  const variants = shouldAnimate
+    ? glitchEffects.imageDistortion
+    : { initial: {}, glitch: {} }
+  const animationState = props.triggerOnHover
+    ? undefined
+    : shouldAnimate
+      ? 'glitch'
+      : 'initial'
 
   return (
     <motion.img

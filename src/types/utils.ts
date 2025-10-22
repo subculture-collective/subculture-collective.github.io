@@ -77,7 +77,9 @@ export type AsyncResult<T> = Promise<T>
 /**
  * Result type for operations that can fail
  */
-export type Result<T, E = Error> = { success: true; data: T } | { success: false; error: E }
+export type Result<T, E = Error> =
+  | { success: true; data: T }
+  | { success: false; error: E }
 
 /**
  * Tuple of a specific length
@@ -88,9 +90,11 @@ export type Tuple<T, N extends number> = N extends N
     : _TupleOf<T, N, []>
   : never
 
-type _TupleOf<T, N extends number, R extends readonly unknown[]> = R['length'] extends N
-  ? R
-  : _TupleOf<T, N, readonly [T, ...R]>
+type _TupleOf<
+  T,
+  N extends number,
+  R extends readonly unknown[],
+> = R['length'] extends N ? R : _TupleOf<T, N, readonly [T, ...R]>
 
 /**
  * Extract keys from object where value is optional
@@ -114,8 +118,9 @@ export type ArrayElement<T> = T extends readonly (infer U)[] ? U : never
 /**
  * Extract the return type of an async function
  */
-export type AsyncReturnType<T extends (...args: readonly unknown[]) => Promise<unknown>> =
-  T extends (...args: readonly unknown[]) => Promise<infer R> ? R : never
+export type AsyncReturnType<
+  T extends (...args: readonly unknown[]) => Promise<unknown>,
+> = T extends (...args: readonly unknown[]) => Promise<infer R> ? R : never
 
 /**
  * Merge two types, with properties from B overriding properties from A
@@ -125,9 +130,9 @@ export type Merge<A, B> = Omit<A, keyof B> & B
 /**
  * Union to intersection type converter
  */
-export type UnionToIntersection<U> = (U extends unknown ? (k: U) => void : never) extends (
-  k: infer I
-) => void
+export type UnionToIntersection<U> = (
+  U extends unknown ? (k: U) => void : never
+) extends (k: infer I) => void
   ? I
   : never
 
@@ -200,4 +205,8 @@ export type Mapper<T, U> = (value: T, index: number) => U
 /**
  * Reducer function type
  */
-export type Reducer<T, U> = (accumulator: U, currentValue: T, index: number) => U
+export type Reducer<T, U> = (
+  accumulator: U,
+  currentValue: T,
+  index: number
+) => U

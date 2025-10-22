@@ -46,7 +46,9 @@ export interface LoadableProps {
 /**
  * Button component props
  */
-export interface ButtonProps extends ComponentPropsWithoutRef<'button'>, LoadableProps {
+export interface ButtonProps
+  extends ComponentPropsWithoutRef<'button'>,
+    LoadableProps {
   variant?: 'primary' | 'secondary' | 'ghost' | 'neon'
   size?: 'sm' | 'md' | 'lg'
   fullWidth?: boolean
