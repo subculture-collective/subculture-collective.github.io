@@ -1,12 +1,21 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
 import { getMdxPosts } from '@/lib/mdx'
 import type { MDXPost } from '@/types/content'
+import { usePostFilter } from '@/hooks/usePostFilter'
+import PostGrid from '@/components/journal/PostGrid'
+import PostFilter from '@/components/journal/PostFilter'
+import Pagination from '@/components/journal/Pagination'
+import GlitchText from '@/components/motion/GlitchText'
+import { entranceAnimations } from '@/utils/animations'
 
 function Journal() {
   const [posts, setPosts] = useState<MDXPost[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+
+  // Featured post slugs (can be managed via frontmatter or config)
+  const featuredSlugs = ['welcome-to-subcult']
 
   useEffect(() => {
     async function loadPosts() {
@@ -24,10 +33,29 @@ function Journal() {
     loadPosts()
   }, [])
 
+  // Use the filtering hook
+  const {
+    filteredPosts,
+    searchQuery,
+    setSearchQuery,
+    selectedTag,
+    setSelectedTag,
+    sortBy,
+    setSortBy,
+    allTags,
+    currentPage,
+    setCurrentPage,
+    paginatedPosts,
+    totalPages,
+  } = usePostFilter({ posts })
+
   if (loading) {
     return (
       <div className="min-h-screen bg-cyber-black flex items-center justify-center p-8">
-        <div className="text-neon-cyan font-mono">Loading posts...</div>
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-12 h-12 border-4 border-neon-cyan border-t-transparent rounded-full animate-spin" />
+          <div className="text-neon-cyan font-mono">Loading posts...</div>
+        </div>
       </div>
     )
   }
@@ -35,82 +63,88 @@ function Journal() {
   if (error) {
     return (
       <div className="min-h-screen bg-cyber-black flex items-center justify-center p-8">
-        <div className="text-glitch-pink font-mono">{error}</div>
+        <div className="text-center">
+          <div className="text-glitch-pink font-mono text-xl mb-4">{error}</div>
+          <button
+            onClick={() => window.location.reload()}
+            className="px-4 py-2 bg-neon-cyan text-cyber-black font-mono text-sm rounded hover:bg-neon-cyan/90 transition-all"
+          >
+            Try Again
+          </button>
+        </div>
       </div>
     )
   }
 
   return (
-    <div className="min-h-screen bg-cyber-black p-8">
-      <div className="max-w-4xl mx-auto">
+    <div className="min-h-screen bg-cyber-black p-4 sm:p-8">
+      <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="mb-12">
-          <h1 className="font-display text-5xl text-neon-cyan text-shadow-neon mb-4">
+        <motion.div
+          className="mb-12"
+          variants={entranceAnimations.fadeInUp}
+          initial="initial"
+          animate="animate"
+        >
+          <GlitchText
+            as="h1"
+            type="rgbSplit"
+            className="font-display text-4xl md:text-5xl lg:text-6xl text-neon-cyan text-shadow-neon mb-4"
+            triggerOnHover
+          >
             Journal
-          </h1>
-          <p className="font-sans text-gray-400 text-lg">
+          </GlitchText>
+          <p className="font-sans text-gray-400 text-base md:text-lg">
             Thoughts from the underground
           </p>
-        </div>
+        </motion.div>
+
+        {/* Filters */}
+        {posts.length > 0 && (
+          <motion.div
+            variants={entranceAnimations.fadeInUp}
+            initial="initial"
+            animate="animate"
+            transition={{ delay: 0.1 }}
+          >
+            <PostFilter
+              searchQuery={searchQuery}
+              onSearchChange={setSearchQuery}
+              sortBy={sortBy}
+              onSortChange={setSortBy}
+              allTags={allTags}
+              selectedTag={selectedTag}
+              onTagSelect={setSelectedTag}
+              totalPosts={posts.length}
+              filteredPostsCount={filteredPosts.length}
+            />
+          </motion.div>
+        )}
 
         {/* Posts Grid */}
-        {posts.length === 0 ? (
-          <div className="text-center text-gray-400 font-mono">
-            No posts yet. Check back soon...
-          </div>
-        ) : (
-          <div className="space-y-8">
-            {posts.map(post => (
-              <article
-                key={post.slug}
-                className="border border-neon-cyan/20 bg-cyber-black/50 p-6 rounded-lg hover:border-neon-cyan/50 transition-colors"
-              >
-                <Link to={`/journal/${post.slug}`} className="block group">
-                  <h2 className="font-display text-3xl text-glitch-pink group-hover:text-neon-cyan transition-colors mb-3">
-                    {post.frontmatter.title}
-                  </h2>
+        <motion.div
+          variants={entranceAnimations.fadeInUp}
+          initial="initial"
+          animate="animate"
+          transition={{ delay: 0.2 }}
+        >
+          <PostGrid posts={paginatedPosts} featuredSlugs={featuredSlugs} />
+        </motion.div>
 
-                  <div className="flex items-center gap-4 text-sm text-gray-500 mb-4">
-                    <time dateTime={post.frontmatter.date}>
-                      {new Date(post.frontmatter.date).toLocaleDateString(
-                        'en-US',
-                        {
-                          year: 'numeric',
-                          month: 'long',
-                          day: 'numeric',
-                        }
-                      )}
-                    </time>
-                    <span>•</span>
-                    <span>{post.frontmatter.author}</span>
-                    {post.readingTime && (
-                      <>
-                        <span>•</span>
-                        <span>{post.readingTime}</span>
-                      </>
-                    )}
-                  </div>
-
-                  <p className="text-gray-300 mb-4 leading-relaxed">
-                    {post.frontmatter.excerpt}
-                  </p>
-
-                  {post.frontmatter.tags.length > 0 && (
-                    <div className="flex flex-wrap gap-2">
-                      {post.frontmatter.tags.map(tag => (
-                        <span
-                          key={tag}
-                          className="px-2 py-1 text-xs font-mono bg-glitch-green/10 text-glitch-green border border-glitch-green/20 rounded"
-                        >
-                          #{tag}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </Link>
-              </article>
-            ))}
-          </div>
+        {/* Pagination */}
+        {filteredPosts.length > 0 && (
+          <motion.div
+            variants={entranceAnimations.fadeInUp}
+            initial="initial"
+            animate="animate"
+            transition={{ delay: 0.3 }}
+          >
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={setCurrentPage}
+            />
+          </motion.div>
         )}
       </div>
     </div>
