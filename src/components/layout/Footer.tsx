@@ -1,134 +1,164 @@
 /**
  * Footer Component
  *
- * Site footer with navigation links, social media, and cyberpunk aesthetic
+ * Site-wide footer with links, social media, and collective information.
+ * Features responsive multi-column layout and dark cyberpunk styling.
  */
 
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { useReducedMotion } from '../../hooks/useReducedMotion'
-import GlitchText from '../motion/GlitchText'
+import SocialLinks from './SocialLinks'
+import {
+  socialLinks,
+  footerLinks,
+  legalInfo,
+  contactInfo,
+} from '../../config/social'
+import {
+  entranceAnimations,
+  createStaggerContainer,
+} from '../../utils/animations'
 
-const footerLinks = {
-  navigate: [
-    { to: '/', label: 'Home' },
-    { to: '/about', label: 'About' },
-    { to: '/creators', label: 'Creators' },
-    { to: '/projects', label: 'Projects' },
-    { to: '/journal', label: 'Journal' },
-    { to: '/join', label: 'Join Us' },
-  ],
-  social: [
-    { href: '#', label: 'Twitter', ariaLabel: 'Follow us on Twitter' },
-    { href: '#', label: 'Instagram', ariaLabel: 'Follow us on Instagram' },
-    { href: '#', label: 'Discord', ariaLabel: 'Join our Discord' },
-    { href: '#', label: 'GitHub', ariaLabel: 'View our GitHub' },
-  ],
-}
-
-/**
- * Footer Component
- *
- * Usage:
- * ```tsx
- * <Footer />
- * ```
- */
-export default function Footer() {
-  const prefersReducedMotion = useReducedMotion()
+function Footer() {
   const currentYear = new Date().getFullYear()
 
   return (
     <footer className="bg-cyber-black border-t border-light-gray mt-auto">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Brand Section */}
-          <div className="space-y-4">
-            <Link to="/" aria-label="SUBCULT.TV Home">
-              <GlitchText
-                type="rgbSplit"
-                triggerOnHover
-                className="font-display text-neon-cyan text-2xl tracking-wider inline-block"
-              >
-                SUBCULT.TV
-              </GlitchText>
-            </Link>
-            <p className="text-gray-400 text-sm max-w-xs">
-              A collective of digital creators pushing the boundaries of
-              cyberpunk culture.
+      <div className="max-w-7xl mx-auto px-6 py-12">
+        {/* Main footer content - multi-column layout */}
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8"
+          variants={createStaggerContainer(0.1, 0.2)}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true, margin: '-100px' }}
+        >
+          {/* About Subcult Section */}
+          <motion.div variants={entranceAnimations.fadeInUp}>
+            <h3 className="font-display text-neon-cyan text-lg mb-4 uppercase tracking-wider">
+              About Subcult
+            </h3>
+            <p className="font-sans text-gray-400 text-sm mb-4 leading-relaxed">
+              A collective of creators pushing boundaries in digital art, music,
+              and culture.
             </p>
-          </div>
-
-          {/* Navigation Links */}
-          <div>
-            <h3 className="font-display text-electric-blue mb-4">Navigate</h3>
-            <nav aria-label="Footer navigation">
-              <ul className="space-y-2">
-                {footerLinks.navigate.map(link => (
-                  <li key={link.to}>
-                    <Link
-                      to={link.to}
-                      className="text-gray-400 hover:text-neon-cyan transition-colors duration-200 text-sm"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </div>
-
-          {/* Social Links */}
-          <div>
-            <h3 className="font-display text-electric-blue mb-4">Connect</h3>
-            <nav aria-label="Social media links">
-              <ul className="space-y-2">
-                {footerLinks.social.map(link => (
-                  <li key={link.label}>
-                    <motion.a
-                      href={link.href}
-                      className="text-gray-400 hover:text-neon-cyan transition-colors duration-200 text-sm inline-block"
-                      aria-label={link.ariaLabel}
-                      whileHover={
-                        prefersReducedMotion
-                          ? {}
-                          : { x: 5, transition: { duration: 0.2 } }
-                      }
-                    >
-                      {link.label}
-                    </motion.a>
-                  </li>
-                ))}
-              </ul>
-            </nav>
-          </div>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="mt-8 pt-8 border-t border-light-gray">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-gray-500 text-sm font-mono">
-              © {currentYear} SUBCULT.TV. All rights reserved.
-            </p>
-            <div className="flex gap-6">
-              <Link
-                to="#"
-                className="text-gray-500 hover:text-neon-cyan transition-colors duration-200 text-sm"
-              >
-                Privacy
-              </Link>
-              <Link
-                to="#"
-                className="text-gray-500 hover:text-neon-cyan transition-colors duration-200 text-sm"
-              >
-                Terms
-              </Link>
+            <div className="space-y-2">
+              {footerLinks.about.map(link => (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className="block font-mono text-gray-500 hover:text-neon-cyan text-sm transition-colors duration-200"
+                >
+                  → {link.label}
+                </Link>
+              ))}
             </div>
+          </motion.div>
+
+          {/* Quick Links Section */}
+          <motion.div variants={entranceAnimations.fadeInUp}>
+            <h3 className="font-display text-electric-blue text-lg mb-4 uppercase tracking-wider">
+              Quick Links
+            </h3>
+            <div className="space-y-2">
+              {footerLinks.quickLinks.map(link => (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className="block font-mono text-gray-500 hover:text-electric-blue text-sm transition-colors duration-200"
+                >
+                  → {link.label}
+                </Link>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Connect Section */}
+          <motion.div variants={entranceAnimations.fadeInUp}>
+            <h3 className="font-display text-glitch-green text-lg mb-4 uppercase tracking-wider">
+              Connect
+            </h3>
+            <div className="space-y-2 mb-4">
+              {footerLinks.connect.map(link => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="block font-mono text-gray-500 hover:text-glitch-green text-sm transition-colors duration-200"
+                  target={link.href.startsWith('http') ? '_blank' : undefined}
+                  rel={
+                    link.href.startsWith('http')
+                      ? 'noopener noreferrer'
+                      : undefined
+                  }
+                >
+                  → {link.label}
+                </a>
+              ))}
+            </div>
+            <p className="font-mono text-gray-500 text-xs mb-1">Email:</p>
+            <a
+              href={`mailto:${contactInfo.email}`}
+              className="font-mono text-neon-cyan hover:text-electric-blue text-sm transition-colors duration-200"
+            >
+              {contactInfo.email}
+            </a>
+          </motion.div>
+
+          {/* Social Media Section */}
+          <motion.div variants={entranceAnimations.fadeInUp}>
+            <h3 className="font-display text-glitch-magenta text-lg mb-4 uppercase tracking-wider">
+              Follow Us
+            </h3>
+            <SocialLinks links={socialLinks} className="mb-4" />
+            <p className="font-mono text-gray-600 text-xs mt-4">
+              Join the collective. Push boundaries.
+            </p>
+          </motion.div>
+        </motion.div>
+
+        {/* Divider */}
+        <div className="border-t border-deep-gray mb-6"></div>
+
+        {/* Bottom bar - Copyright and Legal */}
+        <motion.div
+          className="flex flex-col md:flex-row justify-between items-center gap-4"
+          variants={entranceAnimations.fadeInUp}
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+        >
+          {/* Copyright */}
+          <div className="font-mono text-gray-500 text-xs text-center md:text-left">
+            <p>
+              ©{' '}
+              {legalInfo.copyrightYear === currentYear
+                ? currentYear
+                : `${legalInfo.copyrightYear}-${currentYear}`}{' '}
+              {legalInfo.organizationName}
+            </p>
+            <p className="text-gray-600 mt-1">All rights reserved.</p>
           </div>
-        </div>
+
+          {/* License Info */}
+          <div className="font-mono text-xs text-center md:text-right">
+            <a
+              href={legalInfo.license.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-500 hover:text-neon-cyan transition-colors duration-200"
+            >
+              {legalInfo.license.name}
+            </a>
+            <p className="text-gray-600 mt-1">
+              Built with ⚡ by the collective
+            </p>
+          </div>
+        </motion.div>
       </div>
     </footer>
   )
 }
 
 Footer.displayName = 'Footer'
+
+export default Footer

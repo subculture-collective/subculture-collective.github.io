@@ -177,6 +177,46 @@ function App() {
 }
 ```
 
+---
+
+### SocialLinks.tsx
+
+A reusable component for displaying social media links with icons and hover effects.
+
+**Usage:**
+
+```tsx
+import SocialLinks from './components/layout/SocialLinks'
+import { socialLinks } from '../../config/social'
+
+function MyComponent() {
+  return <SocialLinks links={socialLinks} />
+}
+```
+
+**Props:**
+
+- `links: readonly SocialLink[]` - Array of social media links from config
+- `className?: string` - Optional additional CSS classes
+
+**Configuration:**
+
+Social media links and footer content are configured in `src/config/social.ts`:
+
+```typescript
+import { socialLinks, footerLinks, legalInfo } from './config/social'
+```
+
+Update the configuration file to customize:
+
+- Social media URLs and handles
+- Contact email
+- Footer navigation links
+- Copyright information
+- License details
+
+---
+
 ## Accessibility Features
 
 - **Skip to Content**: Allows keyboard users to bypass navigation
