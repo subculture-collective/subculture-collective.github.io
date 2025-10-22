@@ -1,6 +1,6 @@
 /**
  * Utility Type Definitions
- * 
+ *
  * Shared utility types and generic type helpers used throughout the application.
  */
 
@@ -77,9 +77,7 @@ export type AsyncResult<T> = Promise<T>
 /**
  * Result type for operations that can fail
  */
-export type Result<T, E = Error> =
-  | { success: true; data: T }
-  | { success: false; error: E }
+export type Result<T, E = Error> = { success: true; data: T } | { success: false; error: E }
 
 /**
  * Tuple of a specific length
@@ -116,11 +114,8 @@ export type ArrayElement<T> = T extends readonly (infer U)[] ? U : never
 /**
  * Extract the return type of an async function
  */
-export type AsyncReturnType<T extends (...args: readonly unknown[]) => Promise<unknown>> = T extends (
-  ...args: readonly unknown[]
-) => Promise<infer R>
-  ? R
-  : never
+export type AsyncReturnType<T extends (...args: readonly unknown[]) => Promise<unknown>> =
+  T extends (...args: readonly unknown[]) => Promise<infer R> ? R : never
 
 /**
  * Merge two types, with properties from B overriding properties from A

@@ -1,14 +1,14 @@
 /**
  * GlitchText Component
- * 
+ *
  * A text component with cyberpunk-style glitch effects using Framer Motion.
  * Supports multiple glitch styles including position shift and RGB split.
  */
 
-import { motion } from 'framer-motion'
 import type { ReactNode, CSSProperties } from 'react'
-import { glitchEffects } from '../../utils/animations'
+import { motion } from 'framer-motion'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
+import { glitchEffects } from '../../utils/animations'
 
 export type GlitchType = 'textGlitch' | 'rgbSplit' | 'both' | 'none'
 
@@ -27,13 +27,13 @@ interface GlitchTextProps extends GlitchTextBaseProps {
 
 /**
  * GlitchText Component
- * 
+ *
  * Usage:
  * ```tsx
  * <GlitchText type="rgbSplit" as="h1" className="text-4xl">
  *   SUBCULT.TV
  * </GlitchText>
- * 
+ *
  * <GlitchText type="both" triggerOnHover>
  *   Hover me for glitch
  * </GlitchText>
@@ -49,16 +49,16 @@ export default function GlitchText({
   triggerOnHover = false,
 }: GlitchTextProps) {
   const prefersReducedMotion = useReducedMotion()
-  
+
   // Disable animation if user prefers reduced motion
   const shouldAnimate = animate && !prefersReducedMotion
-  
+
   // Determine which variant to use
   const getVariants = () => {
     if (!shouldAnimate) {
       return { initial: {}, glitch: {} }
     }
-    
+
     switch (type) {
       case 'textGlitch':
         return glitchEffects.textGlitch
@@ -93,15 +93,15 @@ export default function GlitchText({
         return { initial: {}, glitch: {} }
     }
   }
-  
+
   const variants = getVariants()
-  
+
   // Determine animation state
   const animationState = triggerOnHover ? undefined : shouldAnimate ? 'glitch' : 'initial'
-  
+
   // Use proper motion component based on 'as' prop
   const MotionComponent = motion[Component]
-  
+
   return (
     <MotionComponent
       className={className}

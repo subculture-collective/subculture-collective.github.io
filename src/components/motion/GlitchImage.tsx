@@ -1,16 +1,16 @@
 /**
  * GlitchImage Component
- * 
+ *
  * An image component with cyberpunk-style glitch effects using Framer Motion.
  * Supports distortion, RGB split, and other visual glitch effects.
  */
 
-import { motion } from 'framer-motion'
-import type { MotionStyle } from 'framer-motion'
 import type { CSSProperties } from 'react'
 import { useState } from 'react'
-import { glitchEffects } from '../../utils/animations'
+import { motion } from 'framer-motion'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
+import { glitchEffects } from '../../utils/animations'
+import type { MotionStyle } from 'framer-motion'
 
 interface GlitchImageProps {
   src: string
@@ -24,17 +24,17 @@ interface GlitchImageProps {
 
 /**
  * GlitchImage Component
- * 
+ *
  * Usage:
  * ```tsx
- * <GlitchImage 
- *   src="/path/to/image.jpg" 
+ * <GlitchImage
+ *   src="/path/to/image.jpg"
  *   alt="Description"
  *   intensity="high"
  * />
- * 
- * <GlitchImage 
- *   src="/path/to/image.jpg" 
+ *
+ * <GlitchImage
+ *   src="/path/to/image.jpg"
  *   alt="Description"
  *   triggerOnHover
  * />
@@ -51,10 +51,10 @@ export default function GlitchImage({
 }: GlitchImageProps) {
   const prefersReducedMotion = useReducedMotion()
   const [isHovered, setIsHovered] = useState(false)
-  
+
   // Disable animation if user prefers reduced motion
   const shouldAnimate = animate && !prefersReducedMotion
-  
+
   // Get intensity multipliers
   const getIntensityMultiplier = () => {
     switch (intensity) {
@@ -67,17 +67,17 @@ export default function GlitchImage({
         return 1
     }
   }
-  
+
   const multiplier = getIntensityMultiplier()
-  
+
   // Create custom variants based on intensity
   const createGlitchVariants = () => {
     if (!shouldAnimate) {
       return { initial: {}, glitch: {} }
     }
-    
+
     const baseScale = 1.02 * multiplier
-    
+
     return {
       initial: {
         scale: 1,
@@ -99,22 +99,25 @@ export default function GlitchImage({
       },
     }
   }
-  
+
   const variants = createGlitchVariants()
-  
+
   // Determine animation state
-  const animationState = 
-    triggerOnHover 
-      ? (isHovered && shouldAnimate ? 'glitch' : 'initial')
-      : (shouldAnimate ? 'glitch' : 'initial')
-  
+  const animationState = triggerOnHover
+    ? isHovered && shouldAnimate
+      ? 'glitch'
+      : 'initial'
+    : shouldAnimate
+      ? 'glitch'
+      : 'initial'
+
   // Create container style with RGB split effect
   const containerStyle: MotionStyle = {
     position: 'relative',
     display: 'inline-block',
     overflow: 'hidden',
   }
-  
+
   return (
     <motion.div
       className={className}
@@ -135,7 +138,7 @@ export default function GlitchImage({
           objectFit: 'cover',
         }}
       />
-      
+
       {/* RGB Split Overlay Effect - only visible during glitch */}
       {shouldAnimate && (triggerOnHover ? isHovered : true) && (
         <>
@@ -211,10 +214,10 @@ export default function GlitchImage({
 export function GlitchImageSimple(props: Omit<GlitchImageProps, 'intensity'>) {
   const prefersReducedMotion = useReducedMotion()
   const shouldAnimate = props.animate !== false && !prefersReducedMotion
-  
+
   const variants = shouldAnimate ? glitchEffects.imageDistortion : { initial: {}, glitch: {} }
   const animationState = props.triggerOnHover ? undefined : shouldAnimate ? 'glitch' : 'initial'
-  
+
   return (
     <motion.img
       src={props.src}
