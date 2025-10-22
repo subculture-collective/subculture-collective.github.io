@@ -1,8 +1,6 @@
-import { useEffect } from 'react'
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import './App.css'
-import PageTransition from './components/motion/PageTransition'
-import Navbar from './components/layout/Navbar'
+import Layout from './components/layout/Layout'
 
 // Import pages
 import About from './pages/About'
@@ -14,36 +12,20 @@ import JournalPost from './pages/JournalPost'
 import NotFound from './pages/NotFound'
 import Projects from './pages/Projects'
 
-function ScrollToTop() {
-  const { pathname } = useLocation()
-
-  useEffect(() => {
-    window.scrollTo(0, 0)
-  }, [pathname])
-
-  return null
-}
-
-ScrollToTop.displayName = 'ScrollToTop'
-
 function App() {
   return (
-    <>
-      <ScrollToTop />
-      <Navbar sticky />
-      <PageTransition type="glitch">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/creators" element={<Creators />} />
-          <Route path="/projects" element={<Projects />} />
-          <Route path="/journal" element={<Journal />} />
-          <Route path="/journal/:slug" element={<JournalPost />} />
-          <Route path="/join" element={<Join />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </PageTransition>
-    </>
+    <Layout variant="default" transitionType="glitch">
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/creators" element={<Creators />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/journal" element={<Journal />} />
+        <Route path="/journal/:slug" element={<JournalPost />} />
+        <Route path="/join" element={<Join />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Layout>
   )
 }
 
