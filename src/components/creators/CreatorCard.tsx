@@ -73,9 +73,9 @@ export default function CreatorCard({ creator }: CreatorCardProps) {
       {/* Social Links */}
       {socials && socials.length > 0 && (
         <div className="flex gap-3 pt-4 border-t border-mid-gray">
-          {socials.slice(0, 4).map((social, index) => (
+          {socials.slice(0, 4).map((social) => (
             <a
-              key={index}
+              key={`${social.platform}-${social.url}`}
               href={social.url}
               target="_blank"
               rel="noopener noreferrer"
