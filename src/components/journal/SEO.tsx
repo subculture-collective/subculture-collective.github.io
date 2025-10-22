@@ -68,8 +68,8 @@ export default function SEO({
     // Article-specific Open Graph tags
     setMetaTag('article:published_time', frontmatter.date, true)
     setMetaTag('article:author', frontmatter.author, true)
-    frontmatter.tags.forEach((tag, index) => {
-      setMetaTag(`article:tag_${index}`, tag, true)
+    frontmatter.tags.forEach((tag) => {
+      setMetaTag('article:tag', tag, true)
     })
 
     // Twitter Card tags
