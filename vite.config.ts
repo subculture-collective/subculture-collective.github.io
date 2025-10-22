@@ -30,4 +30,30 @@ export default defineConfig({
       '@/lib': path.resolve(__dirname, './src/lib'),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        // Optimize asset handling
+        assetFileNames: assetInfo => {
+          const info = assetInfo.name?.split('.') || []
+          const ext = info[info.length - 1] || ''
+
+          // Images
+          if (/png|jpe?g|svg|gif|tiff|bmp|ico|webp|avif/i.test(ext)) {
+            return 'assets/images/[name]-[hash][extname]'
+          }
+
+          // CSS
+          if (ext === 'css') {
+            return 'assets/css/[name]-[hash][extname]'
+          }
+
+          // Default
+          return 'assets/[name]-[hash][extname]'
+        },
+      },
+    },
+    // Increase chunk size warning limit for images
+    chunkSizeWarningLimit: 1000,
+  },
 })
