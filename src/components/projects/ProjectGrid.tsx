@@ -77,7 +77,6 @@ export default function ProjectGrid({ projects }: ProjectGridProps) {
           </motion.div>
         </div>
       )}
-
     </div>
   )
 }
