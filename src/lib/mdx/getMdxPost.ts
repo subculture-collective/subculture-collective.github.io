@@ -3,16 +3,10 @@
  */
 
 import type { MDXPost } from '@/types/content'
-
-/**
- * Simple reading time calculation based on word count
- */
-function calculateReadingTime(text: string): string {
-  const wordsPerMinute = 200
-  const wordCount = text.trim().split(/\s+/).length
-  const minutes = Math.ceil(wordCount / wordsPerMinute)
-  return `${minutes} min read`
-}
+import {
+  calculateReadingTime,
+  extractMdxContent,
+} from '@/lib/utils/readingTime'
 
 /**
  * Get a single MDX post by its slug
@@ -22,6 +16,10 @@ export async function getMdxPost(slug: string): Promise<MDXPost | null> {
     // Dynamically import the MDX file
     const module = await import(`../../content/journal/${slug}.mdx`)
 
+    // Import the raw content for reading time calculation
+    const rawModule = await import(`../../content/journal/${slug}.mdx?raw`)
+    const rawContent = rawModule.default || ''
+
     const frontmatter = module.frontmatter || {
       title: 'Untitled',
       date: new Date().toISOString(),
@@ -30,8 +28,9 @@ export async function getMdxPost(slug: string): Promise<MDXPost | null> {
       excerpt: '',
     }
 
-    // Calculate reading time from excerpt
-    const readingTime = calculateReadingTime(frontmatter.excerpt)
+    // Calculate reading time from full article content
+    const content = extractMdxContent(rawContent)
+    const readingTime = calculateReadingTime(content)
 
     return {
       slug,
