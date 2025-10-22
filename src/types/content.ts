@@ -165,3 +165,27 @@ export interface ProjectPreview {
   status?: Project['status']
   featured?: boolean
 }
+
+/**
+ * MDX Frontmatter structure for blog posts
+ */
+export interface MDXFrontmatter {
+  title: string
+  date: string
+  author: string
+  tags: string[]
+  excerpt: string
+  coverImage?: string
+  description?: string
+  keywords?: string[]
+}
+
+/**
+ * MDX Post with parsed content
+ */
+export interface MDXPost {
+  slug: string
+  frontmatter: MDXFrontmatter
+  content: React.ComponentType
+  readingTime?: string
+}
