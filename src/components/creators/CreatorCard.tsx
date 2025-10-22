@@ -53,7 +53,7 @@ export default function CreatorCard({ creator }: CreatorCardProps) {
       {skills && skills.length > 0 && (
         <div className="mb-4">
           <div className="flex flex-wrap gap-2">
-            {skills.slice(0, 3).map((skill) => (
+            {skills.slice(0, 3).map(skill => (
               <span
                 key={skill}
                 className="px-2 py-1 bg-deep-gray text-neon-cyan font-mono text-xs rounded border border-neon-cyan/30 hover:border-neon-cyan transition-colors"
@@ -73,7 +73,7 @@ export default function CreatorCard({ creator }: CreatorCardProps) {
       {/* Social Links */}
       {socials && socials.length > 0 && (
         <div className="flex gap-3 pt-4 border-t border-mid-gray">
-          {socials.slice(0, 4).map((social) => (
+          {socials.slice(0, 4).map(social => (
             <a
               key={`${social.platform}-${social.url}`}
               href={social.url}
