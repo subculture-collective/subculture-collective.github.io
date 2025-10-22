@@ -157,7 +157,12 @@ export const glitchEffects = {
     },
     glitch: {
       scale: [1, 1.02, 0.98, 1.01, 1],
-      filter: ['hue-rotate(0deg)', 'hue-rotate(90deg)', 'hue-rotate(-90deg)', 'hue-rotate(0deg)'],
+      filter: [
+        'hue-rotate(0deg)',
+        'hue-rotate(90deg)',
+        'hue-rotate(-90deg)',
+        'hue-rotate(0deg)',
+      ],
       transition: {
         duration: 0.4,
         repeat: Infinity,
@@ -339,7 +344,10 @@ export function createStaggerContainer(
 /**
  * Creates a custom fade transition
  */
-export function createFadeVariant(duration: number = 0.3, delay: number = 0): Variants {
+export function createFadeVariant(
+  duration: number = 0.3,
+  delay: number = 0
+): Variants {
   return {
     initial: { opacity: 0 },
     animate: {
@@ -368,7 +376,8 @@ export function createSlideVariant(
   duration: number = 0.3
 ): Variants {
   const isHorizontal = direction === 'left' || direction === 'right'
-  const value = direction === 'left' || direction === 'up' ? -distance : distance
+  const value =
+    direction === 'left' || direction === 'up' ? -distance : distance
 
   if (isHorizontal) {
     return {

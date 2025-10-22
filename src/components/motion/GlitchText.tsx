@@ -70,7 +70,8 @@ export default function GlitchText({
           initial: {
             x: 0,
             y: 0,
-            textShadow: '0 0 0 rgba(0, 255, 255, 0), 0 0 0 rgba(255, 0, 255, 0)',
+            textShadow:
+              '0 0 0 rgba(0, 255, 255, 0), 0 0 0 rgba(255, 0, 255, 0)',
           },
           glitch: {
             x: [-2, 2, -2, 2, 0],
@@ -97,7 +98,11 @@ export default function GlitchText({
   const variants = getVariants()
 
   // Determine animation state
-  const animationState = triggerOnHover ? undefined : shouldAnimate ? 'glitch' : 'initial'
+  const animationState = triggerOnHover
+    ? undefined
+    : shouldAnimate
+      ? 'glitch'
+      : 'initial'
 
   // Use proper motion component based on 'as' prop
   const MotionComponent = motion[Component]

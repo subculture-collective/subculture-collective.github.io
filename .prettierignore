@@ -1,0 +1,31 @@
+# Dependencies
+node_modules
+
+# Build outputs
+dist
+dist-ssr
+build
+coverage
+
+# Logs
+logs
+*.log
+
+# Local files
+*.local
+
+# Lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Git
+.git
+
+# IDE
+.vscode/*
+!.vscode/settings.json
+.idea
+
+# System files
+.DS_Store

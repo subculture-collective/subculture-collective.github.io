@@ -1,11 +1,13 @@
 # TailwindCSS Custom Theme - Subcult Aesthetic
 
 ## Overview
+
 This document outlines the custom TailwindCSS theme configuration for the Subculture Collective project. The theme embodies a hacker culture meets avant-garde zine aesthetic with clean typography and glitchy energy.
 
 ## Color Palette
 
 ### Primary Colors - Neon/Electric
+
 These are the main accent colors for the site, providing high-energy cyberpunk vibes:
 
 - **neon-cyan** (`#00FFFF`) - Bright cyan for primary CTAs and highlights
@@ -20,6 +22,7 @@ These are the main accent colors for the site, providing high-energy cyberpunk v
 ```
 
 ### Secondary Colors - Dark Foundation
+
 The dark, underground aesthetic base colors:
 
 - **cyber-black** (`#0A0A0A`) - Primary background color
@@ -32,12 +35,14 @@ The dark, underground aesthetic base colors:
 ```html
 <!-- Usage Examples -->
 <body class="bg-cyber-black">
-<div class="bg-deep-gray border border-mid-gray">
-  <p class="text-white">Content</p>
-</div>
+  <div class="bg-deep-gray border border-mid-gray">
+    <p class="text-white">Content</p>
+  </div>
+</body>
 ```
 
 ### Accent Colors - Glitch Inspired
+
 Vibrant, glitch-aesthetic colors for special effects:
 
 - **glitch-magenta** (`#FF00FF`) - Bright magenta for glitch effects
@@ -56,7 +61,9 @@ Vibrant, glitch-aesthetic colors for special effects:
 ### Font Families
 
 #### Display Fonts (Headers)
+
 Industrial and geometric fonts for impactful headings:
+
 - **font-display**: Space Grotesk, Rajdhani, Orbitron
 - **font-industrial**: Rajdhani, Saira Condensed
 
@@ -66,7 +73,9 @@ Industrial and geometric fonts for impactful headings:
 ```
 
 #### Body Fonts
+
 Clean, readable fonts for content:
+
 - **font-mono**: JetBrains Mono, Fira Code, Roboto Mono
 - **font-sans**: Inter, system fonts
 
@@ -76,7 +85,9 @@ Clean, readable fonts for content:
 ```
 
 ### Heading Sizes
+
 Pre-configured responsive heading sizes using Tailwind's `@apply`:
+
 - `h1`: 5xl → 6xl → 7xl
 - `h2`: 4xl → 5xl → 6xl
 - `h3`: 3xl → 4xl → 5xl
@@ -87,6 +98,7 @@ Pre-configured responsive heading sizes using Tailwind's `@apply`:
 ## Animations
 
 ### Glitch Effects
+
 Multiple glitch animation speeds for different use cases:
 
 - **animate-glitch**: Standard glitch (1s loop)
@@ -99,6 +111,7 @@ Multiple glitch animation speeds for different use cases:
 ```
 
 ### Other Animations
+
 - **animate-scan**: Scanning line effect (8s loop)
 - **animate-flicker**: Screen flicker effect (0.15s loop)
 - **animate-pulse-glow**: Pulsing glow effect (2s loop)
@@ -111,6 +124,7 @@ Multiple glitch animation speeds for different use cases:
 ## Component Classes
 
 ### .text-glitch
+
 Adds glitch text shadow effect with color displacement:
 
 ```html
@@ -118,6 +132,7 @@ Adds glitch text shadow effect with color displacement:
 ```
 
 ### .btn-neon
+
 Neon-styled button with hover effects:
 
 ```html
@@ -125,6 +140,7 @@ Neon-styled button with hover effects:
 ```
 
 ### .cyber-card
+
 Card component with hover effects and backdrop blur:
 
 ```html
@@ -135,15 +151,15 @@ Card component with hover effects and backdrop blur:
 ```
 
 ### .scanner
+
 Container with animated scanning line effect:
 
 ```html
-<div class="scanner">
-  Content with scanner effect
-</div>
+<div class="scanner">Content with scanner effect</div>
 ```
 
 ### .glitch-container
+
 Advanced glitch effect with pseudo-elements (requires data-text attribute):
 
 ```html
@@ -153,6 +169,7 @@ Advanced glitch effect with pseudo-elements (requires data-text attribute):
 ## Utility Classes
 
 ### Text Effects
+
 - **text-shadow-neon**: Neon glow text shadow
 - **text-shadow-neon-strong**: Stronger neon glow
 
@@ -161,6 +178,7 @@ Advanced glitch effect with pseudo-elements (requires data-text attribute):
 ```
 
 ### Backdrop Effects
+
 - **backdrop-cyber**: Blur and brightness backdrop filter
 
 ```html
@@ -168,18 +186,19 @@ Advanced glitch effect with pseudo-elements (requires data-text attribute):
 ```
 
 ### Scrollbar Styling
+
 - **scrollbar-cyber**: Custom styled scrollbar
 
 ```html
-<div class="overflow-auto scrollbar-cyber">
-  Scrollable content
-</div>
+<div class="overflow-auto scrollbar-cyber">Scrollable content</div>
 ```
 
 ## Box Shadows
 
 ### Neon Shadows
+
 Pre-configured neon glow shadows:
+
 - **shadow-neon**: Standard neon glow
 - **shadow-neon-strong**: Intense neon glow
 - **shadow-cyber**: Cyan-tinted shadow
@@ -191,6 +210,7 @@ Pre-configured neon glow shadows:
 ```
 
 ## Background Gradients
+
 - **bg-glitch-gradient**: Cyan → Magenta → Green gradient
 - **bg-cyber-gradient**: Dark gradient for depth
 
@@ -211,42 +231,37 @@ Pre-configured neon glow shadows:
 ### Common Patterns
 
 #### Hero Section
+
 ```html
 <section class="bg-cyber-black min-h-screen flex items-center justify-center">
   <div class="text-center">
-    <h1 class="font-display text-neon-cyan text-shadow-neon animate-glitch-slow">
+    <h1
+      class="font-display text-neon-cyan text-shadow-neon animate-glitch-slow"
+    >
       SUBCULT
     </h1>
     <p class="font-sans text-white mt-4">
       Underground culture meets digital art
     </p>
-    <button class="btn-neon mt-8">
-      Enter
-    </button>
+    <button class="btn-neon mt-8">Enter</button>
   </div>
 </section>
 ```
 
 #### Content Card
+
 ```html
 <article class="cyber-card">
-  <h2 class="font-display text-electric-blue mb-4">
-    Article Title
-  </h2>
-  <p class="font-sans text-gray-300">
-    Article content goes here...
-  </p>
-  <code class="text-glitch-green mt-4 block">
-    ./subcult.sh --read
-  </code>
+  <h2 class="font-display text-electric-blue mb-4">Article Title</h2>
+  <p class="font-sans text-gray-300">Article content goes here...</p>
+  <code class="text-glitch-green mt-4 block"> ./subcult.sh --read </code>
 </article>
 ```
 
 #### Glitch Text Heading
+
 ```html
-<h1 class="font-display text-glitch text-6xl" data-text="GLITCH">
-  GLITCH
-</h1>
+<h1 class="font-display text-glitch text-6xl" data-text="GLITCH">GLITCH</h1>
 ```
 
 ## Customization
@@ -270,12 +285,14 @@ export default {
 ## Browser Support
 
 The theme uses modern CSS features including:
+
 - CSS Grid and Flexbox
 - CSS Custom Properties
 - CSS Animations
 - backdrop-filter (may require fallbacks in older browsers)
 
 Tested and optimized for:
+
 - Chrome/Edge 90+
 - Firefox 88+
 - Safari 14+

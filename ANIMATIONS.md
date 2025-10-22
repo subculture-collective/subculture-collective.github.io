@@ -5,6 +5,7 @@ This document describes the animation system built with Framer Motion for the SU
 ## Overview
 
 The animation system provides:
+
 - **Page Transitions**: Smooth transitions between routes with cyberpunk-style glitch effects
 - **Glitch Effects**: Text and image glitch effects with RGB split and distortion
 - **Micro-interactions**: Button hover effects, card animations, and loading states
@@ -14,6 +15,7 @@ The animation system provides:
 ## Installation
 
 Framer Motion is already installed in this project:
+
 ```bash
 npm install framer-motion
 ```
@@ -25,6 +27,7 @@ npm install framer-motion
 Wraps page content to provide smooth route transitions.
 
 **Usage:**
+
 ```tsx
 import PageTransition from './components/motion/PageTransition'
 
@@ -41,11 +44,13 @@ function App() {
 ```
 
 **Props:**
+
 - `type`: `'fade' | 'slideRight' | 'slideLeft' | 'slideUp' | 'glitch'` (default: `'fade'`)
 - `className`: Optional CSS classes
 - `children`: React nodes to animate
 
 **Available Transitions:**
+
 - `fade`: Simple opacity fade
 - `slideRight`: Slide in from right, exit to left
 - `slideLeft`: Slide in from left, exit to right
@@ -57,6 +62,7 @@ function App() {
 Animated text component with cyberpunk glitch effects.
 
 **Usage:**
+
 ```tsx
 import GlitchText from './components/motion/GlitchText'
 
@@ -77,6 +83,7 @@ import GlitchText from './components/motion/GlitchText'
 ```
 
 **Props:**
+
 - `type`: `'textGlitch' | 'rgbSplit' | 'both' | 'none'` (default: `'rgbSplit'`)
 - `as`: HTML element type: `'span' | 'div' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'button'`
 - `animate`: Enable/disable animation (default: `true`)
@@ -85,6 +92,7 @@ import GlitchText from './components/motion/GlitchText'
 - `style`: Inline styles
 
 **Convenience Components:**
+
 ```tsx
 // For inline text
 <GlitchTextSpan type="rgbSplit">Inline glitch</GlitchTextSpan>
@@ -98,19 +106,20 @@ import GlitchText from './components/motion/GlitchText'
 Animated image component with distortion and RGB split effects.
 
 **Usage:**
+
 ```tsx
 import GlitchImage from './components/motion/GlitchImage'
 
 // Continuous animation
-<GlitchImage 
-  src="/path/to/image.jpg" 
+<GlitchImage
+  src="/path/to/image.jpg"
   alt="Description"
   intensity="medium"
 />
 
 // Animate on hover only
-<GlitchImage 
-  src="/path/to/image.jpg" 
+<GlitchImage
+  src="/path/to/image.jpg"
   alt="Description"
   triggerOnHover
   intensity="high"
@@ -118,6 +127,7 @@ import GlitchImage from './components/motion/GlitchImage'
 ```
 
 **Props:**
+
 - `src`: Image source URL (required)
 - `alt`: Alt text (required)
 - `animate`: Enable/disable animation (default: `true`)
@@ -127,14 +137,10 @@ import GlitchImage from './components/motion/GlitchImage'
 - `style`: Inline styles
 
 **Simple Version:**
+
 ```tsx
 import { GlitchImageSimple } from './components/motion/GlitchImage'
-
-<GlitchImageSimple 
-  src="/image.jpg" 
-  alt="Description" 
-  triggerOnHover 
-/>
+;<GlitchImageSimple src="/image.jpg" alt="Description" triggerOnHover />
 ```
 
 ## Animation Presets
@@ -145,10 +151,10 @@ All animation presets are available in `src/utils/animations.ts`:
 
 ```tsx
 import { motion } from 'framer-motion'
-import { 
-  microInteractions, 
-  entranceAnimations, 
-  pageTransitions 
+import {
+  microInteractions,
+  entranceAnimations,
+  pageTransitions
 } from './utils/animations'
 
 // Button with hover effect
@@ -204,8 +210,11 @@ Animate multiple children sequentially:
 ```tsx
 import { motion } from 'framer-motion'
 import { staggerChildren, entranceAnimations } from './utils/animations'
-
-<motion.div variants={staggerChildren.container} initial="initial" animate="animate">
+;<motion.div
+  variants={staggerChildren.container}
+  initial="initial"
+  animate="animate"
+>
   <motion.div variants={entranceAnimations.fadeInUp}>Item 1</motion.div>
   <motion.div variants={entranceAnimations.fadeInUp}>Item 2</motion.div>
   <motion.div variants={entranceAnimations.fadeInUp}>Item 3</motion.div>
@@ -239,16 +248,15 @@ const mySlide = createSlideVariant('left', 100, 0.4) // direction, distance, dur
 The system automatically respects the user's `prefers-reduced-motion` setting.
 
 **Using the Hook:**
+
 ```tsx
 import { useReducedMotion } from './hooks/useReducedMotion'
 
 function MyComponent() {
   const prefersReducedMotion = useReducedMotion()
-  
+
   return (
-    <motion.div
-      animate={prefersReducedMotion ? {} : { x: 100 }}
-    >
+    <motion.div animate={prefersReducedMotion ? {} : { x: 100 }}>
       Content
     </motion.div>
   )
@@ -256,13 +264,14 @@ function MyComponent() {
 ```
 
 **Using the Utility:**
+
 ```tsx
 import { useAccessibleAnimation } from './hooks/useReducedMotion'
 import { entranceAnimations } from './utils/animations'
 
 function MyComponent() {
   const variants = useAccessibleAnimation(entranceAnimations.fadeInUp)
-  
+
   return (
     <motion.div variants={variants} initial="initial" animate="animate">
       Content respects motion preferences
@@ -311,23 +320,23 @@ function MyPage() {
       <GlitchText type="rgbSplit" as="h1" className="text-6xl mb-8">
         MY PAGE
       </GlitchText>
-      
+
       {/* Staggered content */}
-      <motion.div 
-        variants={staggerChildren.container} 
-        initial="initial" 
+      <motion.div
+        variants={staggerChildren.container}
+        initial="initial"
         animate="animate"
         className="space-y-4"
       >
-        <motion.div 
+        <motion.div
           variants={entranceAnimations.fadeInUp}
           className="cyber-card"
         >
           <h2>Card 1</h2>
           <p>Content...</p>
         </motion.div>
-        
-        <motion.div 
+
+        <motion.div
           variants={entranceAnimations.fadeInUp}
           className="cyber-card"
         >
@@ -343,16 +352,19 @@ function MyPage() {
 ## Troubleshooting
 
 ### Animations Not Working
+
 - Check if `AnimatePresence` is needed for exit animations
 - Verify that parent element has a key prop for route transitions
 - Ensure motion components have `initial`, `animate`, or `variants` props
 
 ### Performance Issues
+
 - Reduce the number of simultaneously animating elements
 - Use `layoutId` for shared element transitions instead of separate animations
 - Consider using CSS animations for simple effects
 
 ### Glitch Effects Too Intense
+
 - Adjust animation intensity in component props
 - Modify timing in `src/utils/animations.ts`
 - Use `triggerOnHover` to reduce constant animation

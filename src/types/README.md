@@ -18,9 +18,11 @@ import type { ButtonProps } from '@/types/components'
 ## Files
 
 ### 📄 content.ts
+
 Content-related types for blog posts, creators, projects, and SEO.
 
 **Key Types:**
+
 - `BlogPost`, `BlogPostPreview` - Blog post structures
 - `CreatorProfile` - Artist/creator profiles
 - `Project`, `ProjectPreview` - Project information
@@ -28,27 +30,33 @@ Content-related types for blog posts, creators, projects, and SEO.
 - Branded ID types: `BlogPostId`, `CreatorId`, `ProjectId`
 
 ### 📄 components.ts
+
 Reusable component prop types and interfaces.
 
 **Key Types:**
+
 - `BaseComponentProps` - Base props for most components
 - `ButtonProps`, `LinkProps`, `ImageProps` - Common component props
 - `CardProps`, `ModalProps`, `FormFieldProps` - UI component props
 - `ListProps<T>`, `GridProps` - Layout component props
 
 ### 📄 animations.ts
+
 Framer Motion animation configurations and types.
 
 **Key Types:**
+
 - `GlitchType`, `PageTransitionType` - Animation variants
 - `AnimationConfig`, `AnimationVariants` - Configuration types
 - `GlitchConfig`, `StaggerConfig` - Specific animation configs
 - `AnimatedComponentProps` - Props for animated components
 
 ### 📄 utils.ts
+
 Utility types and generic type helpers.
 
 **Key Types:**
+
 - **Transform Types**: `DeepPartial<T>`, `DeepRequired<T>`, `PartialBy<T, K>`
 - **Safety Types**: `Nullable<T>`, `Maybe<T>`, `Result<T, E>`
 - **Array Types**: `ArrayElement<T>`, `ReadonlyArray<T>`
@@ -56,6 +64,7 @@ Utility types and generic type helpers.
 - **Functions**: `TypeGuard<T>`, `Predicate<T>`, `Mapper<T, U>`
 
 ### 📄 index.ts
+
 Barrel export file - re-exports all types for convenient importing.
 
 ## Usage Examples
@@ -151,21 +160,25 @@ const userId: UserId = 'user-123' as UserId
 ## Best Practices
 
 1. **Always use `type` imports**
+
    ```typescript
    import type { BlogPost } from '@/types'
    ```
 
 2. **Import from barrel export**
+
    ```typescript
    import type { BlogPost, ButtonProps } from '@/types'
    ```
 
 3. **Use branded types for IDs**
+
    ```typescript
    const id: BlogPostId = 'post-1' as BlogPostId
    ```
 
 4. **Prefer readonly arrays**
+
    ```typescript
    tags?: readonly string[]
    ```

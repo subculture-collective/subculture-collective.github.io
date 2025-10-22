@@ -19,12 +19,12 @@ The project uses strict TypeScript configuration for maximum type safety:
 
 ```json
 {
-  "strict": true,                          // Enable all strict type checking
-  "noUncheckedIndexedAccess": true,       // Require checking for undefined on index access
-  "noImplicitOverride": true,              // Require explicit override keyword
-  "noFallthroughCasesInSwitch": true,     // Prevent fallthrough in switch statements
-  "noUnusedLocals": true,                  // Report unused local variables
-  "noUnusedParameters": true               // Report unused function parameters
+  "strict": true, // Enable all strict type checking
+  "noUncheckedIndexedAccess": true, // Require checking for undefined on index access
+  "noImplicitOverride": true, // Require explicit override keyword
+  "noFallthroughCasesInSwitch": true, // Prevent fallthrough in switch statements
+  "noUnusedLocals": true, // Report unused local variables
+  "noUnusedParameters": true // Report unused function parameters
 }
 ```
 
@@ -47,6 +47,7 @@ All type definitions are located in `src/types/` and organized by domain:
 Defines types for content structures:
 
 - **Branded IDs**: Type-safe unique identifiers
+
   ```typescript
   type BlogPostId = BrandedId<'BlogPost'>
   type CreatorId = BrandedId<'Creator'>
@@ -67,6 +68,7 @@ Defines types for content structures:
 Defines reusable component prop types:
 
 - **Base Props**:
+
   ```typescript
   interface BaseComponentProps {
     children?: ReactNode
@@ -159,6 +161,7 @@ import GlitchText from '@/components/motion/GlitchText'
 Path aliases are configured in two places:
 
 1. **TypeScript** (`tsconfig.app.json`):
+
    ```json
    {
      "compilerOptions": {
@@ -175,9 +178,9 @@ Path aliases are configured in two places:
    export default defineConfig({
      resolve: {
        alias: {
-         '@': path.resolve(__dirname, './src')
-       }
-     }
+         '@': path.resolve(__dirname, './src'),
+       },
+     },
    })
    ```
 
@@ -242,7 +245,7 @@ const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
 }
 
 // ❌ Avoid - implicit any
-const handleClick = (event) => {
+const handleClick = event => {
   event.preventDefault()
 }
 ```
@@ -370,6 +373,7 @@ if (result.success) {
 ### Issue: Type errors with Framer Motion
 
 **Solution:** Framer Motion has complex type definitions. If you encounter type errors:
+
 1. Ensure you're using compatible prop combinations
 2. Consider using `as const` for literal values
 3. Use type assertions as a last resort: `as MotionStyle`
@@ -395,6 +399,7 @@ console.log(first?.toUpperCase())
 ### Issue: Circular type dependencies
 
 **Solution:** Break circular dependencies by:
+
 1. Moving shared types to a separate file
 2. Using type aliases instead of interfaces
 3. Using generic types to defer resolution
