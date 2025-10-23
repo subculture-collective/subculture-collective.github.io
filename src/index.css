@@ -1,4 +1,5 @@
-/* Import fonts from Google Fonts */
+/* Fonts are now automatically downloaded and optimized by vite-plugin-webfont-dl */
+/* The plugin will process the Google Fonts URL and download them locally */
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Inter:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap');
 
 /* TailwindCSS Directives */
