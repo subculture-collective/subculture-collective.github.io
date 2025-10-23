@@ -5,6 +5,7 @@
  */
 
 import { motion, AnimatePresence } from 'framer-motion'
+import OptimizedImage from '@/components/ui/OptimizedImage'
 import { useImageCycle } from '../../hooks/useImageCycle'
 import { useReducedMotion } from '../../hooks/useReducedMotion'
 
@@ -97,11 +98,14 @@ export default function ImageCycle({
           exit="exit"
         >
           {/* Background Image */}
-          <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage: `url(${currentImage})`,
-            }}
+          <OptimizedImage
+            src={currentImage}
+            alt={`Hero background ${currentIndex + 1}`}
+            className="absolute inset-0"
+            objectFit="cover"
+            priority={currentIndex === 0}
+            loading={currentIndex === 0 ? 'eager' : 'lazy'}
+            showPlaceholder
           />
 
           {/* Overlay for better text readability */}

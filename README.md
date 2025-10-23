@@ -16,6 +16,7 @@ This project is a React application built with TypeScript and Vite, automaticall
 - **[ESLint Guide](./ESLINT_GUIDE.md)** - Code quality and linting rules
 - **[Prettier Guide](./PRETTIER_GUIDE.md)** - Code formatting configuration
 - **[TypeScript Guide](./TYPESCRIPT_GUIDE.md)** - TypeScript usage and best practices
+- **[Image Optimization Guide](./IMAGE_OPTIMIZATION.md)** - Image optimization and performance best practices
 
 ## Code Quality
 
@@ -30,6 +31,35 @@ This project uses:
 
 All code is automatically formatted and linted via pre-commit hooks and
 validated in CI.
+
+## ⚡ Performance & Image Optimization
+
+This project includes comprehensive image optimization features:
+
+- **Modern Formats**: Automatic WebP and AVIF format support with fallbacks
+- **Responsive Images**: srcset and sizes attributes for optimal loading
+- **Lazy Loading**: Intersection Observer API for efficient resource loading
+- **Blur-up Placeholders**: Smooth loading experience with placeholder effects
+- **Optimized Build**: Vite configuration for asset optimization
+
+### Quick Start with Images
+
+```tsx
+import { OptimizedImage } from '@/components/ui'
+
+// Basic usage
+<OptimizedImage src="/hero.jpg" alt="Hero image" />
+
+// With responsive images
+<OptimizedImage
+  src="/hero.jpg"
+  srcSet="/hero-400.jpg 400w, /hero-800.jpg 800w"
+  sizes="(max-width: 768px) 100vw, 50vw"
+  alt="Hero image"
+/>
+```
+
+See the **[Image Optimization Guide](./IMAGE_OPTIMIZATION.md)** for complete documentation.
 
 Currently, two official plugins are available:
 

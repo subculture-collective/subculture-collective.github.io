@@ -6,6 +6,7 @@
 
 import { motion } from 'framer-motion'
 import GlitchText from '@/components/motion/GlitchText'
+import OptimizedImage from '@/components/ui/OptimizedImage'
 import type { MDXFrontmatter } from '@/types/content'
 
 interface PostHeaderProps {
@@ -33,11 +34,13 @@ export default function PostHeader({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <img
+          <OptimizedImage
             src={frontmatter.coverImage}
             alt={frontmatter.title}
-            className="w-full h-full object-cover"
-            loading="eager"
+            className="w-full h-full"
+            objectFit="cover"
+            priority
+            showPlaceholder
           />
           <div className="absolute inset-0 bg-gradient-to-t from-cyber-black/80 via-transparent to-transparent" />
         </motion.div>
