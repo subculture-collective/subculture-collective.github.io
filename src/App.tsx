@@ -1,36 +1,42 @@
+import { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import './App.css'
 import Layout from './components/layout/Layout'
+import LoadingSpinner from './components/ui/LoadingSpinner'
 
-// Import pages
-import About from './pages/About'
-import AccessibilityStatement from './pages/AccessibilityStatement'
-import Creators from './pages/Creators'
-import Home from './pages/Home'
-import Join from './pages/Join'
-import Journal from './pages/Journal'
-import JournalPost from './pages/JournalPost'
-import NotFound from './pages/NotFound'
-import Projects from './pages/Projects'
-import ServerError from './pages/ServerError'
-import NetworkError from './pages/NetworkError'
+// Lazy load all pages for code splitting
+const Home = lazy(() => import('./pages/Home'))
+const About = lazy(() => import('./pages/About'))
+const AccessibilityStatement = lazy(
+  () => import('./pages/AccessibilityStatement')
+)
+const Creators = lazy(() => import('./pages/Creators'))
+const Projects = lazy(() => import('./pages/Projects'))
+const Journal = lazy(() => import('./pages/Journal'))
+const JournalPost = lazy(() => import('./pages/JournalPost'))
+const Join = lazy(() => import('./pages/Join'))
+const ServerError = lazy(() => import('./pages/ServerError'))
+const NetworkError = lazy(() => import('./pages/NetworkError'))
+const NotFound = lazy(() => import('./pages/NotFound'))
 
 function App() {
   return (
     <Layout variant="default" transitionType="glitch">
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/accessibility" element={<AccessibilityStatement />} />
-        <Route path="/creators" element={<Creators />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/journal" element={<Journal />} />
-        <Route path="/journal/:slug" element={<JournalPost />} />
-        <Route path="/join" element={<Join />} />
-        <Route path="/error" element={<ServerError />} />
-        <Route path="/network-error" element={<NetworkError />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <Suspense fallback={<LoadingSpinner />}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/accessibility" element={<AccessibilityStatement />} />
+          <Route path="/creators" element={<Creators />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/journal" element={<Journal />} />
+          <Route path="/journal/:slug" element={<JournalPost />} />
+          <Route path="/join" element={<Join />} />
+          <Route path="/error" element={<ServerError />} />
+          <Route path="/network-error" element={<NetworkError />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
     </Layout>
   )
 }
