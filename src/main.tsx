@@ -4,6 +4,12 @@ import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import App from './App.tsx'
 import ErrorBoundary from './components/error/ErrorBoundary'
+import { initWebVitals } from './utils/performance'
+
+// Initialize Web Vitals monitoring
+if (import.meta.env.PROD) {
+  initWebVitals()
+}
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 createRoot(document.getElementById('root')!).render(

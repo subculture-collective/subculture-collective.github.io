@@ -21,7 +21,6 @@ Individual blog post card component with hover animations and metadata display.
 
 ```tsx
 import { PostCard } from '@/components/journal'
-
 ;<PostCard post={mdxPost} featured={true} />
 ```
 
@@ -40,7 +39,6 @@ Responsive grid layout for displaying multiple post cards.
 
 ```tsx
 import { PostGrid } from '@/components/journal'
-
 ;<PostGrid posts={posts} featuredSlugs={['welcome-to-subcult']} />
 ```
 
@@ -59,7 +57,6 @@ Search, filter, and sort controls for blog posts.
 
 ```tsx
 import { PostFilter } from '@/components/journal'
-
 ;<PostFilter
   searchQuery={searchQuery}
   onSearchChange={setSearchQuery}
@@ -87,7 +84,6 @@ Tag filtering UI component (used by PostFilter).
 
 ```tsx
 import { TagFilter } from '@/components/journal'
-
 ;<TagFilter
   allTags={allTags}
   selectedTag={selectedTag}

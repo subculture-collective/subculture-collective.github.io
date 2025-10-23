@@ -223,12 +223,12 @@ Test in multiple browsers:
 
 ## Sign-off
 
-- **Tester Name**: ********\_\_\_********
-- **Date**: ********\_\_\_********
+- **Tester Name**: **\*\*\*\***\_\_\_**\*\*\*\***
+- **Date**: **\*\*\*\***\_\_\_**\*\*\*\***
 - **WCAG Level Achieved**: [ ] A [ ] AA [ ] AAA
-- **Issues Found**: ********\_\_\_********
-- **Issues Resolved**: ********\_\_\_********
-- **Outstanding Issues**: ********\_\_\_********
+- **Issues Found**: **\*\*\*\***\_\_\_**\*\*\*\***
+- **Issues Resolved**: **\*\*\*\***\_\_\_**\*\*\*\***
+- **Outstanding Issues**: **\*\*\*\***\_\_\_**\*\*\*\***
 
 ---
 
