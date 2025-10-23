@@ -8,6 +8,23 @@
 import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
+/**
+ * Helper function to replace image extensions in srcSet strings
+ * Handles multiple URLs separated by commas
+ * @param srcSet - The srcSet string containing one or more image URLs with descriptors
+ * @param newExtension - The new file extension (e.g., '.avif', '.webp')
+ * @returns The srcSet string with all image extensions replaced
+ */
+function replaceSrcSetExtensions(srcSet: string, newExtension: string): string {
+  return srcSet
+    .split(',')
+    .map(part => {
+      const trimmed = part.trim()
+      return trimmed.replace(/\.(jpg|jpeg|png)/gi, newExtension)
+    })
+    .join(', ')
+}
+
 export interface OptimizedImageProps {
   /**
    * Image source URL
@@ -209,7 +226,7 @@ export default function OptimizedImage({
               {srcSet && (
                 <source
                   type="image/avif"
-                  srcSet={srcSet.replace(/\.(jpg|jpeg|png)/gi, '.avif')}
+                  srcSet={replaceSrcSetExtensions(srcSet, '.avif')}
                   sizes={sizes}
                 />
               )}
@@ -223,7 +240,7 @@ export default function OptimizedImage({
               {srcSet && (
                 <source
                   type="image/webp"
-                  srcSet={srcSet.replace(/\.(jpg|jpeg|png)/gi, '.webp')}
+                  srcSet={replaceSrcSetExtensions(srcSet, '.webp')}
                   sizes={sizes}
                 />
               )}
