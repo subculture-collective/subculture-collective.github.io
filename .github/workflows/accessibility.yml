@@ -1,4 +1,6 @@
 name: Accessibility Testing
+permissions:
+  contents: read
 
 on:
   push:
