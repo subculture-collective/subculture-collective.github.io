@@ -17,6 +17,8 @@ This project is a React application built with TypeScript and Vite, automaticall
 - **[Prettier Guide](./PRETTIER_GUIDE.md)** - Code formatting configuration
 - **[TypeScript Guide](./TYPESCRIPT_GUIDE.md)** - TypeScript usage and best practices
 - **[Image Optimization Guide](./IMAGE_OPTIMIZATION.md)** - Image optimization and performance best practices
+- **[Responsive Design Guide](./RESPONSIVE_DESIGN.md)** - Responsive design patterns and best practices
+- **[Responsive Testing Checklist](./RESPONSIVE_TESTING.md)** - Comprehensive testing checklist for all breakpoints
 
 ## Code Quality
 
