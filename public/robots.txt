@@ -1,0 +1,12 @@
+# robots.txt for Subcult Collective
+# https://subcult.tv
+
+# Allow all crawlers to access all content
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://subcult.tv/sitemap.xml
+
+# Crawl-delay to be respectful to servers
+Crawl-delay: 1

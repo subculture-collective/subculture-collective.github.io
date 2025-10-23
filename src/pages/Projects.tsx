@@ -3,12 +3,15 @@ import { motion } from 'framer-motion'
 import GlitchText from '../components/motion/GlitchText'
 import ProjectGrid from '../components/projects/ProjectGrid'
 import ProjectFilter from '../components/projects/ProjectFilter'
+import SEOHead from '../components/seo/SEOHead'
 import type { Project } from '../types'
 import {
   projectsData,
   getAllProjectStatuses,
   getAllProjectCategories,
 } from '../data/projects'
+import { pageSEO } from '../data/seo-config'
+import { generateBreadcrumbSchema } from '../utils/seo'
 import { entranceAnimations } from '../utils/animations'
 
 function Projects() {
@@ -53,56 +56,64 @@ function Projects() {
     return filtered
   }, [selectedStatus, selectedCategory, sortBy])
 
+  const breadcrumb = generateBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Projects', url: '/projects' },
+  ])
+
   return (
-    <div className="min-h-screen bg-cyber-black py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <motion.div
-          className="text-center mb-12"
-          variants={entranceAnimations.fadeInDown}
-          initial="initial"
-          animate="animate"
-        >
-          <GlitchText
-            type="rgbSplit"
-            className="font-display text-5xl md:text-6xl mb-4"
-            as="h1"
+    <>
+      <SEOHead pageSEO={pageSEO.projects!} structuredData={breadcrumb} />
+      <div className="min-h-screen bg-cyber-black py-12 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          {/* Header */}
+          <motion.div
+            className="text-center mb-12"
+            variants={entranceAnimations.fadeInDown}
+            initial="initial"
+            animate="animate"
           >
-            Projects
-          </GlitchText>
-          <p className="font-sans text-gray-300 text-lg max-w-2xl mx-auto">
-            Explore our ongoing sub-projects, collaborations, and collective
-            works. From web experiences to art installations, each project
-            pushes the boundaries of digital creativity.
-          </p>
-          <div className="mt-4 font-mono text-glitch-cyan text-sm">
-            {filteredProjects.length} project
-            {filteredProjects.length !== 1 ? 's' : ''} found
-          </div>
-        </motion.div>
+            <GlitchText
+              type="rgbSplit"
+              className="font-display text-5xl md:text-6xl mb-4"
+              as="h1"
+            >
+              Projects
+            </GlitchText>
+            <p className="font-sans text-gray-300 text-lg max-w-2xl mx-auto">
+              Explore our ongoing sub-projects, collaborations, and collective
+              works. From web experiences to art installations, each project
+              pushes the boundaries of digital creativity.
+            </p>
+            <div className="mt-4 font-mono text-glitch-cyan text-sm">
+              {filteredProjects.length} project
+              {filteredProjects.length !== 1 ? 's' : ''} found
+            </div>
+          </motion.div>
 
-        {/* Filters */}
-        <motion.div
-          variants={entranceAnimations.fadeInUp}
-          initial="initial"
-          animate="animate"
-        >
-          <ProjectFilter
-            allStatuses={allStatuses}
-            selectedStatus={selectedStatus}
-            onStatusSelect={setSelectedStatus}
-            allCategories={allCategories}
-            selectedCategory={selectedCategory}
-            onCategorySelect={setSelectedCategory}
-            sortBy={sortBy}
-            onSortChange={setSortBy}
-          />
-        </motion.div>
+          {/* Filters */}
+          <motion.div
+            variants={entranceAnimations.fadeInUp}
+            initial="initial"
+            animate="animate"
+          >
+            <ProjectFilter
+              allStatuses={allStatuses}
+              selectedStatus={selectedStatus}
+              onStatusSelect={setSelectedStatus}
+              allCategories={allCategories}
+              selectedCategory={selectedCategory}
+              onCategorySelect={setSelectedCategory}
+              sortBy={sortBy}
+              onSortChange={setSortBy}
+            />
+          </motion.div>
 
-        {/* Grid */}
-        <ProjectGrid projects={filteredProjects} />
+          {/* Grid */}
+          <ProjectGrid projects={filteredProjects} />
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Home Page -->
+  <url>
+    <loc>https://subcult.tv/</loc>
+    <lastmod>2024-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- About Page -->
+  <url>
+    <loc>https://subcult.tv/about</loc>
+    <lastmod>2024-10-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Creators Page -->
+  <url>
+    <loc>https://subcult.tv/creators</loc>
+    <lastmod>2024-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Projects Page -->
+  <url>
+    <loc>https://subcult.tv/projects</loc>
+    <lastmod>2024-10-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Journal Page -->
+  <url>
+    <loc>https://subcult.tv/journal</loc>
+    <lastmod>2024-10-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Join Page -->
+  <url>
+    <loc>https://subcult.tv/join</loc>
+    <lastmod>2024-10-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Accessibility Statement Page -->
+  <url>
+    <loc>https://subcult.tv/accessibility</loc>
+    <lastmod>2024-10-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <!-- Journal Posts -->
+  <!-- Note: Add individual journal post URLs here as they are published -->
+  <!-- Example:
+  <url>
+    <loc>https://subcult.tv/journal/welcome-to-subcult</loc>
+    <lastmod>2024-10-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  -->
+  
+</urlset>
