@@ -56,6 +56,7 @@ export const footerLinks = {
     { label: 'Projects', href: '/projects' },
     { label: 'Journal', href: '/journal' },
     { label: 'Join', href: '/join' },
+    { label: 'Accessibility', href: '/accessibility' },
   ],
   connect: [
     { label: 'Contact', href: `mailto:${contactInfo.email}` },

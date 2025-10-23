@@ -4,6 +4,7 @@ import Layout from './components/layout/Layout'
 
 // Import pages
 import About from './pages/About'
+import AccessibilityStatement from './pages/AccessibilityStatement'
 import Creators from './pages/Creators'
 import Home from './pages/Home'
 import Join from './pages/Join'
@@ -20,6 +21,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
+        <Route path="/accessibility" element={<AccessibilityStatement />} />
         <Route path="/creators" element={<Creators />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/journal" element={<Journal />} />

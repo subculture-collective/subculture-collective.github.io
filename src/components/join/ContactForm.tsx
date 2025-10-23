@@ -124,6 +124,7 @@ export default function ContactForm({
                 value={formData.name}
                 onChange={handleChange}
                 placeholder={fields.name.placeholder}
+                autoComplete="name"
                 className={`w-full bg-deep-gray border ${
                   errors.name ? 'border-glitch-red' : 'border-gray-700'
                 } text-white px-4 py-3 rounded focus:outline-none focus:border-neon-cyan transition-colors font-sans`}
@@ -160,6 +161,7 @@ export default function ContactForm({
                 value={formData.email}
                 onChange={handleChange}
                 placeholder={fields.email.placeholder}
+                autoComplete="email"
                 className={`w-full bg-deep-gray border ${
                   errors.email ? 'border-glitch-red' : 'border-gray-700'
                 } text-white px-4 py-3 rounded focus:outline-none focus:border-neon-cyan transition-colors font-sans`}
@@ -250,6 +252,7 @@ export default function ContactForm({
                 value={formData.portfolio}
                 onChange={handleChange}
                 placeholder={fields.portfolio.placeholder}
+                autoComplete="url"
                 className={`w-full bg-deep-gray border ${
                   errors.portfolio ? 'border-glitch-red' : 'border-gray-700'
                 } text-white px-4 py-3 rounded focus:outline-none focus:border-neon-cyan transition-colors font-sans`}

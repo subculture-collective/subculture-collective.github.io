@@ -59,12 +59,54 @@
     text-decoration: inherit;
   }
 
+  /* Enhanced focus indicators for accessibility */
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  [tabindex]:focus-visible {
+    @apply outline-none ring-2 ring-neon-cyan ring-offset-2 ring-offset-cyber-black;
+  }
+
+  /* Ensure focus indicators are visible on interactive elements with stronger color */
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    @apply ring-2 ring-electric-blue ring-offset-2 ring-offset-cyber-black;
+  }
+
   code {
     @apply font-mono text-glitch-green bg-deep-gray px-1.5 py-0.5 rounded;
   }
 
   pre {
     @apply font-mono text-sm bg-deep-gray p-4 rounded-lg overflow-x-auto;
+  }
+
+  /* Screen reader only content */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  .sr-only-focusable:focus,
+  .sr-only-focusable:active {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
   }
 }
 
@@ -82,6 +124,24 @@
   @media (prefers-reduced-motion: reduce), (prefers-contrast: more) {
     .text-glitch {
       text-shadow: none !important;
+    }
+
+    /* Remove all animations for users who prefer reduced motion */
+    body,
+    button,
+    a,
+    div,
+    span,
+    section,
+    article,
+    nav,
+    header,
+    footer,
+    main,
+    aside {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
     }
   }
   .text-glitch:hover {
