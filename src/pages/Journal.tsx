@@ -7,6 +7,9 @@ import PostGrid from '@/components/journal/PostGrid'
 import PostFilter from '@/components/journal/PostFilter'
 import Pagination from '@/components/journal/Pagination'
 import GlitchText from '@/components/motion/GlitchText'
+import SEOHead from '@/components/seo/SEOHead'
+import { pageSEO } from '@/data/seo-config'
+import { generateBreadcrumbSchema } from '@/utils/seo'
 import { entranceAnimations } from '@/utils/animations'
 
 function Journal() {
@@ -76,78 +79,86 @@ function Journal() {
     )
   }
 
+  const breadcrumb = generateBreadcrumbSchema([
+    { name: 'Home', url: '/' },
+    { name: 'Journal', url: '/journal' },
+  ])
+
   return (
-    <div className="min-h-screen bg-cyber-black p-4 sm:p-8">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <motion.div
-          className="mb-12"
-          variants={entranceAnimations.fadeInUp}
-          initial="initial"
-          animate="animate"
-        >
-          <GlitchText
-            as="h1"
-            type="rgbSplit"
-            className="font-display text-4xl md:text-5xl lg:text-6xl text-neon-cyan text-shadow-neon mb-4"
-            triggerOnHover
+    <>
+      <SEOHead pageSEO={pageSEO.journal!} structuredData={breadcrumb} />
+      <div className="min-h-screen bg-cyber-black p-4 sm:p-8">
+        <div className="max-w-7xl mx-auto">
+          {/* Header */}
+          <motion.div
+            className="mb-12"
+            variants={entranceAnimations.fadeInUp}
+            initial="initial"
+            animate="animate"
           >
-            Journal
-          </GlitchText>
-          <p className="font-sans text-gray-400 text-base md:text-lg">
-            Thoughts from the underground
-          </p>
-        </motion.div>
+            <GlitchText
+              as="h1"
+              type="rgbSplit"
+              className="font-display text-4xl md:text-5xl lg:text-6xl text-neon-cyan text-shadow-neon mb-4"
+              triggerOnHover
+            >
+              Journal
+            </GlitchText>
+            <p className="font-sans text-gray-400 text-base md:text-lg">
+              Thoughts from the underground
+            </p>
+          </motion.div>
 
-        {/* Filters */}
-        {posts.length > 0 && (
+          {/* Filters */}
+          {posts.length > 0 && (
+            <motion.div
+              variants={entranceAnimations.fadeInUp}
+              initial="initial"
+              animate="animate"
+              transition={{ delay: 0.1 }}
+            >
+              <PostFilter
+                searchQuery={searchQuery}
+                onSearchChange={setSearchQuery}
+                sortBy={sortBy}
+                onSortChange={setSortBy}
+                allTags={allTags}
+                selectedTag={selectedTag}
+                onTagSelect={setSelectedTag}
+                totalPosts={posts.length}
+                filteredPostsCount={filteredPosts.length}
+              />
+            </motion.div>
+          )}
+
+          {/* Posts Grid */}
           <motion.div
             variants={entranceAnimations.fadeInUp}
             initial="initial"
             animate="animate"
-            transition={{ delay: 0.1 }}
+            transition={{ delay: 0.2 }}
           >
-            <PostFilter
-              searchQuery={searchQuery}
-              onSearchChange={setSearchQuery}
-              sortBy={sortBy}
-              onSortChange={setSortBy}
-              allTags={allTags}
-              selectedTag={selectedTag}
-              onTagSelect={setSelectedTag}
-              totalPosts={posts.length}
-              filteredPostsCount={filteredPosts.length}
-            />
+            <PostGrid posts={paginatedPosts} featuredSlugs={featuredSlugs} />
           </motion.div>
-        )}
 
-        {/* Posts Grid */}
-        <motion.div
-          variants={entranceAnimations.fadeInUp}
-          initial="initial"
-          animate="animate"
-          transition={{ delay: 0.2 }}
-        >
-          <PostGrid posts={paginatedPosts} featuredSlugs={featuredSlugs} />
-        </motion.div>
-
-        {/* Pagination */}
-        {filteredPosts.length > 0 && (
-          <motion.div
-            variants={entranceAnimations.fadeInUp}
-            initial="initial"
-            animate="animate"
-            transition={{ delay: 0.3 }}
-          >
-            <Pagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onPageChange={setCurrentPage}
-            />
-          </motion.div>
-        )}
+          {/* Pagination */}
+          {filteredPosts.length > 0 && (
+            <motion.div
+              variants={entranceAnimations.fadeInUp}
+              initial="initial"
+              animate="animate"
+              transition={{ delay: 0.3 }}
+            >
+              <Pagination
+                currentPage={currentPage}
+                totalPages={totalPages}
+                onPageChange={setCurrentPage}
+              />
+            </motion.div>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 
