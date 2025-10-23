@@ -7,6 +7,9 @@ import rehypeHighlight from 'rehype-highlight'
 import path from 'path'
 import { visualizer } from 'rollup-plugin-visualizer'
 import viteCompression from 'vite-plugin-compression'
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer'
+import { ViteWebfontDownload } from 'vite-plugin-webfont-dl'
+import svgLoader from 'vite-svg-loader'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -19,6 +22,70 @@ export default defineConfig({
       }),
     },
     react(),
+    // SVG loader - import SVGs as React components or URLs
+    svgLoader({
+      svgoConfig: {
+        plugins: [
+          {
+            name: 'preset-default',
+            params: {
+              overrides: {
+                removeViewBox: false,
+                cleanupIds: false,
+              },
+            },
+          },
+          'removeDimensions',
+          'removeXMLNS',
+        ],
+      },
+    }),
+    // Font optimization - download and optimize Google Fonts
+    ViteWebfontDownload([
+      'https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Inter:wght@400;700&family=JetBrains+Mono:wght@400;700&display=swap',
+    ]),
+    // Image optimization for production builds
+    ViteImageOptimizer({
+      // Test mode - only optimize specified images
+      test: /\.(jpe?g|png|gif|tiff|webp|svg|avif)$/i,
+      // Exclude already optimized images
+      exclude: undefined,
+      // Include only specified images
+      include: undefined,
+      // Enable logging
+      logStats: true,
+      // PNG optimization
+      png: {
+        quality: 85,
+      },
+      // JPEG optimization
+      jpeg: {
+        quality: 85,
+        progressive: true,
+      },
+      // JPG optimization
+      jpg: {
+        quality: 85,
+        progressive: true,
+      },
+      // WebP optimization
+      webp: {
+        quality: 80,
+        lossless: false,
+      },
+      // AVIF optimization
+      avif: {
+        quality: 75,
+        lossless: false,
+      },
+      // GIF optimization
+      gif: {},
+      // SVG optimization config (svg handled by svg-loader)
+      svg: {},
+      // Cache optimized images
+      cache: true,
+      cacheLocation: './node_modules/.cache/vite-plugin-image-optimizer',
+    }),
     // Compression for production builds
     viteCompression({
       algorithm: 'gzip',
