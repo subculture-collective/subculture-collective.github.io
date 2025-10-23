@@ -13,6 +13,7 @@ This project is a React application built with TypeScript and Vite, automaticall
 
 - **[Deployment Guide](./DEPLOYMENT.md)** - GitHub Pages deployment setup and configuration
 - **[CI/CD Documentation](./.github/CI_DOCUMENTATION.md)** - Continuous integration and deployment workflows
+- **[Accessibility Guide](./ACCESSIBILITY.md)** - WCAG 2.1 AA compliance and accessibility features
 - **[ESLint Guide](./ESLINT_GUIDE.md)** - Code quality and linting rules
 - **[Prettier Guide](./PRETTIER_GUIDE.md)** - Code formatting configuration
 - **[TypeScript Guide](./TYPESCRIPT_GUIDE.md)** - TypeScript usage and best practices
@@ -62,6 +63,31 @@ import { OptimizedImage } from '@/components/ui'
 ```
 
 See the **[Image Optimization Guide](./IMAGE_OPTIMIZATION.md)** for complete documentation.
+
+## ♿ Accessibility
+
+This project is committed to **WCAG 2.1 Level AA** accessibility standards. Key features include:
+
+- **Keyboard Navigation**: All interactive elements accessible via keyboard
+- **Screen Reader Support**: Semantic HTML, ARIA labels, and descriptive alt text
+- **Focus Indicators**: Visible focus states on all interactive elements
+- **Reduced Motion**: Respects `prefers-reduced-motion` user preferences
+- **Color Contrast**: Minimum 4.5:1 contrast ratio for text
+- **Form Accessibility**: Proper labels, error messages, and autocomplete attributes
+- **Skip Navigation**: Skip to main content link for keyboard users
+
+### Testing Accessibility
+
+```bash
+# Run ESLint with jsx-a11y plugin
+npm run lint
+
+# Run Lighthouse accessibility audit
+npm run build
+npx @lhci/cli autorun
+```
+
+See the **[Accessibility Guide](./ACCESSIBILITY.md)** for complete documentation and maintenance guidelines.
 
 Currently, two official plugins are available:
 
