@@ -60,11 +60,16 @@
   }
 
   /* Enhanced focus indicators for accessibility */
-  *:focus-visible {
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  [tabindex]:focus-visible {
     @apply outline-none ring-2 ring-neon-cyan ring-offset-2 ring-offset-cyber-black;
   }
 
-  /* Ensure focus indicators are visible on interactive elements */
+  /* Ensure focus indicators are visible on interactive elements with stronger color */
   button:focus-visible,
   a:focus-visible,
   input:focus-visible,
@@ -122,7 +127,18 @@
     }
 
     /* Remove all animations for users who prefer reduced motion */
-    * {
+    body,
+    button,
+    a,
+    div,
+    span,
+    section,
+    article,
+    nav,
+    header,
+    footer,
+    main,
+    aside {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
