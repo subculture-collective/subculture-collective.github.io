@@ -140,7 +140,7 @@ optimize_image() {
 
             # Generate AVIF (if available)
             if command -v avifenc &> /dev/null; then
-                avifenc -s 4 -j 8 -q "$AVIF_QUALITY" \
+                avifenc -s 4 -j "$(nproc)" -q "$AVIF_QUALITY" \
                     "${output_base}.${extension}" \
                     "${output_base}.avif" &>/dev/null || true
             fi
@@ -167,7 +167,7 @@ optimize_image() {
 
     # Generate AVIF from original (if available)
     if command -v avifenc &> /dev/null; then
-        avifenc -s 4 -j 8 -q "$AVIF_QUALITY" \
+        avifenc -s 4 -j "$(nproc)" -q "$AVIF_QUALITY" \
             "${output_original}.${extension}" \
             "${output_original}.avif" &>/dev/null || true
     fi
