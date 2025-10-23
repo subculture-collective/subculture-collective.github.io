@@ -4,15 +4,12 @@
  * Utilities for measuring and optimizing web performance
  */
 
+import { onCLS, onFCP, onINP, onLCP, type Metric } from 'web-vitals'
+
 /**
  * Report Web Vitals metrics to analytics
  */
-export function reportWebVitals(metric: {
-  name: string
-  value: number
-  id: string
-  rating: 'good' | 'needs-improvement' | 'poor'
-}) {
+export function reportWebVitals(metric: Metric) {
   // Log to console in development
   if (import.meta.env.DEV) {
     console.log('Web Vital:', metric)
@@ -68,126 +65,29 @@ export function preconnect(domain: string) {
  * Measure First Contentful Paint (FCP)
  */
 export function measureFCP() {
-  const observer = new PerformanceObserver(list => {
-    for (const entry of list.getEntries()) {
-      if (entry.name === 'first-contentful-paint') {
-        reportWebVitals({
-          name: 'FCP',
-          value: entry.startTime,
-          id: 'v1',
-          rating:
-            entry.startTime < 1800
-              ? 'good'
-              : entry.startTime < 3000
-                ? 'needs-improvement'
-                : 'poor',
-        })
-        observer.disconnect()
-      }
-    }
-  })
-
-  observer.observe({ type: 'paint', buffered: true })
+  onFCP(reportWebVitals)
 }
 
 /**
  * Measure Largest Contentful Paint (LCP)
  */
 export function measureLCP() {
-  const observer = new PerformanceObserver(list => {
-    const entries = list.getEntries()
-    const lastEntry = entries[entries.length - 1]
-
-    if (lastEntry) {
-      reportWebVitals({
-        name: 'LCP',
-        value: lastEntry.startTime,
-        id: 'v1',
-        rating:
-          lastEntry.startTime < 2500
-            ? 'good'
-            : lastEntry.startTime < 4000
-              ? 'needs-improvement'
-              : 'poor',
-      })
-    }
-  })
-
-  observer.observe({ type: 'largest-contentful-paint', buffered: true })
+  onLCP(reportWebVitals)
 }
 
 /**
  * Measure Cumulative Layout Shift (CLS)
  */
 export function measureCLS() {
-  let clsValue = 0
-  const observer = new PerformanceObserver(list => {
-    for (const entry of list.getEntries()) {
-      // Only count layout shifts without recent user input
-      if (!(entry as LayoutShift).hadRecentInput) {
-        clsValue += (entry as LayoutShift).value
-      }
-    }
-
-    reportWebVitals({
-      name: 'CLS',
-      value: clsValue,
-      id: 'v1',
-      rating:
-        clsValue < 0.1
-          ? 'good'
-          : clsValue < 0.25
-            ? 'needs-improvement'
-            : 'poor',
-    })
-  })
-
-  observer.observe({ type: 'layout-shift', buffered: true })
+  onCLS(reportWebVitals)
 }
 
 /**
- * Measure First Input Delay (FID) - deprecated in favor of INP
- */
-export function measureFID() {
-  const observer = new PerformanceObserver(list => {
-    for (const entry of list.getEntries()) {
-      const fid =
-        (entry as PerformanceEventTiming).processingStart - entry.startTime
-
-      reportWebVitals({
-        name: 'FID',
-        value: fid,
-        id: 'v1',
-        rating: fid < 100 ? 'good' : fid < 300 ? 'needs-improvement' : 'poor',
-      })
-    }
-  })
-
-  observer.observe({ type: 'first-input', buffered: true })
-}
-
-/**
- * Measure Interaction to Next Paint (INP) - new metric
+ * Measure Interaction to Next Paint (INP)
+ * Uses web-vitals library for proper INP measurement with correct entry types
  */
 export function measureINP() {
-  let maxINP = 0
-  const observer = new PerformanceObserver(list => {
-    for (const entry of list.getEntries()) {
-      const inp =
-        (entry as PerformanceEventTiming).processingStart - entry.startTime
-      maxINP = Math.max(maxINP, inp)
-    }
-
-    reportWebVitals({
-      name: 'INP',
-      value: maxINP,
-      id: 'v1',
-      rating:
-        maxINP < 200 ? 'good' : maxINP < 500 ? 'needs-improvement' : 'poor',
-    })
-  })
-
-  observer.observe({ type: 'event', buffered: true })
+  onINP(reportWebVitals)
 }
 
 /**
@@ -201,7 +101,6 @@ export function initWebVitals() {
     measureFCP()
     measureLCP()
     measureCLS()
-    measureFID()
     measureINP()
   } catch (error) {
     console.error('Error initializing web vitals:', error)
@@ -243,12 +142,4 @@ export function checkBundleBudget(
     return false
   }
   return true
-}
-
-/**
- * TypeScript interface for LayoutShift
- */
-interface LayoutShift extends PerformanceEntry {
-  value: number
-  hadRecentInput: boolean
 }
