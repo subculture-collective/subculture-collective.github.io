@@ -1,8 +1,9 @@
-import { lazy, Suspense } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { lazy, Suspense, useEffect } from 'react'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import './App.css'
 import Layout from './components/layout/Layout'
 import LoadingSpinner from './components/ui/LoadingSpinner'
+import { trackPageView } from './utils/analytics'
 
 // Lazy load all pages for code splitting
 const Home = lazy(() => import('./pages/Home'))
@@ -20,6 +21,13 @@ const NetworkError = lazy(() => import('./pages/NetworkError'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 
 function App() {
+  const location = useLocation()
+
+  // Track page views on route changes
+  useEffect(() => {
+    trackPageView(location.pathname + location.search)
+  }, [location])
+
   return (
     <Layout variant="default" transitionType="glitch">
       <Suspense fallback={<LoadingSpinner />}>
