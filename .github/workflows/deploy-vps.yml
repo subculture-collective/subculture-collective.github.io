@@ -1,0 +1,177 @@
+name: Deploy to VPS
+permissions:
+  contents: read
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      skip_tests:
+        description: 'Skip tests'
+        required: false
+        default: false
+        type: boolean
+
+# Prevent concurrent deployments
+concurrency:
+  group: vps-deployment
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Build and Deploy to VPS
+    runs-on: ubuntu-latest
+    # Only run if VPS deployment is configured
+    if: vars.VPS_DEPLOYMENT_ENABLED == 'true'
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run linter
+        run: npm run lint:ci
+
+      - name: Run tests
+        if: ${{ !inputs.skip_tests }}
+        run: npm run test:run
+
+      - name: Build production bundle
+        run: npm run build
+
+      - name: Verify build output
+        run: |
+          if [ ! -d "dist" ] || [ ! -f "dist/index.html" ]; then
+            echo "Build output is invalid"
+            exit 1
+          fi
+          echo "Build size: $(du -sh dist | cut -f1)"
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.VPS_SSH_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          # Use a pre-populated known_hosts entry stored as a secret to prevent MITM attacks.
+          echo "${{ secrets.VPS_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+
+      - name: Test SSH connection
+        run: |
+          ssh -p ${{ secrets.VPS_PORT || '22' }} \
+            -o ConnectTimeout=10 \
+            ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} \
+            "echo 'SSH connection successful'"
+
+      - name: Create backup on VPS
+        run: |
+          ssh -p ${{ secrets.VPS_PORT || '22' }} \
+            ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} \
+            "mkdir -p ${{ secrets.VPS_PATH }}/backups && \
+            if [ -d '${{ secrets.VPS_PATH }}/dist' ]; then \
+              cp -r '${{ secrets.VPS_PATH }}/dist' \
+              '${{ secrets.VPS_PATH }}/backups/backup-$(date +%Y%m%d-%H%M%S)' && \
+              cd '${{ secrets.VPS_PATH }}/backups' && \
+              ls -t | tail -n +8 | xargs -r rm -rf; \
+            fi"
+
+      - name: Deploy to VPS
+        run: |
+          rsync -avz --delete \
+            -e "ssh -p ${{ secrets.VPS_PORT || '22' }}" \
+            --exclude='.git' \
+            --exclude='node_modules' \
+            --exclude='.env*' \
+            ./dist/ \
+            ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:${{ secrets.VPS_PATH }}/dist/
+
+      - name: Set file permissions
+        run: |
+          ssh -p ${{ secrets.VPS_PORT || '22' }} \
+            ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} \
+            "find '${{ secrets.VPS_PATH }}/dist' -type d -exec chmod 755 {} \; && \
+            find '${{ secrets.VPS_PATH }}/dist' -type f -exec chmod 644 {} \;"
+
+      - name: Reload Nginx
+        run: |
+          ssh -p ${{ secrets.VPS_PORT || '22' }} \
+            ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} \
+            "sudo nginx -t && sudo systemctl reload nginx"
+
+      - name: Health check
+        if: vars.VPS_HEALTH_CHECK_URL != ''
+        run: |
+          echo "Waiting for server to stabilize..."
+          sleep 10
+
+          MAX_ATTEMPTS=5
+          ATTEMPT=1
+
+          while [ $ATTEMPT -le $MAX_ATTEMPTS ]; do
+            echo "Health check attempt $ATTEMPT/$MAX_ATTEMPTS..."
+            
+            if curl -f -s -o /dev/null "${{ vars.VPS_HEALTH_CHECK_URL }}"; then
+              echo "Health check passed!"
+              exit 0
+            fi
+            
+            if [ $ATTEMPT -lt $MAX_ATTEMPTS ]; then
+              echo "Health check failed, retrying in 10 seconds..."
+              sleep 10
+            fi
+            
+            ATTEMPT=$((ATTEMPT + 1))
+          done
+
+          echo "Health check failed after $MAX_ATTEMPTS attempts"
+          exit 1
+
+      - name: Rollback on failure
+        if: failure()
+        run: |
+          echo "Deployment failed, rolling back..."
+          ssh -p ${{ secrets.VPS_PORT || '22' }} \
+            ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} \
+            "LATEST_BACKUP=\$(ls -t '${{ secrets.VPS_PATH }}/backups' | head -n 1) && \
+            if [ -n \"\$LATEST_BACKUP\" ]; then \
+              rm -rf '${{ secrets.VPS_PATH }}/dist' && \
+              cp -r '${{ secrets.VPS_PATH }}/backups/\$LATEST_BACKUP' '${{ secrets.VPS_PATH }}/dist' && \
+              sudo systemctl reload nginx && \
+              echo 'Rollback completed'; \
+            else \
+              echo 'No backup found for rollback'; \
+            fi"
+
+      - name: Notify on success
+        if: success()
+        run: |
+          echo "✅ Deployment successful!"
+          echo "Deployed to: ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}"
+          if [ -n "${{ vars.VPS_HEALTH_CHECK_URL }}" ]; then
+            echo "Site URL: ${{ vars.VPS_HEALTH_CHECK_URL }}"
+          fi
+
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "❌ Deployment failed!"
+          echo "Check the logs above for details"
+          echo "Manual intervention may be required"
+
+      # Optional: Send Slack/Discord notification
+      # - name: Send notification
+      #   if: always()
+      #   uses: 8398a7/action-slack@v3
+      #   with:
+      #     status: ${{ job.status }}
+      #     text: 'VPS Deployment ${{ job.status }}'
+      #     webhook_url: ${{ secrets.SLACK_WEBHOOK }}
