@@ -125,7 +125,7 @@ backup_ssl_certificates() {
     
     if [ -d "$SSL_PATH" ]; then
         if sudo tar -czf "$ssl_backup" -C / "etc/letsencrypt" 2>/dev/null; then
-            sudo chown $(whoami):$(whoami) "$ssl_backup"
+            sudo chown $(id -un):$(id -gn) "$ssl_backup"
             local size=$(du -h "$ssl_backup" | cut -f1)
             print_success "SSL certificates backed up: ssl-$DATE_TAG.tar.gz ($size)"
         else
