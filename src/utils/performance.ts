@@ -5,6 +5,7 @@
  */
 
 import { onCLS, onFCP, onINP, onLCP, type Metric } from 'web-vitals'
+import { trackWebVital } from './analytics'
 
 /**
  * Report Web Vitals metrics to analytics
@@ -16,7 +17,9 @@ export function reportWebVitals(metric: Metric) {
   }
 
   // In production, send to analytics service
-  // Example: window.gtag?.('event', metric.name, { value: metric.value, metric_id: metric.id })
+  if (import.meta.env.PROD) {
+    trackWebVital(metric.name, metric.value, metric.id, metric.rating)
+  }
 }
 
 /**
