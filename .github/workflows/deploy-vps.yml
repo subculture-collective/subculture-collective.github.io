@@ -1,4 +1,6 @@
 name: Deploy to VPS
+permissions:
+  contents: read
 
 on:
   push:
