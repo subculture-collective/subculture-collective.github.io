@@ -1,6 +1,7 @@
 # React + TypeScript + Vite
 
 [![CI](https://github.com/subculture-collective/subculture-collective.github.io/actions/workflows/ci.yml/badge.svg)](https://github.com/subculture-collective/subculture-collective.github.io/actions/workflows/ci.yml)
+[![Tests](https://github.com/subculture-collective/subculture-collective.github.io/actions/workflows/test.yml/badge.svg)](https://github.com/subculture-collective/subculture-collective.github.io/actions/workflows/test.yml)
 [![Deploy](https://github.com/subculture-collective/subculture-collective.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/subculture-collective/subculture-collective.github.io/actions/workflows/deploy.yml)
 
 This project is a React application built with TypeScript and Vite, automatically deployed to GitHub Pages.
@@ -13,6 +14,7 @@ This project is a React application built with TypeScript and Vite, automaticall
 
 - **[Deployment Guide](./DEPLOYMENT.md)** - GitHub Pages deployment setup and configuration
 - **[CI/CD Documentation](./.github/CI_DOCUMENTATION.md)** - Continuous integration and deployment workflows
+- **[Testing Guide](./TESTING.md)** - Comprehensive testing infrastructure and best practices
 - **[Accessibility Guide](./ACCESSIBILITY.md)** - WCAG 2.1 AA compliance and accessibility features
 - **[ESLint Guide](./ESLINT_GUIDE.md)** - Code quality and linting rules
 - **[Prettier Guide](./PRETTIER_GUIDE.md)** - Code formatting configuration
@@ -31,9 +33,37 @@ This project uses:
   [PRETTIER_GUIDE.md](./PRETTIER_GUIDE.md)
 - **[TypeScript](https://www.typescriptlang.org/)** for type safety - see
   [TYPESCRIPT_GUIDE.md](./TYPESCRIPT_GUIDE.md)
+- **[Vitest](https://vitest.dev/)** for unit and integration testing - see
+  [TESTING.md](./TESTING.md)
 
 All code is automatically formatted and linted via pre-commit hooks and
 validated in CI.
+
+## 🧪 Testing
+
+This project includes comprehensive testing infrastructure with 93%+ coverage:
+
+- **Unit Tests**: Testing individual functions and utilities
+- **Integration Tests**: Testing component interactions and data flows
+- **Coverage Reporting**: Automatic coverage tracking and reporting
+
+### Running Tests
+
+```bash
+# Run tests in watch mode
+npm run test
+
+# Run tests once
+npm run test:run
+
+# Run tests with UI
+npm run test:ui
+
+# Generate coverage report
+npm run test:coverage
+```
+
+See the **[Testing Guide](./TESTING.md)** for complete documentation, best practices, and examples.
 
 ## ⚡ Performance & Image Optimization
 
