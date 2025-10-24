@@ -113,7 +113,6 @@ import {
   CardContent,
   CardFooter,
 } from '@/components/ui'
-
 ;<Card>
   <CardHeader>
     <CardTitle>Card Title</CardTitle>
@@ -169,7 +168,6 @@ Main navigation header.
 
 ```tsx
 import { Header } from '@/components/layout'
-
 ;<Header />
 ```
 
@@ -183,7 +181,6 @@ Site footer with links and information.
 
 ```tsx
 import { Footer } from '@/components/layout'
-
 ;<Footer />
 ```
 
@@ -197,7 +194,6 @@ Common page wrapper with consistent structure.
 
 ```tsx
 import { PageLayout } from '@/components/layout'
-
 ;<PageLayout title="Page Title" description="Page description">
   <YourContent />
 </PageLayout>
@@ -223,7 +219,6 @@ Hero section component with animations.
 
 ```tsx
 import { Hero } from '@/components/hero'
-
 ;<Hero
   title="Welcome to Subcult"
   subtitle="Underground creativity"
@@ -242,7 +237,6 @@ Card displaying creator information.
 
 ```tsx
 import { CreatorCard } from '@/components/creators'
-
 ;<CreatorCard
   name="Creator Name"
   bio="Creator bio"
@@ -261,7 +255,6 @@ Card displaying project information.
 
 ```tsx
 import { ProjectCard } from '@/components/projects'
-
 ;<ProjectCard
   title="Project Title"
   description="Project description"
@@ -281,7 +274,6 @@ Card displaying blog post preview.
 
 ```tsx
 import { JournalCard } from '@/components/journal'
-
 ;<JournalCard
   title="Post Title"
   excerpt="Brief description"
@@ -303,7 +295,6 @@ React Error Boundary for error handling.
 
 ```tsx
 import { ErrorBoundary } from '@/components/error'
-
 ;<ErrorBoundary fallback={<ErrorPage />}>
   <YourComponent />
 </ErrorBoundary>
@@ -327,7 +318,6 @@ Component for managing SEO meta tags.
 
 ```tsx
 import { SEOHead } from '@/components/seo'
-
 ;<SEOHead
   title="Page Title"
   description="Page description"
@@ -401,7 +391,6 @@ Slide-in animation wrapper.
 
 ```tsx
 import { SlideIn } from '@/components/motion'
-
 ;<SlideIn direction="left">
   <YourContent />
 </SlideIn>

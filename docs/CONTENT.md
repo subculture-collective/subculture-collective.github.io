@@ -398,7 +398,6 @@ public/
 
 ```tsx
 import { OptimizedImage } from '@/components/ui'
-
 ;<OptimizedImage
   src="/assets/journal/post-image.jpg"
   alt="Descriptive alt text"
