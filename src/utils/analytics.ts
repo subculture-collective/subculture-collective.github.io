@@ -106,7 +106,7 @@ export function trackDownload(filename: string, type?: string): void {
 export function trackFormSubmit(formName: string, success: boolean): void {
   trackEvent('Form Submit', {
     form: formName,
-    success: success ? 'true' : 'false',
+    success: success,
   })
 }
 
