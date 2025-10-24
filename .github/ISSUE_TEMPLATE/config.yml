@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 💬 Discussions
+    url: https://github.com/subculture-collective/subculture-collective.github.io/discussions
+    about: Ask questions, share ideas, or discuss the project
+  - name: 🔒 Security Issue
+    url: https://github.com/subculture-collective/subculture-collective.github.io/security/advisories/new
+    about: Report a security vulnerability privately
