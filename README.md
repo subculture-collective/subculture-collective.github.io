@@ -1,43 +1,147 @@
-# React + TypeScript + Vite
+# Subculture Collective
 
 [![CI](https://github.com/subculture-collective/subculture-collective.github.io/actions/workflows/ci.yml/badge.svg)](https://github.com/subculture-collective/subculture-collective.github.io/actions/workflows/ci.yml)
 [![Tests](https://github.com/subculture-collective/subculture-collective.github.io/actions/workflows/test.yml/badge.svg)](https://github.com/subculture-collective/subculture-collective.github.io/actions/workflows/test.yml)
 [![Deploy](https://github.com/subculture-collective/subculture-collective.github.io/actions/workflows/deploy.yml/badge.svg)](https://github.com/subculture-collective/subculture-collective.github.io/actions/workflows/deploy.yml)
 
-This project is a React application built with TypeScript and Vite, automatically deployed to GitHub Pages.
+> A cyberpunk-inspired platform showcasing underground creators, projects, and cultural commentary.
+
+Subculture Collective (Subcult) is a modern web platform built with React, TypeScript, and Vite. It features a hacker-culture aesthetic meets avant-garde zine design, bringing together independent creators, experimental projects, and subcultural discourse.
 
 ## 🚀 Live Site
 
-**https://subculture-collective.github.io/**
+**[https://subculture-collective.github.io/](https://subculture-collective.github.io/)**
 
-## 📚 Documentation
+## ✨ Features
 
-- **[Deployment Guide](./DEPLOYMENT.md)** - GitHub Pages deployment setup and configuration
-- **[CI/CD Documentation](./.github/CI_DOCUMENTATION.md)** - Continuous integration and deployment workflows
-- **[Testing Guide](./TESTING.md)** - Comprehensive testing infrastructure and best practices
-- **[Accessibility Guide](./ACCESSIBILITY.md)** - WCAG 2.1 AA compliance and accessibility features
-- **[ESLint Guide](./ESLINT_GUIDE.md)** - Code quality and linting rules
-- **[Prettier Guide](./PRETTIER_GUIDE.md)** - Code formatting configuration
-- **[TypeScript Guide](./TYPESCRIPT_GUIDE.md)** - TypeScript usage and best practices
-- **[Image Optimization Guide](./IMAGE_OPTIMIZATION.md)** - Image optimization and performance best practices
-- **[Responsive Design Guide](./RESPONSIVE_DESIGN.md)** - Responsive design patterns and best practices
-- **[Responsive Testing Checklist](./RESPONSIVE_TESTING.md)** - Comprehensive testing checklist for all breakpoints
+- **🎨 Custom Design System**: Cyberpunk aesthetic with neon accents and dark themes
+- **📝 MDX Blog**: Write blog posts with React components
+- **👥 Creator Showcase**: Highlight independent creators and their work
+- **🎯 Project Gallery**: Display innovative projects and experiments
+- **♿ WCAG 2.1 AA Compliant**: Full accessibility support
+- **⚡ Optimized Performance**: Image optimization, lazy loading, and code splitting
+- **📱 Fully Responsive**: Mobile-first design with breakpoint testing
+- **🔍 SEO Optimized**: Meta tags, Open Graph, and structured data
+- **🧪 Comprehensive Testing**: 93%+ test coverage with Vitest
+- **🚀 CI/CD Pipeline**: Automated testing, linting, and deployment
 
-## Code Quality
+## 🛠️ Tech Stack
 
-This project uses:
+- **Frontend**: React 19, TypeScript, Vite
+- **Styling**: TailwindCSS with custom theme
+- **Routing**: React Router v7
+- **Animation**: Framer Motion
+- **Content**: MDX (Markdown + JSX)
+- **Testing**: Vitest, Testing Library
+- **Linting**: ESLint with accessibility rules
+- **Formatting**: Prettier with pre-commit hooks
+- **Deployment**: GitHub Pages with GitHub Actions
 
-- **[ESLint](https://eslint.org/)** for code quality and consistency - see
-  [ESLINT_GUIDE.md](./ESLINT_GUIDE.md)
-- **[Prettier](https://prettier.io/)** for code formatting - see
-  [PRETTIER_GUIDE.md](./PRETTIER_GUIDE.md)
-- **[TypeScript](https://www.typescriptlang.org/)** for type safety - see
-  [TYPESCRIPT_GUIDE.md](./TYPESCRIPT_GUIDE.md)
-- **[Vitest](https://vitest.dev/)** for unit and integration testing - see
-  [TESTING.md](./TESTING.md)
+## 📋 Prerequisites
 
-All code is automatically formatted and linted via pre-commit hooks and
-validated in CI.
+- **Node.js**: v20 or higher
+- **npm**: v10 or higher
+- **Git**: For version control
+
+## 🚀 Getting Started
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/subculture-collective/subculture-collective.github.io.git
+cd subculture-collective.github.io
+
+# Install dependencies
+npm ci
+
+# Start development server
+npm run dev
+```
+
+The site will be available at `http://localhost:5173`
+
+### Build for Production
+
+```bash
+# Build the production bundle
+npm run build
+
+# Preview the production build
+npm run preview
+```
+
+## 📖 Documentation
+
+## 📖 Documentation
+
+### Core Documentation
+
+- **[Contributing Guide](./CONTRIBUTING.md)** - How to contribute to the project
+- **[Development Guide](./docs/DEVELOPMENT.md)** - Local setup and development workflow
+- **[Architecture Overview](./docs/ARCHITECTURE.md)** - Technical architecture and folder structure
+- **[Component Documentation](./docs/COMPONENTS.md)** - Component usage and patterns
+- **[Content Management](./docs/CONTENT.md)** - How to add blog posts, creators, and projects
+- **[Design System](./docs/DESIGN_SYSTEM.md)** - Brand guidelines and design patterns
+
+### Technical Documentation
+
+- **[Deployment Guide](./DEPLOYMENT.md)** - GitHub Pages deployment setup
+- **[Testing Guide](./TESTING.md)** - Testing infrastructure and best practices
+- **[CI/CD Documentation](./.github/CI_DOCUMENTATION.md)** - Continuous integration workflows
+
+### Guides and Standards
+
+- **[Accessibility Guide](./ACCESSIBILITY.md)** - WCAG 2.1 AA compliance
+- **[Accessibility Implementation](./ACCESSIBILITY_IMPLEMENTATION.md)** - Implementation details
+- **[Accessibility Testing](./ACCESSIBILITY_TESTING.md)** - Testing checklist
+- **[ESLint Guide](./ESLINT_GUIDE.md)** - Code quality rules
+- **[Prettier Guide](./PRETTIER_GUIDE.md)** - Code formatting
+- **[TypeScript Guide](./TYPESCRIPT_GUIDE.md)** - TypeScript usage
+- **[Image Optimization](./IMAGE_OPTIMIZATION.md)** - Image optimization guide
+- **[Responsive Design](./RESPONSIVE_DESIGN.md)** - Responsive patterns
+- **[Responsive Testing](./RESPONSIVE_TESTING.md)** - Testing checklist
+- **[SEO Guide](./SEO_GUIDE.md)** - SEO best practices
+- **[Tailwind Theme](./TAILWIND_THEME.md)** - Custom theme configuration
+- **[Animations Guide](./ANIMATIONS.md)** - Animation patterns
+- **[Performance Guide](./PERFORMANCE.md)** - Performance optimization
+- **[Error Handling](./ERROR_HANDLING.md)** - Error handling patterns
+
+## 💻 Development
+
+### Available Scripts
+
+```bash
+# Development
+npm run dev              # Start dev server with hot reload
+npm run build           # Build for production
+npm run preview         # Preview production build
+
+# Code Quality
+npm run lint            # Run ESLint
+npm run lint:fix        # Fix ESLint issues
+npm run format          # Format with Prettier
+npm run format:check    # Check formatting
+
+# Testing
+npm run test            # Run tests in watch mode
+npm run test:run        # Run tests once
+npm run test:ui         # Open Vitest UI
+npm run test:coverage   # Generate coverage report
+
+# Assets
+npm run optimize-assets # Optimize images
+```
+
+### Development Workflow
+
+1. **Create a feature branch**: `git checkout -b feature/my-feature`
+2. **Make your changes**: Follow the coding standards
+3. **Test your changes**: Run linting and tests
+4. **Commit**: Use conventional commit messages
+5. **Push and create PR**: Follow the PR template
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for detailed guidelines.
 
 ## 🧪 Testing
 
@@ -65,126 +169,81 @@ npm run test:coverage
 
 See the **[Testing Guide](./TESTING.md)** for complete documentation, best practices, and examples.
 
-## ⚡ Performance & Image Optimization
+## 🎨 Design System
 
-This project includes comprehensive image optimization features:
+Subculture Collective features a custom design system with:
 
-- **Modern Formats**: Automatic WebP and AVIF format support with fallbacks
-- **Responsive Images**: srcset and sizes attributes for optimal loading
-- **Lazy Loading**: Intersection Observer API for efficient resource loading
-- **Blur-up Placeholders**: Smooth loading experience with placeholder effects
-- **Optimized Build**: Vite configuration for asset optimization
+- **Cyberpunk Aesthetic**: Dark themes with neon accents (cyan, blue, green, magenta)
+- **Typography**: Custom font system with glitch effects
+- **Color Palette**: Dark foundations with electric accent colors
+- **Animation**: Framer Motion for smooth transitions and effects
+- **Components**: Reusable UI components with consistent styling
 
-### Quick Start with Images
+See **[TAILWIND_THEME.md](./TAILWIND_THEME.md)** and **[docs/DESIGN_SYSTEM.md](./docs/DESIGN_SYSTEM.md)** for details.
 
-```tsx
-import { OptimizedImage } from '@/components/ui'
+## 📦 Project Structure
 
-// Basic usage
-<OptimizedImage src="/hero.jpg" alt="Hero image" />
-
-// With responsive images
-<OptimizedImage
-  src="/hero.jpg"
-  srcSet="/hero-400.jpg 400w, /hero-800.jpg 800w"
-  sizes="(max-width: 768px) 100vw, 50vw"
-  alt="Hero image"
-/>
+```
+subculture-collective.github.io/
+├── .github/              # GitHub Actions workflows and templates
+├── public/               # Static assets
+├── src/
+│   ├── assets/          # Images, fonts, and other assets
+│   ├── components/      # React components
+│   │   ├── about/       # About page components
+│   │   ├── creators/    # Creator showcase components
+│   │   ├── hero/        # Hero section components
+│   │   ├── journal/     # Blog components
+│   │   ├── layout/      # Layout components (header, footer)
+│   │   ├── projects/    # Project gallery components
+│   │   └── ui/          # Reusable UI components
+│   ├── content/         # MDX content (blog posts)
+│   ├── data/            # Static data (creators, projects)
+│   ├── hooks/           # Custom React hooks
+│   ├── lib/             # Utility functions
+│   ├── pages/           # Page components
+│   ├── types/           # TypeScript type definitions
+│   └── utils/           # Utility functions
+├── docs/                # Documentation
+└── scripts/             # Build and utility scripts
 ```
 
-See the **[Image Optimization Guide](./IMAGE_OPTIMIZATION.md)** for complete documentation.
+See **[docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md)** for detailed architecture documentation.
 
-## ♿ Accessibility
+## 🤝 Contributing
 
-This project is committed to **WCAG 2.1 Level AA** accessibility standards. Key features include:
+We welcome contributions! Please read our [Contributing Guide](./CONTRIBUTING.md) to get started.
 
-- **Keyboard Navigation**: All interactive elements accessible via keyboard
-- **Screen Reader Support**: Semantic HTML, ARIA labels, and descriptive alt text
-- **Focus Indicators**: Visible focus states on all interactive elements
-- **Reduced Motion**: Respects `prefers-reduced-motion` user preferences
-- **Color Contrast**: Minimum 4.5:1 contrast ratio for text
-- **Form Accessibility**: Proper labels, error messages, and autocomplete attributes
-- **Skip Navigation**: Skip to main content link for keyboard users
+### Quick Contribution Guide
 
-### Testing Accessibility
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Write/update tests
+5. Run linting and tests
+6. Submit a pull request
 
-```bash
-# Run ESLint with jsx-a11y plugin
-npm run lint
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for detailed guidelines.
 
-# Run Lighthouse accessibility audit
-npm run build
-npx @lhci/cli autorun
-```
+## 📄 License
 
-See the **[Accessibility Guide](./ACCESSIBILITY.md)** for complete documentation and maintenance guidelines.
+This project is licensed under the Apache License 2.0 - see the [LICENSE](./LICENSE) file for details.
 
-Currently, two official plugins are available:
+## 🔗 Links
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Live Site**: https://subculture-collective.github.io/
+- **Repository**: https://github.com/subculture-collective/subculture-collective.github.io
+- **Issues**: https://github.com/subculture-collective/subculture-collective.github.io/issues
+- **Discussions**: https://github.com/subculture-collective/subculture-collective.github.io/discussions
 
-## React Compiler
+## 💬 Community
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+Join the discussion and connect with other contributors!
 
-## Expanding the ESLint configuration
+- Report bugs and request features in [Issues](https://github.com/subculture-collective/subculture-collective.github.io/issues)
+- Discuss ideas in [Discussions](https://github.com/subculture-collective/subculture-collective.github.io/discussions)
+- Follow development in [Pull Requests](https://github.com/subculture-collective/subculture-collective.github.io/pulls)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Made with 💜 by the Subculture Collective community
