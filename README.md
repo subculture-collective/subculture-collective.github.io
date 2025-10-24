@@ -87,6 +87,9 @@ npm run preview
 ### Technical Documentation
 
 - **[Deployment Guide](./DEPLOYMENT.md)** - GitHub Pages deployment setup
+- **[VPS Deployment Guide](./docs/VPS_DEPLOYMENT.md)** - Comprehensive VPS deployment guide
+- **[VPS Quick Start](./docs/VPS_QUICKSTART.md)** - Quick VPS deployment (30 minutes)
+- **[VPS Setup Checklist](./docs/VPS_SETUP_CHECKLIST.md)** - Step-by-step VPS setup checklist
 - **[Testing Guide](./TESTING.md)** - Testing infrastructure and best practices
 - **[CI/CD Documentation](./.github/CI_DOCUMENTATION.md)** - Continuous integration workflows
 
