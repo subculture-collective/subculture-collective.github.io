@@ -234,6 +234,39 @@ The deployment workflow complements the existing CI workflow:
 - Code splitting enabled by default
 - Assets hashed for cache busting
 
+## Alternative Deployment: VPS
+
+For greater control and flexibility, you can deploy to a Virtual Private Server (VPS) instead of GitHub Pages. This allows for custom server configurations, backend API integration, and more.
+
+### VPS Deployment Documentation
+
+- **[VPS Deployment Guide](./docs/VPS_DEPLOYMENT.md)** - Comprehensive guide covering server setup, Nginx configuration, SSL, security, and monitoring
+- **[VPS Quick Start](./docs/VPS_QUICKSTART.md)** - Get up and running in 30 minutes
+- **[VPS Setup Checklist](./docs/VPS_SETUP_CHECKLIST.md)** - Step-by-step checklist for VPS deployment
+
+### VPS Deployment Features
+
+- **Full server control**: Configure Nginx, SSL, caching, and security
+- **Automated deployment**: Deploy via SSH with GitHub Actions
+- **Backup system**: Automated daily/weekly backups with restoration
+- **Health checks**: Post-deployment verification and automatic rollback
+- **Monitoring**: Comprehensive logging and uptime monitoring
+- **Security**: Firewall, rate limiting, SSL/TLS, and security headers
+
+### Quick VPS Deployment
+
+```bash
+# Set environment variables
+export VPS_HOST=yourdomain.com
+export VPS_USER=deploy
+export HEALTH_CHECK_URL=https://yourdomain.com
+
+# Deploy to VPS
+./deploy-vps.sh
+```
+
+See the [VPS Deployment Guide](./docs/VPS_DEPLOYMENT.md) for complete instructions.
+
 ## Future Enhancements
 
 Planned improvements:
