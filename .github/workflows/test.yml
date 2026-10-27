@@ -49,4 +49,4 @@ jobs:
           retention-days: 7
 
       - name: Check coverage thresholds
-        run: npm run test:coverage -- --reporter=json --reporter=text
+        run: npm run test:coverage -- --reporter=json --reporter=default
