@@ -4,12 +4,10 @@
  * Override default MDX components with custom styled versions
  */
 
-import type { MDXComponents } from 'mdx/types'
-
 /**
  * Custom code block with syntax highlighting
  */
-function Code({
+export function Code({
   children,
   className,
   ...props
@@ -37,7 +35,10 @@ function Code({
 /**
  * Custom pre block for code blocks
  */
-function Pre({ children, ...props }: React.ComponentPropsWithoutRef<'pre'>) {
+export function Pre({
+  children,
+  ...props
+}: React.ComponentPropsWithoutRef<'pre'>) {
   return (
     <pre
       className="overflow-x-auto p-4 rounded-lg bg-cyber-black border border-neon-cyan/20 my-6 text-sm"
@@ -51,7 +52,7 @@ function Pre({ children, ...props }: React.ComponentPropsWithoutRef<'pre'>) {
 /**
  * Custom blockquote component
  */
-function Blockquote({
+export function Blockquote({
   children,
   ...props
 }: React.ComponentPropsWithoutRef<'blockquote'>) {
@@ -68,7 +69,10 @@ function Blockquote({
 /**
  * Custom heading components with proper styling
  */
-function H1({ children, ...props }: React.ComponentPropsWithoutRef<'h1'>) {
+export function H1({
+  children,
+  ...props
+}: React.ComponentPropsWithoutRef<'h1'>) {
   return (
     <h1
       className="font-display text-4xl text-neon-cyan text-shadow-neon mb-6 mt-8"
@@ -79,7 +83,10 @@ function H1({ children, ...props }: React.ComponentPropsWithoutRef<'h1'>) {
   )
 }
 
-function H2({ children, ...props }: React.ComponentPropsWithoutRef<'h2'>) {
+export function H2({
+  children,
+  ...props
+}: React.ComponentPropsWithoutRef<'h2'>) {
   return (
     <h2
       className="font-display text-3xl text-glitch-pink text-shadow-neon mb-4 mt-6"
@@ -90,7 +97,10 @@ function H2({ children, ...props }: React.ComponentPropsWithoutRef<'h2'>) {
   )
 }
 
-function H3({ children, ...props }: React.ComponentPropsWithoutRef<'h3'>) {
+export function H3({
+  children,
+  ...props
+}: React.ComponentPropsWithoutRef<'h3'>) {
   return (
     <h3
       className="font-display text-2xl text-glitch-green mb-3 mt-5"
@@ -104,7 +114,7 @@ function H3({ children, ...props }: React.ComponentPropsWithoutRef<'h3'>) {
 /**
  * Custom paragraph component
  */
-function P({ children, ...props }: React.ComponentPropsWithoutRef<'p'>) {
+export function P({ children, ...props }: React.ComponentPropsWithoutRef<'p'>) {
   return (
     <p className="text-gray-300 leading-relaxed mb-4" {...props}>
       {children}
@@ -115,7 +125,11 @@ function P({ children, ...props }: React.ComponentPropsWithoutRef<'p'>) {
 /**
  * Custom link component
  */
-function A({ children, href, ...props }: React.ComponentPropsWithoutRef<'a'>) {
+export function A({
+  children,
+  href,
+  ...props
+}: React.ComponentPropsWithoutRef<'a'>) {
   const isExternal = href?.startsWith('http')
 
   return (
@@ -134,7 +148,10 @@ function A({ children, href, ...props }: React.ComponentPropsWithoutRef<'a'>) {
 /**
  * Custom list components
  */
-function Ul({ children, ...props }: React.ComponentPropsWithoutRef<'ul'>) {
+export function Ul({
+  children,
+  ...props
+}: React.ComponentPropsWithoutRef<'ul'>) {
   return (
     <ul
       className="list-disc list-inside text-gray-300 mb-4 space-y-2"
@@ -145,7 +162,10 @@ function Ul({ children, ...props }: React.ComponentPropsWithoutRef<'ul'>) {
   )
 }
 
-function Ol({ children, ...props }: React.ComponentPropsWithoutRef<'ol'>) {
+export function Ol({
+  children,
+  ...props
+}: React.ComponentPropsWithoutRef<'ol'>) {
   return (
     <ol
       className="list-decimal list-inside text-gray-300 mb-4 space-y-2"
@@ -159,7 +179,11 @@ function Ol({ children, ...props }: React.ComponentPropsWithoutRef<'ol'>) {
 /**
  * Custom image component with optimization
  */
-function Img({ src, alt, ...props }: React.ComponentPropsWithoutRef<'img'>) {
+export function Img({
+  src,
+  alt,
+  ...props
+}: React.ComponentPropsWithoutRef<'img'>) {
   // For content images in MDX, we use basic img with lazy loading
   // Full OptimizedImage component can be used explicitly when needed
   return (
@@ -177,7 +201,7 @@ function Img({ src, alt, ...props }: React.ComponentPropsWithoutRef<'img'>) {
 /**
  * Custom horizontal rule
  */
-function Hr({ ...props }: React.ComponentPropsWithoutRef<'hr'>) {
+export function Hr({ ...props }: React.ComponentPropsWithoutRef<'hr'>) {
   return <hr className="my-8 border-t border-neon-cyan/20" {...props} />
 }
 
@@ -203,24 +227,3 @@ export function Callout({ type = 'info', children }: CalloutProps) {
     </div>
   )
 }
-
-/**
- * Export custom MDX component overrides
- */
-export const mdxComponents: MDXComponents = {
-  h1: H1,
-  h2: H2,
-  h3: H3,
-  p: P,
-  a: A,
-  ul: Ul,
-  ol: Ol,
-  blockquote: Blockquote,
-  code: Code,
-  pre: Pre,
-  img: Img,
-  hr: Hr,
-  Callout,
-}
-
-export default mdxComponents

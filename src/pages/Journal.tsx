@@ -86,7 +86,7 @@ function Journal() {
 
   return (
     <>
-      <SEOHead pageSEO={pageSEO.journal!} structuredData={breadcrumb} />
+      <SEOHead pageSEO={pageSEO.journal} structuredData={breadcrumb} />
       <div className="min-h-screen bg-cyber-black p-4 sm:p-8">
         <div className="max-w-7xl mx-auto">
           {/* Header */}

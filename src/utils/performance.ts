@@ -11,11 +11,6 @@ import { trackWebVital } from './analytics'
  * Report Web Vitals metrics to analytics
  */
 export function reportWebVitals(metric: Metric) {
-  // Log to console in development
-  if (import.meta.env.DEV) {
-    console.log('Web Vital:', metric)
-  }
-
   // In production, send to analytics service
   if (import.meta.env.PROD) {
     trackWebVital(metric.name, metric.value, metric.id, metric.rating)

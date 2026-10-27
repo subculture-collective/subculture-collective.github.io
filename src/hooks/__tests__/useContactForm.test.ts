@@ -2,7 +2,7 @@
  * Tests for useContactForm hook
  */
 
-import { describe, it, expect, vi, beforeEach } from 'vitest'
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { renderHook, act } from '@testing-library/react'
 import { useContactForm } from '../useContactForm'
 import type { ChangeEvent, FormEvent } from 'react'
@@ -11,8 +11,11 @@ describe('useContactForm', () => {
   beforeEach(() => {
     vi.clearAllMocks()
     // Mock window.location.href
-    delete (window as any).location
-    window.location = { href: '' } as any
+    vi.stubGlobal('location', { href: '' })
+  })
+
+  afterEach(() => {
+    vi.unstubAllGlobals()
   })
 
   describe('initialization', () => {

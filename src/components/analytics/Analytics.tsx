@@ -45,9 +45,6 @@ export default function Analytics({
   useEffect(() => {
     // Don't load analytics if disabled
     if (!enabled) {
-      if (import.meta.env.DEV) {
-        console.log('Analytics disabled')
-      }
       return
     }
 
@@ -55,12 +52,8 @@ export default function Analytics({
     if (
       navigator.doNotTrack === '1' ||
       navigator.doNotTrack === 'yes' ||
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      (window as any).doNotTrack === '1'
+      window.doNotTrack === '1'
     ) {
-      if (import.meta.env.DEV) {
-        console.log('Analytics disabled: Do Not Track enabled')
-      }
       return
     }
 

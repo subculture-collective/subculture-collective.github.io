@@ -76,20 +76,15 @@ function JournalPost() {
 
   // Get current post index for prev/next navigation
   const currentIndex = allPosts.findIndex(p => p.slug === slug)
-  const previousPost =
-    currentIndex >= 0 && currentIndex < allPosts.length - 1
-      ? {
-          slug: allPosts[currentIndex + 1]!.slug,
-          title: allPosts[currentIndex + 1]!.frontmatter.title,
-        }
-      : undefined
-  const nextPost =
-    currentIndex > 0
-      ? {
-          slug: allPosts[currentIndex - 1]!.slug,
-          title: allPosts[currentIndex - 1]!.frontmatter.title,
-        }
-      : undefined
+  const previousEntry =
+    currentIndex >= 0 ? allPosts[currentIndex + 1] : undefined
+  const nextEntry = currentIndex > 0 ? allPosts[currentIndex - 1] : undefined
+  const previousPost = previousEntry
+    ? { slug: previousEntry.slug, title: previousEntry.frontmatter.title }
+    : undefined
+  const nextPost = nextEntry
+    ? { slug: nextEntry.slug, title: nextEntry.frontmatter.title }
+    : undefined
 
   return (
     <>

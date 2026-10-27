@@ -17,7 +17,7 @@ function Home() {
   return (
     <>
       <SEOHead
-        pageSEO={pageSEO.home!}
+        pageSEO={pageSEO.home}
         structuredData={[organizationSchema, websiteSchema]}
       />
       <div className="bg-cyber-black">

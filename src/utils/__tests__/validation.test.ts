@@ -45,8 +45,8 @@ describe('isValidEmail', () => {
   it('should handle empty or invalid inputs', () => {
     expect(isValidEmail('')).toBe(false)
     expect(isValidEmail('   ')).toBe(false)
-    expect(isValidEmail(null as any)).toBe(false)
-    expect(isValidEmail(undefined as any)).toBe(false)
+    expect(isValidEmail(null as unknown as string)).toBe(false)
+    expect(isValidEmail(undefined as unknown as string)).toBe(false)
   })
 
   it('should trim whitespace', () => {
@@ -98,9 +98,9 @@ describe('isValidUrl', () => {
   })
 
   it('should reject null or undefined', () => {
-    expect(isValidUrl(null as any)).toBe(true) // not required by default
-    expect(isValidUrl(undefined as any)).toBe(true)
-    expect(isValidUrl(null as any, true)).toBe(false)
-    expect(isValidUrl(undefined as any, true)).toBe(false)
+    expect(isValidUrl(null as unknown as string)).toBe(true) // not required by default
+    expect(isValidUrl(undefined as unknown as string)).toBe(true)
+    expect(isValidUrl(null as unknown as string, true)).toBe(false)
+    expect(isValidUrl(undefined as unknown as string, true)).toBe(false)
   })
 })

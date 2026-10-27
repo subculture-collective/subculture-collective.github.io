@@ -106,7 +106,7 @@ export function trackDownload(filename: string, type?: string): void {
 export function trackFormSubmit(formName: string, success: boolean): void {
   trackEvent('Form Submit', {
     form: formName,
-    success: success,
+    success,
   })
 }
 
@@ -175,16 +175,12 @@ export function initAnalytics(config: AnalyticsConfig): void {
 
   // Store config for reference
   window.__analyticsConfig = config
-
-  // Log initialization in development
-  if (import.meta.env.DEV) {
-    console.log('Analytics initialized:', config)
-  }
 }
 
 // Extend Window interface for TypeScript
 declare global {
   interface Window {
+    doNotTrack?: string
     plausible?: (
       event: string,
       options?: { props?: Record<string, string | number | boolean> }

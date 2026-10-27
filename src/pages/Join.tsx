@@ -25,7 +25,7 @@ function Join() {
 
   return (
     <>
-      <SEOHead pageSEO={pageSEO.join!} structuredData={breadcrumb} />
+      <SEOHead pageSEO={pageSEO.join} structuredData={breadcrumb} />
       <div className="min-h-screen bg-cyber-black">
         {/* Hero Section */}
         <motion.section

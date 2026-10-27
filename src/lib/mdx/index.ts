@@ -4,4 +4,5 @@
 
 export { getMdxPost } from './getMdxPost'
 export { getMdxPosts, getMdxPostsByTag, getAllTags } from './getMdxPosts'
-export { mdxComponents, Callout } from './MDXComponents'
+export { Callout } from './MDXComponents'
+export { mdxComponents } from './mdxComponentMap'

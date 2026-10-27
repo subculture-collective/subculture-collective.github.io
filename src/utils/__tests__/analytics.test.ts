@@ -152,7 +152,7 @@ describe('Analytics Utilities', () => {
       expect(mockPlausible).toHaveBeenCalledWith('Form Submit', {
         props: {
           form: 'Contact Form',
-          success: 'true',
+          success: true,
         },
       })
     })
@@ -162,7 +162,7 @@ describe('Analytics Utilities', () => {
       expect(mockPlausible).toHaveBeenCalledWith('Form Submit', {
         props: {
           form: 'Contact Form',
-          success: 'false',
+          success: false,
         },
       })
     })
@@ -281,8 +281,7 @@ describe('Analytics Utilities', () => {
         enabled: true,
       }
       initAnalytics(config)
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      expect((window as any).__analyticsConfig).toEqual(config)
+      expect(window.__analyticsConfig).toEqual(config)
     })
   })
 })
