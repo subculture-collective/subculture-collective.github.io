@@ -27,7 +27,7 @@ function About() {
   return (
     <>
       <SEOHead
-        pageSEO={pageSEO.about!}
+        pageSEO={pageSEO.about}
         structuredData={[organizationSchema, breadcrumb]}
       />
       <div className="min-h-screen bg-cyber-black">

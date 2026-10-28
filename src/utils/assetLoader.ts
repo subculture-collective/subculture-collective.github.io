@@ -440,25 +440,21 @@ export function getAssetPerformanceMetrics(): AssetPerformanceEntry[] {
 }
 
 /**
- * Log asset loading statistics
+ * Read asset loading statistics for developer tools without logging automatically.
  */
-export function logAssetStats(): void {
+export function getAssetStats() {
   const metrics = getAssetPerformanceMetrics()
-
-  if (metrics.length === 0) {
-    console.log('No asset performance metrics available')
-    return
-  }
-
-  const totalSize = metrics.reduce((sum, m) => sum + m.size, 0)
-  const totalDuration = metrics.reduce((sum, m) => sum + m.duration, 0)
-
-  console.group('Asset Loading Statistics')
-  console.log(`Total Assets: ${metrics.length}`)
-  console.log(`Total Size: ${(totalSize / 1024).toFixed(2)} KB`)
-  console.log(`Total Load Time: ${totalDuration.toFixed(2)} ms`)
-  console.log(
-    `Average Load Time: ${(totalDuration / metrics.length).toFixed(2)} ms`
+  const totalSizeBytes = metrics.reduce((sum, metric) => sum + metric.size, 0)
+  const totalDurationMs = metrics.reduce(
+    (sum, metric) => sum + metric.duration,
+    0
   )
-  console.groupEnd()
+
+  return {
+    totalAssets: metrics.length,
+    totalSizeBytes,
+    totalDurationMs,
+    averageDurationMs:
+      metrics.length > 0 ? totalDurationMs / metrics.length : 0,
+  }
 }

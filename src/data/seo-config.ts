@@ -82,7 +82,7 @@ export const websiteSchema = {
 /**
  * Page-specific SEO configurations
  */
-export const pageSEO: Record<string, PageSEO> = {
+export const pageSEO = {
   home: {
     title: 'Subcult Collective - Underground Digital Culture',
     description:
@@ -179,4 +179,4 @@ export const pageSEO: Record<string, PageSEO> = {
     description: 'Network connection error. Please check your connection.',
     noindex: true,
   },
-}
+} satisfies Record<string, PageSEO>

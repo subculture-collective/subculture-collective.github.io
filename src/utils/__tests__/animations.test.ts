@@ -3,6 +3,7 @@
  */
 
 import { describe, it, expect } from 'vitest'
+import type { Variant } from 'framer-motion'
 import {
   transitions,
   pageTransitions,
@@ -14,6 +15,13 @@ import {
   createFadeVariant,
   createSlideVariant,
 } from '../animations'
+
+function getTransition(variant: Variant | undefined) {
+  if (!variant || typeof variant === 'function') {
+    throw new Error('Expected a static animation variant')
+  }
+  return variant.transition
+}
 
 describe('transitions', () => {
   it('should export smooth transition', () => {
@@ -172,24 +180,28 @@ describe('staggerChildren', () => {
   it('should have container variant', () => {
     expect(staggerChildren.container).toHaveProperty('initial')
     expect(staggerChildren.container).toHaveProperty('animate')
-    expect(
-      (staggerChildren.container.animate as any).transition
-    ).toHaveProperty('staggerChildren', 0.1)
-    expect(
-      (staggerChildren.container.animate as any).transition
-    ).toHaveProperty('delayChildren', 0.2)
+    expect(getTransition(staggerChildren.container.animate)).toHaveProperty(
+      'staggerChildren',
+      0.1
+    )
+    expect(getTransition(staggerChildren.container.animate)).toHaveProperty(
+      'delayChildren',
+      0.2
+    )
   })
 
   it('should have containerFast variant', () => {
-    expect(
-      (staggerChildren.containerFast.animate as any).transition
-    ).toHaveProperty('staggerChildren', 0.05)
+    expect(getTransition(staggerChildren.containerFast.animate)).toHaveProperty(
+      'staggerChildren',
+      0.05
+    )
   })
 
   it('should have containerSlow variant', () => {
-    expect(
-      (staggerChildren.containerSlow.animate as any).transition
-    ).toHaveProperty('staggerChildren', 0.2)
+    expect(getTransition(staggerChildren.containerSlow.animate)).toHaveProperty(
+      'staggerChildren',
+      0.2
+    )
   })
 })
 
@@ -198,23 +210,20 @@ describe('createStaggerContainer', () => {
     const container = createStaggerContainer()
     expect(container).toHaveProperty('initial')
     expect(container).toHaveProperty('animate')
-    expect((container.animate as any).transition).toHaveProperty(
+    expect(getTransition(container.animate)).toHaveProperty(
       'staggerChildren',
       0.1
     )
-    expect((container.animate as any).transition).toHaveProperty(
-      'delayChildren',
-      0
-    )
+    expect(getTransition(container.animate)).toHaveProperty('delayChildren', 0)
   })
 
   it('should create a stagger container with custom values', () => {
     const container = createStaggerContainer(0.2, 0.5)
-    expect((container.animate as any).transition).toHaveProperty(
+    expect(getTransition(container.animate)).toHaveProperty(
       'staggerChildren',
       0.2
     )
-    expect((container.animate as any).transition).toHaveProperty(
+    expect(getTransition(container.animate)).toHaveProperty(
       'delayChildren',
       0.5
     )
@@ -225,21 +234,21 @@ describe('createFadeVariant', () => {
   it('should create a fade variant with default values', () => {
     const variant = createFadeVariant()
     expect(variant.initial).toEqual({ opacity: 0 })
-    expect(variant.animate as any).toHaveProperty('opacity', 1)
-    expect((variant.animate as any).transition).toHaveProperty('duration', 0.3)
-    expect((variant.animate as any).transition).toHaveProperty('delay', 0)
+    expect(variant.animate).toHaveProperty('opacity', 1)
+    expect(getTransition(variant.animate)).toHaveProperty('duration', 0.3)
+    expect(getTransition(variant.animate)).toHaveProperty('delay', 0)
   })
 
   it('should create a fade variant with custom values', () => {
     const variant = createFadeVariant(0.5, 0.2)
-    expect((variant.animate as any).transition).toHaveProperty('duration', 0.5)
-    expect((variant.animate as any).transition).toHaveProperty('delay', 0.2)
+    expect(getTransition(variant.animate)).toHaveProperty('duration', 0.5)
+    expect(getTransition(variant.animate)).toHaveProperty('delay', 0.2)
   })
 
   it('should have exit animation', () => {
     const variant = createFadeVariant(0.4)
-    expect(variant.exit as any).toHaveProperty('opacity', 0)
-    expect((variant.exit as any).transition).toHaveProperty('duration', 0.2) // half of duration
+    expect(variant.exit).toHaveProperty('opacity', 0)
+    expect(getTransition(variant.exit)).toHaveProperty('duration', 0.2) // half of duration
   })
 })
 
@@ -247,32 +256,32 @@ describe('createSlideVariant', () => {
   it('should create a left slide variant', () => {
     const variant = createSlideVariant('left', 50, 0.3)
     expect(variant.initial).toEqual({ opacity: 0, x: -50 })
-    expect(variant.animate as any).toHaveProperty('x', 0)
-    expect(variant.exit as any).toHaveProperty('x', 50)
+    expect(variant.animate).toHaveProperty('x', 0)
+    expect(variant.exit).toHaveProperty('x', 50)
   })
 
   it('should create a right slide variant', () => {
     const variant = createSlideVariant('right', 50, 0.3)
     expect(variant.initial).toEqual({ opacity: 0, x: 50 })
-    expect(variant.exit as any).toHaveProperty('x', -50)
+    expect(variant.exit).toHaveProperty('x', -50)
   })
 
   it('should create an up slide variant', () => {
     const variant = createSlideVariant('up', 50, 0.3)
     expect(variant.initial).toEqual({ opacity: 0, y: -50 })
-    expect(variant.animate as any).toHaveProperty('y', 0)
-    expect(variant.exit as any).toHaveProperty('y', 50)
+    expect(variant.animate).toHaveProperty('y', 0)
+    expect(variant.exit).toHaveProperty('y', 50)
   })
 
   it('should create a down slide variant', () => {
     const variant = createSlideVariant('down', 50, 0.3)
     expect(variant.initial).toEqual({ opacity: 0, y: 50 })
-    expect(variant.exit as any).toHaveProperty('y', -50)
+    expect(variant.exit).toHaveProperty('y', -50)
   })
 
   it('should use custom distance and duration', () => {
     const variant = createSlideVariant('left', 100, 0.5)
     expect(variant.initial).toEqual({ opacity: 0, x: -100 })
-    expect((variant.animate as any).transition).toHaveProperty('duration', 0.5)
+    expect(getTransition(variant.animate)).toHaveProperty('duration', 0.5)
   })
 })

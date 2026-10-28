@@ -19,7 +19,7 @@ function AccessibilityStatement() {
 
   return (
     <>
-      <SEOHead pageSEO={pageSEO.accessibility!} structuredData={breadcrumb} />
+      <SEOHead pageSEO={pageSEO.accessibility} structuredData={breadcrumb} />
       <div className="bg-cyber-black py-20">
         <motion.div
           className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8"

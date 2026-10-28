@@ -17,7 +17,7 @@ function ServerError() {
 
   return (
     <>
-      <SEOHead pageSEO={pageSEO.serverError!} />
+      <SEOHead pageSEO={pageSEO.serverError} />
       <div className="min-h-screen bg-cyber-black flex items-center justify-center p-8">
         <div className="max-w-2xl w-full text-center space-y-8">
           {/* Error Code with Glitch Effect */}
